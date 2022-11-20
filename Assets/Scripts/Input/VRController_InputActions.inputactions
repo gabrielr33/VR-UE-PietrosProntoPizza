@@ -1,0 +1,384 @@
+{
+    "name": "VRController_InputActions",
+    "maps": [
+        {
+            "name": "VRControllers",
+            "id": "913ad3e0-7b4f-43ab-a5e6-39cfb2d1c940",
+            "actions": [
+                {
+                    "name": "Trigger_Right",
+                    "type": "Value",
+                    "id": "145b6e74-9e78-4b95-96a8-878fe3919987",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Trigger_Left",
+                    "type": "Value",
+                    "id": "e9878729-eb18-471b-80c3-e587090de60a",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Grip_Right",
+                    "type": "Value",
+                    "id": "7e14e4bd-1901-4032-bf5e-295d3b89799e",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Grip_Left",
+                    "type": "Value",
+                    "id": "4e490c6e-81c1-4735-932b-5b9ae5a9b82a",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ControllerVelocities_Right",
+                    "type": "Value",
+                    "id": "7e4e8a61-032b-4870-b3a6-cea2ba931b34",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ControllerVelocities_Left",
+                    "type": "Value",
+                    "id": "9c767e85-abe5-4210-b0ca-33899937d939",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ControllerAngularVelocities_Right",
+                    "type": "Value",
+                    "id": "817a004f-a175-4a47-8a96-02e86d574ec9",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ControllerAngularVelocities_Left",
+                    "type": "Value",
+                    "id": "fc579f97-7658-415d-bf63-36a0deefad0e",
+                    "expectedControlType": "Vector3",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "ButtonA",
+                    "type": "PassThrough",
+                    "id": "7282c8c6-9f0c-476d-a646-d422f622a2d8",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ButtonB",
+                    "type": "PassThrough",
+                    "id": "27e18440-3b07-46a8-99f9-c9471cbdf248",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ButtonX",
+                    "type": "PassThrough",
+                    "id": "d90acce8-315b-4262-a250-cbd8545348bb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ButtonY",
+                    "type": "PassThrough",
+                    "id": "2acb80b7-73bd-4290-8f3b-2dbdc50a5e9f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "JoystickRight",
+                    "type": "Value",
+                    "id": "0dacbb91-5e8b-41f7-9e51-31c796f22c6f",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "75c9d7d8-fcee-4e60-905f-5c1861d395d6",
+                    "path": "<OculusTouchController>{RightHand}/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Trigger_Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3dc8c8ee-8d16-4f2d-ab89-7b5623abf9ac",
+                    "path": "<ViveController>{RightHand}/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Trigger_Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c2010af5-21f9-42f3-a7ee-b22040e96e05",
+                    "path": "<OculusTouchController>{RightHand}/grip",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Grip_Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e7a42a55-fa75-40a1-8439-04cbc5ca624b",
+                    "path": "<ViveController>{RightHand}/grip",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Grip_Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6918b9c3-be84-499b-89be-cdc0712c1212",
+                    "path": "<OculusTouchController>{LeftHand}/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Trigger_Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "799ecbf2-805a-4f5c-bea7-0062996f07ab",
+                    "path": "<ViveController>{LeftHand}/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Trigger_Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "22eb2b20-530d-43b3-ab9d-7d127339baba",
+                    "path": "<OculusTouchController>{LeftHand}/grip",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Grip_Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a81c0119-6aff-4255-915c-bc529f49e7e8",
+                    "path": "<ViveController>{LeftHand}/grip",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Grip_Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f71d419e-9d2c-40a7-bcb6-72a6effb523c",
+                    "path": "<OculusTouchController>{RightHand}/pointer/velocity",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ControllerVelocities_Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f5271f43-d22c-4706-bb91-e0680fcc8409",
+                    "path": "<ViveController>{RightHand}/pointer/velocity",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ControllerVelocities_Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3b1a469e-ba9d-4d2e-8ecb-85db4510a990",
+                    "path": "<OculusTouchController>{LeftHand}/pointer/velocity",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ControllerVelocities_Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8433baf7-2abf-4265-8e29-ebd4408cd48a",
+                    "path": "<ViveController>{LeftHand}/pointer/velocity",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ControllerVelocities_Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f4bafe07-800a-4213-b0ab-8b9276f9db96",
+                    "path": "<OculusTouchController>{RightHand}/pointer/angularVelocity",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ControllerAngularVelocities_Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7f6cbd21-84b7-473a-ac7e-9be5acd00c73",
+                    "path": "<ViveController>{RightHand}/pointer/angularVelocity",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ControllerAngularVelocities_Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dbca78ad-3309-4c1f-9f76-89aa5382c33e",
+                    "path": "<OculusTouchController>{LeftHand}/pointer/angularVelocity",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ControllerAngularVelocities_Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "382714d0-c276-4683-93aa-2ec053b1f34b",
+                    "path": "<ViveController>{LeftHand}/pointer/angularVelocity",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ControllerAngularVelocities_Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "451b0567-e689-41c4-bdd6-0cd8194b118c",
+                    "path": "<OculusTouchController>{RightHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ButtonA",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "01b2c9e5-5bfc-4292-8890-6bc1441c5665",
+                    "path": "<ViveController>{RightHand}/trackpadClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ButtonA",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4a7a9d35-0b86-4cb4-bb67-4ff985127859",
+                    "path": "<OculusTouchController>{LeftHand}/primaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ButtonX",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "58d19c8d-adfc-4157-895a-01ab41ac4e9a",
+                    "path": "<ViveController>{LeftHand}/trackpadClicked",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ButtonX",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a4d9c6ea-e6ad-460f-ad00-a7f52a354333",
+                    "path": "<OculusTouchController>{RightHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ButtonB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b8a12b62-f4ee-4692-b2b3-54a551fc7105",
+                    "path": "<OculusTouchController>{LeftHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ButtonY",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "87755075-e6dd-45a8-a59f-ca80d62cae0b",
+                    "path": "<OculusTouchController>{RightHand}/thumbstick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "JoystickRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
