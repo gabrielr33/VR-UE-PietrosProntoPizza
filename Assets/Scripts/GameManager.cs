@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         _isMasterClient = PhotonNetwork.IsMasterClient;
-        Debug.Log(_isMasterClient);
 
         SpawnPlayer();
     }

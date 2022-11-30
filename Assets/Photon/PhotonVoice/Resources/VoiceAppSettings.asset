@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f3758f8f58fdef43803eb9be1df0608, type: 3}
-  m_Name: PhotonServerSettings
+  m_Script: {fileID: 11500000, guid: 6a2a43b050aba43418104a08f05ab918, type: 3}
+  m_Name: VoiceAppSettings
   m_EditorClassIdentifier: 
   AppSettings:
-    AppIdRealtime: 5bf916eb-6f5c-4d3f-8f41-80e161ac85c7
+    AppIdRealtime: 
     AppIdFusion: 
     AppIdChat: 
     AppIdVoice: 95dbb690-2061-4cb8-98f3-dec2fea89f26
@@ -28,20 +28,3 @@ MonoBehaviour:
     AuthMode: 0
     EnableLobbyStatistics: 0
     NetworkLogging: 1
-  DevRegion: eu
-  PunLogging: 0
-  EnableSupportLogger: 0
-  RunInBackground: 1
-  StartInOfflineMode: 0
-  RpcList:
-  - CantHearYou
-  - ClickRpc
-  - DestroyRpc
-  - DestroySpaceship
-  - Fire
-  - HeresWhy
-  - RespawnSpaceship
-  - ChangeColour
-  DisableAutoOpenWizard: 1
-  ShowSettings: 1
-  DevRegionSetOnce: 1

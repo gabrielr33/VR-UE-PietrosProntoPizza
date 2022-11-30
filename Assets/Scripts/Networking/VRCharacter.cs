@@ -31,7 +31,7 @@ namespace Networking
             if (transform.GetComponent<PhotonView>().IsMine)
             {
                 _trackingLocally = true;
-            
+
                 _headRoot = GameObject.FindWithTag("MainCamera").transform;
                 _rightControllerRoot = GameObject.FindWithTag("RightController").transform;
                 _leftControllerRoot = GameObject.FindWithTag("LeftController").transform;
@@ -85,6 +85,8 @@ namespace Networking
                 stream.SendNext(_head.position);
                 stream.SendNext(_head.rotation);
 
+                stream.SendNext(_body.position);
+                
                 stream.SendNext(_left.position);
                 stream.SendNext(_left.rotation);
 
@@ -94,17 +96,19 @@ namespace Networking
             else
             {
                 // Network player, receive data
-                transform.position = (Vector3) stream.ReceiveNext();
-                transform.rotation = (Quaternion) stream.ReceiveNext();
+                transform.position = (Vector3)stream.ReceiveNext();
+                transform.rotation = (Quaternion)stream.ReceiveNext();
 
-                _head.position = (Vector3) stream.ReceiveNext();
-                _head.rotation = (Quaternion) stream.ReceiveNext();
+                _head.position = (Vector3)stream.ReceiveNext();
+                _head.rotation = (Quaternion)stream.ReceiveNext();
 
-                _left.position = (Vector3) stream.ReceiveNext();
-                _left.rotation = (Quaternion) stream.ReceiveNext();
+                _body.position = (Vector3)stream.ReceiveNext();
 
-                _right.position = (Vector3) stream.ReceiveNext();
-                _right.rotation = (Quaternion) stream.ReceiveNext();
+                _left.position = (Vector3)stream.ReceiveNext();
+                _left.rotation = (Quaternion)stream.ReceiveNext();
+
+                _right.position = (Vector3)stream.ReceiveNext();
+                _right.rotation = (Quaternion)stream.ReceiveNext();
             }
         }
     }
