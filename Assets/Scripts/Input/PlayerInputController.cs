@@ -4,23 +4,19 @@ namespace Input
 {
     public class PlayerInputController : MonoBehaviour
     {
-        public InputTriggerGrip InputTriggerGrip;
+        public InputTrigger InputTrigger;
+        public InputJoystick InputJoystick;
         public InputVelocities InputVelocities;
         public InputButtons InputButtons;
-        public InputJoysticks InputJoysticks;
-
-        [SerializeField] private Animator _rightHandAnimator;
-        [SerializeField] private Animator _leftHandAnimator;
 
         private VRController_InputActions _inputActions;
-        private static readonly int Trigger = Animator.StringToHash("Trigger");
 
         private void OnEnable()
         {
-            InputTriggerGrip = new InputTriggerGrip();
+            InputTrigger = new InputTrigger();
+            InputJoystick = new InputJoystick();
             InputVelocities = new InputVelocities();
             InputButtons = new InputButtons();
-            InputJoysticks = new InputJoysticks();
             
             if (_inputActions == null)
             {
@@ -28,39 +24,27 @@ namespace Input
 
                 // Hand Trigger
                 _inputActions.VRControllers.Trigger_Right.performed +=
-                    i => InputTriggerGrip.RightControllerTriggerInput = i.ReadValue<float>();
+                    i => InputTrigger.RightTriggerInput = i.ReadValue<float>();
                 _inputActions.VRControllers.Trigger_Left.performed +=
-                    i => InputTriggerGrip.LeftControllerTriggerInput = i.ReadValue<float>();
+                    i => InputTrigger.LeftTriggerInput = i.ReadValue<float>();
 
-                // Hand Grip
-                _inputActions.VRControllers.Grip_Right.performed +=
-                    i => InputTriggerGrip.RightControllerGripInput = i.ReadValue<float>();
-                _inputActions.VRControllers.Grip_Left.performed +=
-                    i => InputTriggerGrip.LeftControllerGripInput = i.ReadValue<float>();
-
+                // Joystick/Trackpad
+                _inputActions.VRControllers.JoystickLeft.performed +=
+                    i => InputJoystick.LeftJoystickInput = i.ReadValue<Vector2>();
+                
                 // Hand Velocities
-                _inputActions.VRControllers.ControllerVelocities_Right.performed +=
+                _inputActions.VRControllers.AngularVelocities_Right.performed +=
                     i => InputVelocities.RightControllerVelocity = i.ReadValue<Vector3>();
-                _inputActions.VRControllers.ControllerVelocities_Left.performed +=
+                _inputActions.VRControllers.Velocities_Left.performed +=
                     i => InputVelocities.LeftControllerVelocity = i.ReadValue<Vector3>();
-                _inputActions.VRControllers.ControllerAngularVelocities_Right.performed +=
+                _inputActions.VRControllers.AngularVelocities_Right.performed +=
                     i => InputVelocities.RightControllerAngularVelocity = i.ReadValue<Vector3>();
-                _inputActions.VRControllers.ControllerAngularVelocities_Left.performed +=
+                _inputActions.VRControllers.AngularVelocities_Left.performed +=
                     i => InputVelocities.LeftControllerAngularVelocity = i.ReadValue<Vector3>();
 
                 // Buttons
-                _inputActions.VRControllers.ButtonA.performed +=
-                    i => InputButtons.PrimaryButtonA = i.ReadValue<float>();
-                _inputActions.VRControllers.ButtonB.performed +=
-                    i => InputButtons.SecondaryButtonB = i.ReadValue<float>();
-                _inputActions.VRControllers.ButtonX.performed +=
-                    i => InputButtons.PrimaryButtonX = i.ReadValue<float>();
-                _inputActions.VRControllers.ButtonY.performed +=
-                    i => InputButtons.SecondaryButtonY = i.ReadValue<float>();
-                
-                // Thumbstick
-                _inputActions.VRControllers.JoystickRight.performed +=
-                    i => InputJoysticks.RightControllerJoystick = i.ReadValue<Vector2>();
+                _inputActions.VRControllers.ButtonPrimary_Right.performed +=
+                    i => InputButtons.ButtonPrimary_Right = i.ReadValue<float>();
             }
 
             _inputActions.Enable();
@@ -70,17 +54,17 @@ namespace Input
         {
             _inputActions.Disable();
         }
+    }
 
-        private void Update()
-        {
-            HandleHandAnimations();
-        }
-
-        private void HandleHandAnimations()
-        {
-            _rightHandAnimator.SetFloat(Trigger, InputTriggerGrip.RightControllerTriggerInput);
-            _leftHandAnimator.SetFloat(Trigger, InputTriggerGrip.LeftControllerTriggerInput);
-        }
+    public class InputTrigger
+    {
+        public float RightTriggerInput;
+        public float LeftTriggerInput;
+    }
+    
+    public class InputJoystick
+    {
+        public Vector2 LeftJoystickInput;
     }
 
     public class InputVelocities
@@ -93,23 +77,6 @@ namespace Input
 
     public class InputButtons
     {
-        public float PrimaryButtonA;
-        public float SecondaryButtonB;
-        public float PrimaryButtonX;
-        public float SecondaryButtonY;
-    }
-
-    public class InputTriggerGrip
-    {
-        public float RightControllerTriggerInput;
-        public float LeftControllerTriggerInput;
-        public float RightControllerGripInput;
-        public float LeftControllerGripInput;
-    }
-    
-    public class InputJoysticks
-    {
-        public Vector2 RightControllerJoystick;
-        public Vector2 LeftControllerJoystick;
+        public float ButtonPrimary_Right;
     }
 }

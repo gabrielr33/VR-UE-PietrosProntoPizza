@@ -12,6 +12,8 @@ namespace Networking
 
         [SerializeField] private TMP_InputField _playerNameInputField;
 
+        private const string RoomName = "PietrosProntoPizzaRoom";
+        
         private void Awake()
         {
             if (Instance)
@@ -40,7 +42,6 @@ namespace Networking
             if (!scene.name.Equals("GameScene"))
                 return;
             
-            // PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerManager"), Vector3.zero, Quaternion.identity);
             if (PhotonNetwork.IsMasterClient)
                 PhotonNetwork.Destroy(gameObject);
         }
@@ -57,15 +58,14 @@ namespace Networking
 
         public void OnConnectPressed()
         {
-            string roomName = "PietrosProntoPizzaRoom";
             RoomOptions roomOptions = new RoomOptions {MaxPlayers = 4};
-            TypedLobby typedLobby = new TypedLobby(roomName, LobbyType.Default);
+            TypedLobby typedLobby = new TypedLobby(RoomName, LobbyType.Default);
             
             PhotonNetwork.NickName = !string.IsNullOrEmpty(_playerNameInputField.text)
             ? _playerNameInputField.text
             : "Player#" + Random.Range(0, 100).ToString("000");
             
-            PhotonNetwork.JoinOrCreateRoom(roomName, roomOptions, typedLobby);
+            PhotonNetwork.JoinOrCreateRoom(RoomName, roomOptions, typedLobby);
         }
     }
 }

@@ -9,6 +9,8 @@ namespace Networking
     {
         public static NetworkRoomManager Instance;
 
+        [SerializeField] private GameManager _gameManager;
+        
         private void Awake()
         {
             if (Instance)
@@ -49,8 +51,6 @@ namespace Networking
                 Debug.Log("In game as master.");
             else
                 Debug.Log("In game as client.");
-            
-            // _gameManager.SpawnPlayerAndRaceTrack();
             
             PhotonNetwork.LoadLevel(1);
         }

@@ -46,25 +46,7 @@ public partial class @VRController_InputActions : IInputActionCollection2, IDisp
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Grip_Right"",
-                    ""type"": ""Value"",
-                    ""id"": ""7e14e4bd-1901-4032-bf5e-295d3b89799e"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Grip_Left"",
-                    ""type"": ""Value"",
-                    ""id"": ""4e490c6e-81c1-4735-932b-5b9ae5a9b82a"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""ControllerVelocities_Right"",
+                    ""name"": ""Velocities_Right"",
                     ""type"": ""Value"",
                     ""id"": ""7e4e8a61-032b-4870-b3a6-cea2ba931b34"",
                     ""expectedControlType"": ""Vector3"",
@@ -73,7 +55,7 @@ public partial class @VRController_InputActions : IInputActionCollection2, IDisp
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""ControllerVelocities_Left"",
+                    ""name"": ""Velocities_Left"",
                     ""type"": ""Value"",
                     ""id"": ""9c767e85-abe5-4210-b0ca-33899937d939"",
                     ""expectedControlType"": ""Vector3"",
@@ -82,7 +64,7 @@ public partial class @VRController_InputActions : IInputActionCollection2, IDisp
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""ControllerAngularVelocities_Right"",
+                    ""name"": ""AngularVelocities_Right"",
                     ""type"": ""Value"",
                     ""id"": ""817a004f-a175-4a47-8a96-02e86d574ec9"",
                     ""expectedControlType"": ""Vector3"",
@@ -91,7 +73,7 @@ public partial class @VRController_InputActions : IInputActionCollection2, IDisp
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""ControllerAngularVelocities_Left"",
+                    ""name"": ""AngularVelocities_Left"",
                     ""type"": ""Value"",
                     ""id"": ""fc579f97-7658-415d-bf63-36a0deefad0e"",
                     ""expectedControlType"": ""Vector3"",
@@ -100,7 +82,7 @@ public partial class @VRController_InputActions : IInputActionCollection2, IDisp
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""ButtonA"",
+                    ""name"": ""ButtonPrimary_Right"",
                     ""type"": ""PassThrough"",
                     ""id"": ""7282c8c6-9f0c-476d-a646-d422f622a2d8"",
                     ""expectedControlType"": ""Button"",
@@ -109,34 +91,7 @@ public partial class @VRController_InputActions : IInputActionCollection2, IDisp
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""ButtonB"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""27e18440-3b07-46a8-99f9-c9471cbdf248"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ButtonX"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""d90acce8-315b-4262-a250-cbd8545348bb"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ButtonY"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""2acb80b7-73bd-4290-8f3b-2dbdc50a5e9f"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""JoystickRight"",
+                    ""name"": ""JoystickLeft"",
                     ""type"": ""Value"",
                     ""id"": ""0dacbb91-5e8b-41f7-9e51-31c796f22c6f"",
                     ""expectedControlType"": ""Vector2"",
@@ -170,28 +125,6 @@ public partial class @VRController_InputActions : IInputActionCollection2, IDisp
                 },
                 {
                     ""name"": """",
-                    ""id"": ""c2010af5-21f9-42f3-a7ee-b22040e96e05"",
-                    ""path"": ""<OculusTouchController>{RightHand}/grip"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Grip_Right"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e7a42a55-fa75-40a1-8439-04cbc5ca624b"",
-                    ""path"": ""<ViveController>{RightHand}/grip"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Grip_Right"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""6918b9c3-be84-499b-89be-cdc0712c1212"",
                     ""path"": ""<OculusTouchController>{LeftHand}/trigger"",
                     ""interactions"": """",
@@ -214,34 +147,12 @@ public partial class @VRController_InputActions : IInputActionCollection2, IDisp
                 },
                 {
                     ""name"": """",
-                    ""id"": ""22eb2b20-530d-43b3-ab9d-7d127339baba"",
-                    ""path"": ""<OculusTouchController>{LeftHand}/grip"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Grip_Left"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a81c0119-6aff-4255-915c-bc529f49e7e8"",
-                    ""path"": ""<ViveController>{LeftHand}/grip"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Grip_Left"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""f71d419e-9d2c-40a7-bcb6-72a6effb523c"",
                     ""path"": ""<OculusTouchController>{RightHand}/pointer/velocity"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ControllerVelocities_Right"",
+                    ""action"": ""Velocities_Right"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -252,7 +163,7 @@ public partial class @VRController_InputActions : IInputActionCollection2, IDisp
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ControllerVelocities_Right"",
+                    ""action"": ""Velocities_Right"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -263,7 +174,7 @@ public partial class @VRController_InputActions : IInputActionCollection2, IDisp
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ControllerVelocities_Left"",
+                    ""action"": ""Velocities_Left"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -274,7 +185,7 @@ public partial class @VRController_InputActions : IInputActionCollection2, IDisp
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ControllerVelocities_Left"",
+                    ""action"": ""Velocities_Left"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -285,7 +196,7 @@ public partial class @VRController_InputActions : IInputActionCollection2, IDisp
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ControllerAngularVelocities_Right"",
+                    ""action"": ""AngularVelocities_Right"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -296,7 +207,7 @@ public partial class @VRController_InputActions : IInputActionCollection2, IDisp
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ControllerAngularVelocities_Right"",
+                    ""action"": ""AngularVelocities_Right"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -307,7 +218,7 @@ public partial class @VRController_InputActions : IInputActionCollection2, IDisp
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ControllerAngularVelocities_Left"",
+                    ""action"": ""AngularVelocities_Left"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -318,7 +229,7 @@ public partial class @VRController_InputActions : IInputActionCollection2, IDisp
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ControllerAngularVelocities_Left"",
+                    ""action"": ""AngularVelocities_Left"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -329,7 +240,7 @@ public partial class @VRController_InputActions : IInputActionCollection2, IDisp
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ButtonA"",
+                    ""action"": ""ButtonPrimary_Right"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -340,62 +251,29 @@ public partial class @VRController_InputActions : IInputActionCollection2, IDisp
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ButtonA"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4a7a9d35-0b86-4cb4-bb67-4ff985127859"",
-                    ""path"": ""<OculusTouchController>{LeftHand}/primaryButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ButtonX"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""58d19c8d-adfc-4157-895a-01ab41ac4e9a"",
-                    ""path"": ""<ViveController>{LeftHand}/trackpadClicked"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ButtonX"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a4d9c6ea-e6ad-460f-ad00-a7f52a354333"",
-                    ""path"": ""<OculusTouchController>{RightHand}/secondaryButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ButtonB"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b8a12b62-f4ee-4692-b2b3-54a551fc7105"",
-                    ""path"": ""<OculusTouchController>{LeftHand}/secondaryButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ButtonY"",
+                    ""action"": ""ButtonPrimary_Right"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""87755075-e6dd-45a8-a59f-ca80d62cae0b"",
-                    ""path"": ""<OculusTouchController>{RightHand}/thumbstick"",
+                    ""path"": ""<OculusTouchController>{LeftHand}/thumbstick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""JoystickRight"",
+                    ""action"": ""JoystickLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d670764e-26f0-453f-9f55-013c87332e7b"",
+                    ""path"": ""<ViveController>{LeftHand}/trackpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""JoystickLeft"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -408,17 +286,12 @@ public partial class @VRController_InputActions : IInputActionCollection2, IDisp
         m_VRControllers = asset.FindActionMap("VRControllers", throwIfNotFound: true);
         m_VRControllers_Trigger_Right = m_VRControllers.FindAction("Trigger_Right", throwIfNotFound: true);
         m_VRControllers_Trigger_Left = m_VRControllers.FindAction("Trigger_Left", throwIfNotFound: true);
-        m_VRControllers_Grip_Right = m_VRControllers.FindAction("Grip_Right", throwIfNotFound: true);
-        m_VRControllers_Grip_Left = m_VRControllers.FindAction("Grip_Left", throwIfNotFound: true);
-        m_VRControllers_ControllerVelocities_Right = m_VRControllers.FindAction("ControllerVelocities_Right", throwIfNotFound: true);
-        m_VRControllers_ControllerVelocities_Left = m_VRControllers.FindAction("ControllerVelocities_Left", throwIfNotFound: true);
-        m_VRControllers_ControllerAngularVelocities_Right = m_VRControllers.FindAction("ControllerAngularVelocities_Right", throwIfNotFound: true);
-        m_VRControllers_ControllerAngularVelocities_Left = m_VRControllers.FindAction("ControllerAngularVelocities_Left", throwIfNotFound: true);
-        m_VRControllers_ButtonA = m_VRControllers.FindAction("ButtonA", throwIfNotFound: true);
-        m_VRControllers_ButtonB = m_VRControllers.FindAction("ButtonB", throwIfNotFound: true);
-        m_VRControllers_ButtonX = m_VRControllers.FindAction("ButtonX", throwIfNotFound: true);
-        m_VRControllers_ButtonY = m_VRControllers.FindAction("ButtonY", throwIfNotFound: true);
-        m_VRControllers_JoystickRight = m_VRControllers.FindAction("JoystickRight", throwIfNotFound: true);
+        m_VRControllers_Velocities_Right = m_VRControllers.FindAction("Velocities_Right", throwIfNotFound: true);
+        m_VRControllers_Velocities_Left = m_VRControllers.FindAction("Velocities_Left", throwIfNotFound: true);
+        m_VRControllers_AngularVelocities_Right = m_VRControllers.FindAction("AngularVelocities_Right", throwIfNotFound: true);
+        m_VRControllers_AngularVelocities_Left = m_VRControllers.FindAction("AngularVelocities_Left", throwIfNotFound: true);
+        m_VRControllers_ButtonPrimary_Right = m_VRControllers.FindAction("ButtonPrimary_Right", throwIfNotFound: true);
+        m_VRControllers_JoystickLeft = m_VRControllers.FindAction("JoystickLeft", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -480,34 +353,24 @@ public partial class @VRController_InputActions : IInputActionCollection2, IDisp
     private IVRControllersActions m_VRControllersActionsCallbackInterface;
     private readonly InputAction m_VRControllers_Trigger_Right;
     private readonly InputAction m_VRControllers_Trigger_Left;
-    private readonly InputAction m_VRControllers_Grip_Right;
-    private readonly InputAction m_VRControllers_Grip_Left;
-    private readonly InputAction m_VRControllers_ControllerVelocities_Right;
-    private readonly InputAction m_VRControllers_ControllerVelocities_Left;
-    private readonly InputAction m_VRControllers_ControllerAngularVelocities_Right;
-    private readonly InputAction m_VRControllers_ControllerAngularVelocities_Left;
-    private readonly InputAction m_VRControllers_ButtonA;
-    private readonly InputAction m_VRControllers_ButtonB;
-    private readonly InputAction m_VRControllers_ButtonX;
-    private readonly InputAction m_VRControllers_ButtonY;
-    private readonly InputAction m_VRControllers_JoystickRight;
+    private readonly InputAction m_VRControllers_Velocities_Right;
+    private readonly InputAction m_VRControllers_Velocities_Left;
+    private readonly InputAction m_VRControllers_AngularVelocities_Right;
+    private readonly InputAction m_VRControllers_AngularVelocities_Left;
+    private readonly InputAction m_VRControllers_ButtonPrimary_Right;
+    private readonly InputAction m_VRControllers_JoystickLeft;
     public struct VRControllersActions
     {
         private @VRController_InputActions m_Wrapper;
         public VRControllersActions(@VRController_InputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Trigger_Right => m_Wrapper.m_VRControllers_Trigger_Right;
         public InputAction @Trigger_Left => m_Wrapper.m_VRControllers_Trigger_Left;
-        public InputAction @Grip_Right => m_Wrapper.m_VRControllers_Grip_Right;
-        public InputAction @Grip_Left => m_Wrapper.m_VRControllers_Grip_Left;
-        public InputAction @ControllerVelocities_Right => m_Wrapper.m_VRControllers_ControllerVelocities_Right;
-        public InputAction @ControllerVelocities_Left => m_Wrapper.m_VRControllers_ControllerVelocities_Left;
-        public InputAction @ControllerAngularVelocities_Right => m_Wrapper.m_VRControllers_ControllerAngularVelocities_Right;
-        public InputAction @ControllerAngularVelocities_Left => m_Wrapper.m_VRControllers_ControllerAngularVelocities_Left;
-        public InputAction @ButtonA => m_Wrapper.m_VRControllers_ButtonA;
-        public InputAction @ButtonB => m_Wrapper.m_VRControllers_ButtonB;
-        public InputAction @ButtonX => m_Wrapper.m_VRControllers_ButtonX;
-        public InputAction @ButtonY => m_Wrapper.m_VRControllers_ButtonY;
-        public InputAction @JoystickRight => m_Wrapper.m_VRControllers_JoystickRight;
+        public InputAction @Velocities_Right => m_Wrapper.m_VRControllers_Velocities_Right;
+        public InputAction @Velocities_Left => m_Wrapper.m_VRControllers_Velocities_Left;
+        public InputAction @AngularVelocities_Right => m_Wrapper.m_VRControllers_AngularVelocities_Right;
+        public InputAction @AngularVelocities_Left => m_Wrapper.m_VRControllers_AngularVelocities_Left;
+        public InputAction @ButtonPrimary_Right => m_Wrapper.m_VRControllers_ButtonPrimary_Right;
+        public InputAction @JoystickLeft => m_Wrapper.m_VRControllers_JoystickLeft;
         public InputActionMap Get() { return m_Wrapper.m_VRControllers; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -523,39 +386,24 @@ public partial class @VRController_InputActions : IInputActionCollection2, IDisp
                 @Trigger_Left.started -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnTrigger_Left;
                 @Trigger_Left.performed -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnTrigger_Left;
                 @Trigger_Left.canceled -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnTrigger_Left;
-                @Grip_Right.started -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnGrip_Right;
-                @Grip_Right.performed -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnGrip_Right;
-                @Grip_Right.canceled -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnGrip_Right;
-                @Grip_Left.started -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnGrip_Left;
-                @Grip_Left.performed -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnGrip_Left;
-                @Grip_Left.canceled -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnGrip_Left;
-                @ControllerVelocities_Right.started -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnControllerVelocities_Right;
-                @ControllerVelocities_Right.performed -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnControllerVelocities_Right;
-                @ControllerVelocities_Right.canceled -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnControllerVelocities_Right;
-                @ControllerVelocities_Left.started -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnControllerVelocities_Left;
-                @ControllerVelocities_Left.performed -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnControllerVelocities_Left;
-                @ControllerVelocities_Left.canceled -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnControllerVelocities_Left;
-                @ControllerAngularVelocities_Right.started -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnControllerAngularVelocities_Right;
-                @ControllerAngularVelocities_Right.performed -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnControllerAngularVelocities_Right;
-                @ControllerAngularVelocities_Right.canceled -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnControllerAngularVelocities_Right;
-                @ControllerAngularVelocities_Left.started -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnControllerAngularVelocities_Left;
-                @ControllerAngularVelocities_Left.performed -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnControllerAngularVelocities_Left;
-                @ControllerAngularVelocities_Left.canceled -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnControllerAngularVelocities_Left;
-                @ButtonA.started -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnButtonA;
-                @ButtonA.performed -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnButtonA;
-                @ButtonA.canceled -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnButtonA;
-                @ButtonB.started -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnButtonB;
-                @ButtonB.performed -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnButtonB;
-                @ButtonB.canceled -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnButtonB;
-                @ButtonX.started -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnButtonX;
-                @ButtonX.performed -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnButtonX;
-                @ButtonX.canceled -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnButtonX;
-                @ButtonY.started -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnButtonY;
-                @ButtonY.performed -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnButtonY;
-                @ButtonY.canceled -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnButtonY;
-                @JoystickRight.started -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnJoystickRight;
-                @JoystickRight.performed -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnJoystickRight;
-                @JoystickRight.canceled -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnJoystickRight;
+                @Velocities_Right.started -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnVelocities_Right;
+                @Velocities_Right.performed -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnVelocities_Right;
+                @Velocities_Right.canceled -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnVelocities_Right;
+                @Velocities_Left.started -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnVelocities_Left;
+                @Velocities_Left.performed -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnVelocities_Left;
+                @Velocities_Left.canceled -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnVelocities_Left;
+                @AngularVelocities_Right.started -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnAngularVelocities_Right;
+                @AngularVelocities_Right.performed -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnAngularVelocities_Right;
+                @AngularVelocities_Right.canceled -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnAngularVelocities_Right;
+                @AngularVelocities_Left.started -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnAngularVelocities_Left;
+                @AngularVelocities_Left.performed -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnAngularVelocities_Left;
+                @AngularVelocities_Left.canceled -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnAngularVelocities_Left;
+                @ButtonPrimary_Right.started -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnButtonPrimary_Right;
+                @ButtonPrimary_Right.performed -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnButtonPrimary_Right;
+                @ButtonPrimary_Right.canceled -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnButtonPrimary_Right;
+                @JoystickLeft.started -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnJoystickLeft;
+                @JoystickLeft.performed -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnJoystickLeft;
+                @JoystickLeft.canceled -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnJoystickLeft;
             }
             m_Wrapper.m_VRControllersActionsCallbackInterface = instance;
             if (instance != null)
@@ -566,39 +414,24 @@ public partial class @VRController_InputActions : IInputActionCollection2, IDisp
                 @Trigger_Left.started += instance.OnTrigger_Left;
                 @Trigger_Left.performed += instance.OnTrigger_Left;
                 @Trigger_Left.canceled += instance.OnTrigger_Left;
-                @Grip_Right.started += instance.OnGrip_Right;
-                @Grip_Right.performed += instance.OnGrip_Right;
-                @Grip_Right.canceled += instance.OnGrip_Right;
-                @Grip_Left.started += instance.OnGrip_Left;
-                @Grip_Left.performed += instance.OnGrip_Left;
-                @Grip_Left.canceled += instance.OnGrip_Left;
-                @ControllerVelocities_Right.started += instance.OnControllerVelocities_Right;
-                @ControllerVelocities_Right.performed += instance.OnControllerVelocities_Right;
-                @ControllerVelocities_Right.canceled += instance.OnControllerVelocities_Right;
-                @ControllerVelocities_Left.started += instance.OnControllerVelocities_Left;
-                @ControllerVelocities_Left.performed += instance.OnControllerVelocities_Left;
-                @ControllerVelocities_Left.canceled += instance.OnControllerVelocities_Left;
-                @ControllerAngularVelocities_Right.started += instance.OnControllerAngularVelocities_Right;
-                @ControllerAngularVelocities_Right.performed += instance.OnControllerAngularVelocities_Right;
-                @ControllerAngularVelocities_Right.canceled += instance.OnControllerAngularVelocities_Right;
-                @ControllerAngularVelocities_Left.started += instance.OnControllerAngularVelocities_Left;
-                @ControllerAngularVelocities_Left.performed += instance.OnControllerAngularVelocities_Left;
-                @ControllerAngularVelocities_Left.canceled += instance.OnControllerAngularVelocities_Left;
-                @ButtonA.started += instance.OnButtonA;
-                @ButtonA.performed += instance.OnButtonA;
-                @ButtonA.canceled += instance.OnButtonA;
-                @ButtonB.started += instance.OnButtonB;
-                @ButtonB.performed += instance.OnButtonB;
-                @ButtonB.canceled += instance.OnButtonB;
-                @ButtonX.started += instance.OnButtonX;
-                @ButtonX.performed += instance.OnButtonX;
-                @ButtonX.canceled += instance.OnButtonX;
-                @ButtonY.started += instance.OnButtonY;
-                @ButtonY.performed += instance.OnButtonY;
-                @ButtonY.canceled += instance.OnButtonY;
-                @JoystickRight.started += instance.OnJoystickRight;
-                @JoystickRight.performed += instance.OnJoystickRight;
-                @JoystickRight.canceled += instance.OnJoystickRight;
+                @Velocities_Right.started += instance.OnVelocities_Right;
+                @Velocities_Right.performed += instance.OnVelocities_Right;
+                @Velocities_Right.canceled += instance.OnVelocities_Right;
+                @Velocities_Left.started += instance.OnVelocities_Left;
+                @Velocities_Left.performed += instance.OnVelocities_Left;
+                @Velocities_Left.canceled += instance.OnVelocities_Left;
+                @AngularVelocities_Right.started += instance.OnAngularVelocities_Right;
+                @AngularVelocities_Right.performed += instance.OnAngularVelocities_Right;
+                @AngularVelocities_Right.canceled += instance.OnAngularVelocities_Right;
+                @AngularVelocities_Left.started += instance.OnAngularVelocities_Left;
+                @AngularVelocities_Left.performed += instance.OnAngularVelocities_Left;
+                @AngularVelocities_Left.canceled += instance.OnAngularVelocities_Left;
+                @ButtonPrimary_Right.started += instance.OnButtonPrimary_Right;
+                @ButtonPrimary_Right.performed += instance.OnButtonPrimary_Right;
+                @ButtonPrimary_Right.canceled += instance.OnButtonPrimary_Right;
+                @JoystickLeft.started += instance.OnJoystickLeft;
+                @JoystickLeft.performed += instance.OnJoystickLeft;
+                @JoystickLeft.canceled += instance.OnJoystickLeft;
             }
         }
     }
@@ -607,16 +440,11 @@ public partial class @VRController_InputActions : IInputActionCollection2, IDisp
     {
         void OnTrigger_Right(InputAction.CallbackContext context);
         void OnTrigger_Left(InputAction.CallbackContext context);
-        void OnGrip_Right(InputAction.CallbackContext context);
-        void OnGrip_Left(InputAction.CallbackContext context);
-        void OnControllerVelocities_Right(InputAction.CallbackContext context);
-        void OnControllerVelocities_Left(InputAction.CallbackContext context);
-        void OnControllerAngularVelocities_Right(InputAction.CallbackContext context);
-        void OnControllerAngularVelocities_Left(InputAction.CallbackContext context);
-        void OnButtonA(InputAction.CallbackContext context);
-        void OnButtonB(InputAction.CallbackContext context);
-        void OnButtonX(InputAction.CallbackContext context);
-        void OnButtonY(InputAction.CallbackContext context);
-        void OnJoystickRight(InputAction.CallbackContext context);
+        void OnVelocities_Right(InputAction.CallbackContext context);
+        void OnVelocities_Left(InputAction.CallbackContext context);
+        void OnAngularVelocities_Right(InputAction.CallbackContext context);
+        void OnAngularVelocities_Left(InputAction.CallbackContext context);
+        void OnButtonPrimary_Right(InputAction.CallbackContext context);
+        void OnJoystickLeft(InputAction.CallbackContext context);
     }
 }
