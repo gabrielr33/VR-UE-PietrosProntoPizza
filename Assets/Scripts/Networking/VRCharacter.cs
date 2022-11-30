@@ -4,9 +4,10 @@ using UnityEngine;
 
 namespace Networking
 {
-    public class VRCharacter : MonoBehaviour
+    public class VRCharacter : MonoBehaviourPun, IPunObservable
     {
         [SerializeField] private Transform _head;
+        [SerializeField] private Transform _body;
         [SerializeField] private Transform _left;
         [SerializeField] private Transform _right;
 
@@ -52,6 +53,8 @@ namespace Networking
 
                 _head.position = _headPosition;
                 _head.rotation = _headRotation;
+
+                _body.position = new Vector3(_headPosition.x, _headPosition.y - 0.3f, _headPosition.z);
 
                 _left.position = _leftControllerRoot.position;
                 _left.rotation = _leftControllerRoot.rotation;
