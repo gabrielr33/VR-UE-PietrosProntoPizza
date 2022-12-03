@@ -7,6 +7,7 @@ namespace Gameplay
     public class Seat : MonoBehaviour
     {
         [SerializeField] private PrefabsManager _prefabsManager;
+        [SerializeField] private Transform _spawnRootPos;
         
         public Order SpawnCustomer(int tableNumber)
         {
@@ -15,8 +16,9 @@ namespace Gameplay
             List<GameObject> customerPrefabs = _prefabsManager.CustomerPrefabs;
             GameObject customer = customerPrefabs[rand.Next(customerPrefabs.Count)];
 
-            Customer newCustomer = Instantiate(customer, transform.position, transform.rotation).GetComponent<Customer>();
+            Customer newCustomer = Instantiate(customer, _spawnRootPos.position, transform.rotation).GetComponent<Customer>();
             newCustomer.SelectCustomerName();
+            newCustomer.SetAnimatorControllerState(CustomerAnimationState.Idle);
             
             return newCustomer.GenerateOrder(_prefabsManager, tableNumber);
         }

@@ -28,7 +28,7 @@ namespace Gameplay
                 {
                     List<Order> orders = table.SpawnNewCustomers();
                     SpawnNewOrderPostIt(orders);
-                    // break;
+                    break;
                 }
             }
         }
