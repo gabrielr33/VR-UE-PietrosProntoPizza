@@ -1924,7 +1924,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 791966017}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d2d462c3ad453474f8c4de1d12ce1624, type: 3}
@@ -2586,7 +2586,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 974649873}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d2d462c3ad453474f8c4de1d12ce1624, type: 3}
@@ -3012,7 +3012,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 53cf5c0ff424ff9458c56526516b63ec, type: 2}
+  - {fileID: 2100000, guid: 0e075d5aaf22a9a45b473db352f1e154, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3050,7 +3050,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1179960759}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: -0.0000004768371}
-  m_LocalPosition: {x: -2.1700006, y: 1.122, z: 4.7959995}
+  m_LocalPosition: {x: -2.339, y: 1.344, z: 4.796}
   m_LocalScale: {x: 0.30000004, y: 0.3, z: 0.30000004}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3678,7 +3678,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1412731168}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d2d462c3ad453474f8c4de1d12ce1624, type: 3}
