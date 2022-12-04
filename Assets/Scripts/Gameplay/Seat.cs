@@ -13,10 +13,10 @@ namespace Gameplay
         {
             Random rand = new Random();
 
-            List<GameObject> customerPrefabs = _prefabsManager.CustomerPrefabs;
-            GameObject customer = customerPrefabs[rand.Next(customerPrefabs.Count)];
+            List<Customer> customerPrefabs = _prefabsManager.CustomerPrefabs;
+            Customer customer = customerPrefabs[rand.Next(customerPrefabs.Count)];
 
-            Customer newCustomer = Instantiate(customer, _spawnRootPos.position, transform.rotation).GetComponent<Customer>();
+            Customer newCustomer = Instantiate(customer, _spawnRootPos.position, transform.rotation);
             newCustomer.SelectCustomerName();
             newCustomer.SetAnimatorControllerState(CustomerAnimationState.Talking);
             

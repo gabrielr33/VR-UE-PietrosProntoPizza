@@ -5,7 +5,7 @@ namespace Gameplay
 {
     public class PrefabsManager : MonoBehaviour
     {
-        [field: SerializeField] public List<GameObject> CustomerPrefabs { get; private set; }
+        [field: SerializeField] public List<Customer> CustomerPrefabs { get; private set; }
         [field: SerializeField] public List<PizzaType> PizzaTypes { get; private set; }
     }
 }
