@@ -18,7 +18,7 @@ namespace Gameplay
 
             Customer newCustomer = Instantiate(customer, _spawnRootPos.position, transform.rotation).GetComponent<Customer>();
             newCustomer.SelectCustomerName();
-            newCustomer.SetAnimatorControllerState(CustomerAnimationState.Idle);
+            newCustomer.SetAnimatorControllerState(CustomerAnimationState.Talking);
             
             return newCustomer.GenerateOrder(_prefabsManager, tableNumber);
         }

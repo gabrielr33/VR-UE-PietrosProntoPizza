@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -16,7 +18,8 @@ namespace Gameplay
         private Transform _cameraTransform;
         
         private Animator _customerAnimator;
-        private static readonly int CustomerState = Animator.StringToHash("CustomerState");
+        private static readonly int CustomerStateX = Animator.StringToHash("CustomerStateX");
+        private static readonly int CustomerStateY = Animator.StringToHash("CustomerStateY");
 
         private void Awake()
         {
@@ -53,6 +56,8 @@ namespace Gameplay
                 MaxWaitTimeInSec = rand.Next(20, 40)
             };
 
+            StartCoroutine(StartWaitingProcedure(order.MaxWaitTimeInSec));
+
             return order;
         }
 
@@ -62,14 +67,25 @@ namespace Gameplay
             {
                 switch (state)
                 {
-                    case CustomerAnimationState.Idle:
-                        _customerAnimator.SetFloat(CustomerState, 0.5f);
+                    case CustomerAnimationState.Talking:
+                        _customerAnimator.SetFloat(CustomerStateX, 0f);
+                        _customerAnimator.SetFloat(CustomerStateY, 0f);
                         break;
-                    case CustomerAnimationState.Mad:
-                        _customerAnimator.SetFloat(CustomerState, 1f);
+                    case CustomerAnimationState.Angry:
+                        _customerAnimator.SetFloat(CustomerStateX, -1f);
+                        _customerAnimator.SetFloat(CustomerStateY, 0f);
                         break;
-                    case CustomerAnimationState.Happy:
-                        _customerAnimator.SetFloat(CustomerState, 0f);
+                    case CustomerAnimationState.Clap:
+                        _customerAnimator.SetFloat(CustomerStateX, 1f);
+                        _customerAnimator.SetFloat(CustomerStateY, 0f);
+                        break;
+                    case CustomerAnimationState.SitToStand:
+                        _customerAnimator.SetFloat(CustomerStateX, 0f);
+                        _customerAnimator.SetFloat(CustomerStateY, 1f);
+                        break;
+                    case CustomerAnimationState.StandAngry:
+                        _customerAnimator.SetFloat(CustomerStateX, 1f);
+                        _customerAnimator.SetFloat(CustomerStateY, 1f);
                         break;
                 }
             }
@@ -80,12 +96,27 @@ namespace Gameplay
             _customerNameText.transform.LookAt(_cameraTransform.position);
             _customerNameText.transform.Rotate(0f, 180f, 0f);
         }
+
+        private IEnumerator StartWaitingProcedure(int waitTime)
+        {
+            int counter = waitTime;
+            while (counter > 0) {
+                yield return new WaitForSeconds(1);
+                counter--;
+            }
+            
+            // TODO
+            Debug.Log("Order expired!");
+            SetAnimatorControllerState(CustomerAnimationState.SitToStand);
+        }
     }
 
     public enum CustomerAnimationState
     {
-        Idle,
-        Mad,
-        Happy
+        Talking,
+        Angry,
+        Clap,
+        SitToStand,
+        StandAngry
     }
 }
