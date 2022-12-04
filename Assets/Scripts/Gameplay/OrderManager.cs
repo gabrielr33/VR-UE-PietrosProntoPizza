@@ -8,6 +8,8 @@ namespace Gameplay
     public class OrderManager : MonoBehaviour
     {
         [SerializeField] private List<Table> _tables;
+        [SerializeField] private GameObject _orderSheetPrefab;
+        [SerializeField] private Transform _orderSheetTransform;
 
         private void Start()
         {
@@ -37,7 +39,9 @@ namespace Gameplay
         {
             foreach (Order order in orders)
             {
-                Debug.Log($"{order.TableNumber} - {order.CustomerName}: {order.Pizza.pizzaName}");
+                OrderSheet sheet = Instantiate(_orderSheetPrefab, _orderSheetTransform).GetComponent<OrderSheet>();
+                sheet.SetUp(order);
+                // Debug.Log($"{order.TableNumber} - {order.CustomerName}: {order.Pizza.pizzaName}");
             }
         }
     }

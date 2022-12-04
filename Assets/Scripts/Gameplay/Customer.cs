@@ -48,7 +48,9 @@ namespace Gameplay
             {
                 TableNumber = tableNumber,
                 Pizza = _orderedPizza,
-                CustomerName = Name
+                CustomerName = Name,
+                //MaxWaitTimeInSec = rand.Next(80, 120)   // TODO tweak this
+                MaxWaitTimeInSec = rand.Next(20, 40)
             };
 
             return order;
