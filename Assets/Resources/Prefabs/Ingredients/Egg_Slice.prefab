@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5929732714233269321}
   - component: {fileID: 176585447787255280}
   - component: {fileID: 2886433879328051666}
+  - component: {fileID: 313951316201054963}
   m_Layer: 0
   m_Name: Egg_Slice
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &313951316201054963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8850777080765299731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e64083c241e84ac0ac8e7001962516d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <IngredientType>k__BackingField: 8

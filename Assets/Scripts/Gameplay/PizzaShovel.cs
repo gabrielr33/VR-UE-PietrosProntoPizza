@@ -26,10 +26,12 @@ namespace Gameplay
             
             pizzaTransform.SetParent(_pizzaPosition);
             pizzaTransform.localPosition = Vector3.zero;
+            pizza.GetComponent<FixedJoint>().connectedBody = GetComponent<Rigidbody>();
         }
 
-        public void DetachPizza()
+        public void DetachPizza(Pizza pizza)
         {
+            pizza.GetComponent<FixedJoint>().connectedBody = null;
             _attachedPizza = null;
         }
     }

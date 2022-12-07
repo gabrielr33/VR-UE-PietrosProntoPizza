@@ -1,18 +1,29 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pizza : MonoBehaviour
+namespace Gameplay
 {
-    // Start is called before the first frame update
-    void Start()
+    public class Pizza : MonoBehaviour
     {
-        
-    }
+        private List<PizzaIngredient> _ingredients;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void Start()
+        {
+            // TODO for testing purposes only
+            _ingredients = new List<PizzaIngredient>();
+            _ingredients.Add(PizzaIngredient.Mozzarella);
+            _ingredients.Add(PizzaIngredient.TomatoSauce);
+            _ingredients.Add(PizzaIngredient.Onion);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            Ingredient ingredient = other.GetComponent<Ingredient>();
+
+            if (ingredient == null)
+                return;
+            
+            _ingredients.Add(ingredient.IngredientType);
+        }
     }
 }

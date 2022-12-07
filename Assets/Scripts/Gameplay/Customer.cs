@@ -98,8 +98,8 @@ namespace Gameplay
 
         public void CompareReceivedPizzaWithOrder(PizzaType recPizza)
         {
-            List<PizzaIngredients> missingIngredients = _orderedPizza.ingredients.Except(recPizza.ingredients).ToList();
-            List<PizzaIngredients> unwantedIngredients = recPizza.ingredients.Except(_orderedPizza.ingredients).ToList();
+            List<PizzaIngredient> missingIngredients = _orderedPizza.ingredients.Except(recPizza.ingredients).ToList();
+            List<PizzaIngredient> unwantedIngredients = recPizza.ingredients.Except(_orderedPizza.ingredients).ToList();
 
             decimal review = GameplayHelper.CalculateStarsReviewForOrder(missingIngredients, unwantedIngredients);
 
@@ -116,12 +116,12 @@ namespace Gameplay
 
             if (_testCompare)
             {
-                CompareReceivedPizzaWithOrder(new PizzaType() { pizzaName = "Name", ingredients = new List<PizzaIngredients>()
+                CompareReceivedPizzaWithOrder(new PizzaType() { pizzaName = "Name", ingredients = new List<PizzaIngredient>()
                     {
-                        PizzaIngredients.Mozzarella,
-                        PizzaIngredients.Egg,
-                        PizzaIngredients.Bacon,
-                        PizzaIngredients.TomatoSauce
+                        PizzaIngredient.Mozzarella,
+                        PizzaIngredient.Egg,
+                        PizzaIngredient.Bacon,
+                        PizzaIngredient.TomatoSauce
                     }});
                 _testCompare = false;
             }

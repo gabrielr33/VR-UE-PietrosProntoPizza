@@ -8,10 +8,10 @@ namespace Gameplay
     {
         public string pizzaName;
 
-        public List<PizzaIngredients> ingredients;
+        public List<PizzaIngredient> ingredients;
     }
 
-    public enum PizzaIngredients
+    public enum PizzaIngredient
     {
         TomatoSauce,
         Mozzarella,

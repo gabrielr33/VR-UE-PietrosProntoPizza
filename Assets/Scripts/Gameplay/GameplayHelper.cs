@@ -9,7 +9,7 @@ namespace Gameplay
         /// Calculates the review from 0 to 5 based on the missing and unwanted pizza ingredients.
         /// </summary>
         /// <returns>A decimal value between 0 and 5 with precision of 2 decimal places.</returns>
-        public static decimal CalculateStarsReviewForOrder(List<PizzaIngredients> missingIngredients, List<PizzaIngredients> unwantedIngredients)
+        public static decimal CalculateStarsReviewForOrder(List<PizzaIngredient> missingIngredients, List<PizzaIngredient> unwantedIngredients)
         {
             decimal review = 5;
 
