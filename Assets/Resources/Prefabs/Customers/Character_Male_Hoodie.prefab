@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &339506171373980790
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1233746723528463069}
+  m_Layer: 0
+  m_Name: ReviewStartPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1233746723528463069
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339506171373980790}
+  m_LocalRotation: {x: 0.000000029802319, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.19, y: 1.4, z: -0.0048395633}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 712309879192943353}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &712309879192950301
 GameObject:
   m_ObjectHideFlags: 0
@@ -1800,6 +1831,7 @@ Transform:
   - {fileID: 712309879192899489}
   - {fileID: 712309879192834093}
   - {fileID: 712309879192889717}
+  - {fileID: 1233746723528463069}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1838,7 +1870,9 @@ MonoBehaviour:
   <Female>k__BackingField: 0
   <Name>k__BackingField: 
   _customerNameText: {fileID: 1203941444242836515}
+  _floatingReviewStartPos: {fileID: 1233746723528463069}
   _orderedPizza: {fileID: 0}
+  _testCompare: 0
 --- !u!1 &712309879193180425
 GameObject:
   m_ObjectHideFlags: 0

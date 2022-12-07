@@ -18,6 +18,10 @@ namespace Gameplay
             if (pizza == null)
                 return;
 
+            // Detach from pizza shovel
+            pizza.GetComponentInParent<PizzaShovel>().DetachPizza();
+            pizza.transform.SetParent(transform);
+            
             CheckForFreeSlot(pizza);
         }
 

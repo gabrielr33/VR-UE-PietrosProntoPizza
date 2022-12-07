@@ -2567,6 +2567,7 @@ Transform:
   - {fileID: 3675290055396754200}
   - {fileID: 3675290055396757246}
   - {fileID: 3675290055396688694}
+  - {fileID: 9115777094844463786}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2605,7 +2606,9 @@ MonoBehaviour:
   <Female>k__BackingField: 1
   <Name>k__BackingField: 
   _customerNameText: {fileID: 6369717048067202187}
+  _floatingReviewStartPos: {fileID: 9115777094844463786}
   _orderedPizza: {fileID: 0}
+  _testCompare: 0
 --- !u!1 &3675290055397062274
 GameObject:
   m_ObjectHideFlags: 0
@@ -3025,4 +3028,35 @@ Transform:
   - {fileID: 3675290055396806648}
   m_Father: {fileID: 3675290055396695076}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5889296502327520108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9115777094844463786}
+  m_Layer: 0
+  m_Name: ReviewStartPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9115777094844463786
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5889296502327520108}
+  m_LocalRotation: {x: 0.000000029802319, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.19, y: 1.4, z: -0.0048395633}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3675290055396803620}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

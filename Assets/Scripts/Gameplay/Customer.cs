@@ -13,10 +13,12 @@ namespace Gameplay
         [field: SerializeField] public string Name { get; private set; }
 
         [SerializeField] private TMP_Text _customerNameText;
+        [SerializeField] private Transform _floatingReviewStartPos;
         [SerializeField] private PizzaType _orderedPizza;
         [SerializeField] private bool _testCompare;
 
         private GameManager _gameManager;
+        private PrefabsManager _prefabsManager;
         private Transform _cameraTransform;
         private Animator _customerAnimator;
         private static readonly int CustomerStateX = Animator.StringToHash("CustomerStateX");
@@ -44,6 +46,7 @@ namespace Gameplay
 
         public Order GenerateOrder(PrefabsManager prefabsManager, int tableNumber)
         {
+            _prefabsManager = prefabsManager;
             Random rand = new Random();
 
             List<PizzaType> pizzaTypes = prefabsManager.PizzaTypes;
@@ -99,8 +102,9 @@ namespace Gameplay
             List<PizzaIngredients> unwantedIngredients = recPizza.ingredients.Except(_orderedPizza.ingredients).ToList();
 
             decimal review = GameplayHelper.CalculateStarsReviewForOrder(missingIngredients, unwantedIngredients);
-            _gameManager.AddReviewToGameScore(review);
-            
+
+            GenerateVisibleReviewInScene(review);
+
             // _customerNameText.text = review.ToString();
             // TODO
         }
@@ -134,6 +138,16 @@ namespace Gameplay
             // TODO
             Debug.Log("Order expired!");
             SetAnimatorControllerState(CustomerAnimationState.SitToStand);
+            
+            GenerateVisibleReviewInScene(0);
+        }
+
+        private void GenerateVisibleReviewInScene(decimal review)
+        {
+            FloatingReviewText text = Instantiate(_prefabsManager.ReviewText, _floatingReviewStartPos.position, Quaternion.identity, _floatingReviewStartPos);
+            text.SetUp(review);
+            
+            _gameManager.AddReviewToGameScore(review);
         }
     }
 

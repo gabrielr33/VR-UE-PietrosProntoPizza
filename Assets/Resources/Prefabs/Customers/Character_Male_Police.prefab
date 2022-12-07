@@ -2163,6 +2163,7 @@ Transform:
   - {fileID: 3174868529164526001}
   - {fileID: 3174868529164534925}
   - {fileID: 3174868529164472871}
+  - {fileID: 8309799698734568581}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2201,7 +2202,9 @@ MonoBehaviour:
   <Female>k__BackingField: 0
   <Name>k__BackingField: 
   _customerNameText: {fileID: 4405847044343400792}
+  _floatingReviewStartPos: {fileID: 8309799698734568581}
   _orderedPizza: {fileID: 0}
+  _testCompare: 0
 --- !u!1 &3174868529164815301
 GameObject:
   m_ObjectHideFlags: 0
@@ -3026,3 +3029,34 @@ SkinnedMeshRenderer:
     m_Center: {x: 0, y: 85.79422, z: -5.736662}
     m_Extent: {x: 102.1203, y: 95.05966, z: 25.914097}
   m_DirtyAABB: 0
+--- !u!1 &4520350355456228217
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8309799698734568581}
+  m_Layer: 0
+  m_Name: ReviewStartPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8309799698734568581
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4520350355456228217}
+  m_LocalRotation: {x: 0.000000029802319, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.19, y: 1.4, z: -0.0048395633}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3174868529164572635}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
