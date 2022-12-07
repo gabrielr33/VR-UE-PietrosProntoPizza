@@ -1,6 +1,6 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using Random = System.Random;
@@ -14,15 +14,17 @@ namespace Gameplay
 
         [SerializeField] private TMP_Text _customerNameText;
         [SerializeField] private PizzaType _orderedPizza;
+        [SerializeField] private bool _testCompare;
 
+        private GameManager _gameManager;
         private Transform _cameraTransform;
-        
         private Animator _customerAnimator;
         private static readonly int CustomerStateX = Animator.StringToHash("CustomerStateX");
         private static readonly int CustomerStateY = Animator.StringToHash("CustomerStateY");
 
         private void Awake()
         {
+            _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
             _customerAnimator = GetComponent<Animator>();
             _cameraTransform = Camera.main.transform;
         }
@@ -91,10 +93,34 @@ namespace Gameplay
             }
         }
 
+        public void CompareReceivedPizzaWithOrder(PizzaType recPizza)
+        {
+            List<PizzaIngredients> missingIngredients = _orderedPizza.ingredients.Except(recPizza.ingredients).ToList();
+            List<PizzaIngredients> unwantedIngredients = recPizza.ingredients.Except(_orderedPizza.ingredients).ToList();
+
+            decimal review = GameplayHelper.CalculateStarsReviewForOrder(missingIngredients, unwantedIngredients);
+            _gameManager.AddReviewToGameScore(review);
+            
+            // _customerNameText.text = review.ToString();
+            // TODO
+        }
+
         private void Update()
         {
             _customerNameText.transform.LookAt(_cameraTransform.position);
             _customerNameText.transform.Rotate(0f, 180f, 0f);
+
+            if (_testCompare)
+            {
+                CompareReceivedPizzaWithOrder(new PizzaType() { pizzaName = "Name", ingredients = new List<PizzaIngredients>()
+                    {
+                        PizzaIngredients.Mozzarella,
+                        PizzaIngredients.Egg,
+                        PizzaIngredients.Bacon,
+                        PizzaIngredients.TomatoSauce
+                    }});
+                _testCompare = false;
+            }
         }
 
         private IEnumerator StartWaitingProcedure(int waitTime)

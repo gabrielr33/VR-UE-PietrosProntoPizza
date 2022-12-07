@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3391766645989666881
 Transform:
   m_ObjectHideFlags: 0
@@ -228,3 +228,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prefabsManager: {fileID: 0}
   _spawnRootPos: {fileID: 1808488582886805513}
+  _pizzaTrigger: {fileID: 1448190546717491304}

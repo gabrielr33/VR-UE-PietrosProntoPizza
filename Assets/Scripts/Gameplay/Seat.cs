@@ -8,6 +8,7 @@ namespace Gameplay
     {
         [SerializeField] private PrefabsManager _prefabsManager;
         [SerializeField] private Transform _spawnRootPos;
+        [SerializeField] private GameObject _pizzaTrigger;
         
         public Order SpawnCustomer(int tableNumber)
         {
@@ -19,6 +20,8 @@ namespace Gameplay
             Customer newCustomer = Instantiate(customer, _spawnRootPos.position, transform.rotation);
             newCustomer.SelectCustomerName();
             newCustomer.SetAnimatorControllerState(CustomerAnimationState.Talking);
+            
+            _pizzaTrigger.SetActive(true);
             
             return newCustomer.GenerateOrder(_prefabsManager, tableNumber);
         }
