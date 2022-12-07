@@ -57,8 +57,7 @@ namespace Gameplay
                 TableNumber = tableNumber,
                 Pizza = _orderedPizza,
                 CustomerName = Name,
-                //MaxWaitTimeInSec = rand.Next(80, 120)   // TODO tweak this
-                MaxWaitTimeInSec = rand.Next(20, 40)
+                MaxWaitTimeInSec = rand.Next(80, 120)   // TODO tweak this
             };
 
             StartCoroutine(StartWaitingProcedure(order.MaxWaitTimeInSec));
@@ -96,10 +95,10 @@ namespace Gameplay
             }
         }
 
-        public void CompareReceivedPizzaWithOrder(PizzaType recPizza)
+        public void CompareReceivedPizzaWithOrder(Pizza recPizza)
         {
-            List<PizzaIngredient> missingIngredients = _orderedPizza.ingredients.Except(recPizza.ingredients).ToList();
-            List<PizzaIngredient> unwantedIngredients = recPizza.ingredients.Except(_orderedPizza.ingredients).ToList();
+            List<PizzaIngredient> missingIngredients = _orderedPizza.ingredients.Except(recPizza.Ingredients).ToList();
+            List<PizzaIngredient> unwantedIngredients = recPizza.Ingredients.Except(_orderedPizza.ingredients).ToList();
 
             decimal review = GameplayHelper.CalculateStarsReviewForOrder(missingIngredients, unwantedIngredients);
 
@@ -116,7 +115,7 @@ namespace Gameplay
 
             if (_testCompare)
             {
-                CompareReceivedPizzaWithOrder(new PizzaType() { pizzaName = "Name", ingredients = new List<PizzaIngredient>()
+                CompareReceivedPizzaWithOrder(new Pizza() { Ingredients = new List<PizzaIngredient>()
                     {
                         PizzaIngredient.Mozzarella,
                         PizzaIngredient.Egg,

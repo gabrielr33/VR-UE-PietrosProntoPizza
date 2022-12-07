@@ -701,6 +701,7 @@ GameObject:
   - component: {fileID: 346320671}
   - component: {fileID: 346320669}
   - component: {fileID: 346320670}
+  - component: {fileID: 346320672}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -829,6 +830,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &346320672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 346320663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d5c93df96e94e4a913befbf5798730, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &403724289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2054,7 +2067,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 791966017}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d2d462c3ad453474f8c4de1d12ce1624, type: 3}
@@ -2325,12 +2338,12 @@ PrefabInstance:
     - target: {fileID: 7045007368722987796, guid: a893ee60e87dbb948acda5fefa3c68cc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.843
+      value: -5.207
       objectReference: {fileID: 0}
     - target: {fileID: 7045007368722987796, guid: a893ee60e87dbb948acda5fefa3c68cc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.186
+      value: 1.085
       objectReference: {fileID: 0}
     - target: {fileID: 7045007368722987796, guid: a893ee60e87dbb948acda5fefa3c68cc,
         type: 3}
@@ -2834,7 +2847,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 974649873}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d2d462c3ad453474f8c4de1d12ce1624, type: 3}
@@ -4636,7 +4649,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1412731168}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d2d462c3ad453474f8c4de1d12ce1624, type: 3}
@@ -5877,6 +5890,7 @@ GameObject:
   - component: {fileID: 1851016635}
   - component: {fileID: 1851016633}
   - component: {fileID: 1851016634}
+  - component: {fileID: 1851016636}
   m_Layer: 0
   m_Name: Cylinder (1)
   m_TagString: Untagged
@@ -6005,6 +6019,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &1851016636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851016627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d5c93df96e94e4a913befbf5798730, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1853105003
 GameObject:
   m_ObjectHideFlags: 0
@@ -6020,6 +6046,7 @@ GameObject:
   - component: {fileID: 1853105011}
   - component: {fileID: 1853105004}
   - component: {fileID: 1853105010}
+  - component: {fileID: 1853105012}
   m_Layer: 0
   m_Name: Cylinder (2)
   m_TagString: Untagged
@@ -6148,6 +6175,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &1853105012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1853105003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d5c93df96e94e4a913befbf5798730, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1885083711
 PrefabInstance:
   m_ObjectHideFlags: 0

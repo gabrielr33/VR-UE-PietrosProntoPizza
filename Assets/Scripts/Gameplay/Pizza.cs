@@ -5,15 +5,15 @@ namespace Gameplay
 {
     public class Pizza : MonoBehaviour
     {
-        private List<PizzaIngredient> _ingredients;
+        public List<PizzaIngredient> Ingredients { get; set; }
 
         private void Start()
         {
             // TODO for testing purposes only
-            _ingredients = new List<PizzaIngredient>();
-            _ingredients.Add(PizzaIngredient.Mozzarella);
-            _ingredients.Add(PizzaIngredient.TomatoSauce);
-            _ingredients.Add(PizzaIngredient.Onion);
+            Ingredients = new List<PizzaIngredient>();
+            Ingredients.Add(PizzaIngredient.Mozzarella);
+            Ingredients.Add(PizzaIngredient.TomatoSauce);
+            Ingredients.Add(PizzaIngredient.Onion);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -23,7 +23,7 @@ namespace Gameplay
             if (ingredient == null)
                 return;
             
-            _ingredients.Add(ingredient.IngredientType);
+            Ingredients.Add(ingredient.IngredientType);
         }
     }
 }

@@ -8,22 +8,28 @@ namespace Gameplay
     {
         [SerializeField] private PrefabsManager _prefabsManager;
         [SerializeField] private Transform _spawnRootPos;
-        [SerializeField] private GameObject _pizzaTrigger;
+        [SerializeField] private PizzaSeatTrigger _pizzaTrigger;
+
+        private Customer _customer;
         
         public Order SpawnCustomer(int tableNumber)
         {
             Random rand = new Random();
 
             List<Customer> customerPrefabs = _prefabsManager.CustomerPrefabs;
-            Customer customer = customerPrefabs[rand.Next(customerPrefabs.Count)];
 
-            Customer newCustomer = Instantiate(customer, _spawnRootPos.position, transform.rotation);
-            newCustomer.SelectCustomerName();
-            newCustomer.SetAnimatorControllerState(CustomerAnimationState.Talking);
+            _customer = Instantiate(customerPrefabs[rand.Next(customerPrefabs.Count)], _spawnRootPos.position, transform.rotation);
+            _customer.SelectCustomerName();
+            _customer.SetAnimatorControllerState(CustomerAnimationState.Talking);
             
-            _pizzaTrigger.SetActive(true);
+            _pizzaTrigger.gameObject.SetActive(true);
             
-            return newCustomer.GenerateOrder(_prefabsManager, tableNumber);
+            return _customer.GenerateOrder(_prefabsManager, tableNumber);
+        }
+
+        public void PizzaReceived(Pizza pizza)
+        {
+            _customer.CompareReceivedPizzaWithOrder(pizza);
         }
     }
 }
