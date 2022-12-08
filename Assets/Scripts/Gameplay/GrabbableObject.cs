@@ -3,7 +3,8 @@ using UnityEngine;
 
 namespace Gameplay
 {
-    public class ObjectGrabbingManager : MonoBehaviour
+    [RequireComponent(typeof(FixedJoint))]
+    public class GrabbableObject : MonoBehaviour
     {
         private PlayerInputController _inputController;
         private FixedJoint _fixedJoint;

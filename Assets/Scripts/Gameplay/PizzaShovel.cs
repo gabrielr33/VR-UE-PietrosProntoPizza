@@ -6,14 +6,14 @@ namespace Gameplay
     {
         [SerializeField] private Transform _pizzaPosition;
         
-        private Pizza _attachedPizza;
+        public Pizza AttachedPizza { get; private set; }
         
         private void OnTriggerEnter(Collider other)
         {
             Pizza pizza = other.GetComponent<Pizza>();
             
             // If the collided object is not a pizza or there is already a pizza on the shovel, return
-            if (pizza == null || _attachedPizza != null)
+            if (pizza == null || AttachedPizza != null || !pizza.CanBePickedUp)
                 return;
 
             AttachPizzaToPizzaShovel(pizza);
@@ -21,18 +21,23 @@ namespace Gameplay
 
         private void AttachPizzaToPizzaShovel(Pizza pizza)
         {
-            _attachedPizza = pizza;
-            Transform pizzaTransform = _attachedPizza.transform;
-            
-            pizzaTransform.SetParent(_pizzaPosition);
-            pizzaTransform.localPosition = Vector3.zero;
-            pizza.GetComponent<FixedJoint>().connectedBody = GetComponent<Rigidbody>();
+            AttachedPizza = pizza;
+            Transform pizzaTransform = AttachedPizza.transform;
+
+            // pizza.GetComponent<Rigidbody>().isKinematic = true;
+            pizzaTransform.localPosition = _pizzaPosition.position;
+            pizzaTransform.localRotation = _pizzaPosition.rotation;
+            AttachedPizza.GetComponent<FixedJoint>().connectedBody = GetComponent<Rigidbody>();
         }
 
-        public void DetachPizza(Pizza pizza)
+        public void DetachPizza()
         {
-            pizza.GetComponent<FixedJoint>().connectedBody = null;
-            _attachedPizza = null;
+            // pizza.GetComponent<Rigidbody>().isKinematic = false;
+            if (AttachedPizza == null)
+                return;
+            
+            AttachedPizza.GetComponent<FixedJoint>().connectedBody = null;
+            AttachedPizza = null;
         }
     }
 }

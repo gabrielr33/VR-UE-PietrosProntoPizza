@@ -6,9 +6,12 @@ namespace Gameplay
     public class Pizza : MonoBehaviour
     {
         public List<PizzaIngredient> Ingredients { get; set; }
+        public bool CanBePickedUp { get; set; }
 
         private void Start()
         {
+            CanBePickedUp = true;
+            
             // TODO for testing purposes only
             Ingredients = new List<PizzaIngredient>();
             Ingredients.Add(PizzaIngredient.Mozzarella);
