@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace Gameplay
 {
-    public class OrderSheet : MonoBehaviour
+    public class OrderSheetDrink : MonoBehaviour
     {
         [SerializeField] private TMP_Text _orderText;
         [SerializeField] private Slider _maxWaitTimeSlider;
@@ -17,7 +17,7 @@ namespace Gameplay
                 return;
             
             _failedOverlayImage.SetActive(false);
-            _orderText.text = $"No. {order.TableNumber}\n{order.CustomerName}\n{order.Pizza.pizzaName}";
+            _orderText.text = $"No. {order.TableNumber}\n{order.CustomerName}\n{order.Drink.drinkName}";
             _maxWaitTimeSlider.minValue = 0;
             _maxWaitTimeSlider.maxValue = order.MaxWaitTimeInSec;
             _maxWaitTimeSlider.value = order.MaxWaitTimeInSec;

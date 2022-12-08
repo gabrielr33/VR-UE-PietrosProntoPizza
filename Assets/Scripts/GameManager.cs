@@ -1,18 +1,22 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Gameplay;
 using Photon.Pun;
 using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public GameValues GameValues { get; private set; }
+    
     [SerializeField] private Transform _startPositionChef;
     [SerializeField] private Transform _startPositionWaiter;
 
     [SerializeField] private GameObject _XRRig;
 
-    [Header("Gameplay")] [SerializeField] private TMP_Text _countdownTimerText;
+    [Header("Gameplay")]
+    [SerializeField] private TMP_Text _countdownTimerText;
 
     private bool _isMasterClient;
 
@@ -24,6 +28,8 @@ public class GameManager : MonoBehaviour
         _isMasterClient = PhotonNetwork.IsMasterClient;
         _reviews = new List<decimal>();
 
+        GameValues = IOFileManager.ReadGameValuesFromFile();
+        
         SpawnPlayer();
     }
 
@@ -33,12 +39,14 @@ public class GameManager : MonoBehaviour
         if (_isMasterClient)
         {
             PhotonNetwork.Instantiate(Path.Combine("Prefabs\\Photon", "Player"), Vector3.zero, Quaternion.identity);
-            _XRRig.transform.position = _startPositionChef.position;
+            _XRRig.transform.position = _startPositionWaiter.position;
+            _XRRig.transform.rotation = _startPositionWaiter.rotation;
         }
         else
         {
             PhotonNetwork.Instantiate(Path.Combine("Prefabs\\Photon", "Player"), Vector3.zero, Quaternion.identity);
-            _XRRig.transform.position = _startPositionWaiter.position;
+            _XRRig.transform.position = _startPositionChef.position;
+            _XRRig.transform.rotation = _startPositionChef.rotation;
         }
     }
 

@@ -1,0 +1,6 @@
+{
+	"CustomerNamesMale": "Martin,Paul,Jakob,Maximilian,Elias,David,Felix,Leon,Tobias,Jonas,Noah,Lukas,Alexander,Moritz,Leo,Julian,Simon,Matteo,Fabian,Valentin,Raphael,Emil,Luca,Samuel,Anton,Florian,Theo,Luis,Matthias,Johannes,Benjamin,Lorenz,Theodor,Liam,Niklas,Michael,Gabriel,Sebastian,Nico,Ben,Daniel,Philipp,Finn,Vincent,Jonathan,Oskar,Max,Oliver,Mateo,Konstantin,Adam,Luka,Leopold,Adrian,Fabio,Levi,Matheo,Dominik,Josef,Ferdinand,Kilian",
+	"CustomerNamesFemale": "Marie,Emilia,Anna,Emma,Lena,Mia,Laura,Valentina,Hannah,Lea,Sophia,Sophie,Johanna,Leonie,Lina,Nora,Ella,Lara,Luisa,Elena,Magdalena,Hanna,Olivia,Amelie,Helena,Theresa,Valerie,Katharina,Julia,Mila,Sarah,Miriam,Elisa,Emily,Antonia,Klara,Sara,Alina,Franziska,Marlene,Lisa,Rosa,Sofia,Clara,Ida,Elina,Paula,Leni,Rosalie,Jana,Isabella,Nina,Flora,Paulina,Annika,Maria,Melina,Livia,Charlotte,Eva",
+	"CustomerMinWaitTime": 80,
+	"CustomerMaxWaitTime": 120
+}

@@ -27,7 +27,8 @@ namespace Gameplay
             // pizza.GetComponent<Rigidbody>().isKinematic = true;
             pizzaTransform.localPosition = _pizzaPosition.position;
             pizzaTransform.localRotation = _pizzaPosition.rotation;
-            AttachedPizza.GetComponent<FixedJoint>().connectedBody = GetComponent<Rigidbody>();
+            pizzaTransform.SetParent(_pizzaPosition);
+            // AttachedPizza.GetComponent<FixedJoint>().connectedBody = GetComponent<Rigidbody>();
         }
 
         public void DetachPizza()
@@ -36,7 +37,7 @@ namespace Gameplay
             if (AttachedPizza == null)
                 return;
             
-            AttachedPizza.GetComponent<FixedJoint>().connectedBody = null;
+            // AttachedPizza.GetComponent<FixedJoint>().connectedBody = null;
             AttachedPizza = null;
         }
     }

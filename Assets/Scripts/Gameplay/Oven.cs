@@ -50,8 +50,8 @@ namespace Gameplay
 
         private void LerpPizzaToSlot(Transform pizzaSlot)
         {
-            _pizzaTransform.localPosition = Vector3.Lerp(_pizzaTransform.localPosition, pizzaSlot.position, Time.deltaTime * 1.5f);
-            _pizzaTransform.localRotation = Quaternion.Lerp(_pizzaTransform.localRotation, pizzaSlot.rotation, Time.deltaTime * 1.5f);
+            _pizzaTransform.localPosition = Vector3.Lerp(_pizzaTransform.localPosition, Vector3.zero, Time.deltaTime * 1.5f);
+            _pizzaTransform.localRotation = Quaternion.Lerp(_pizzaTransform.localRotation, Quaternion.identity, Time.deltaTime * 1.5f);
         }
 
         private void CheckForFreeSlot(Pizza pizza)
@@ -60,16 +60,18 @@ namespace Gameplay
             
             if (_pizzaSlotsDictionary[_pizzaSlot1] == null)
             {
-                pizza.GetComponent<Rigidbody>().isKinematic = true;
+                //pizza.GetComponent<Rigidbody>().isKinematic = true;
                 _pizzaSlotsDictionary[_pizzaSlot1] = pizza;
+                pizza.transform.SetParent(_pizzaSlot1);
                 
                 _lerpPizza1 = true;
                 StartCoroutine(WaitForLerpAndStartBaking(true, pizza));
             }
             else if (_pizzaSlotsDictionary[_pizzaSlot2] == null)
             {
-                pizza.GetComponent<Rigidbody>().isKinematic = true;
-                _pizzaSlotsDictionary[_pizzaSlot1] = pizza;
+                //pizza.GetComponent<Rigidbody>().isKinematic = true;
+                _pizzaSlotsDictionary[_pizzaSlot2] = pizza;
+                pizza.transform.SetParent(_pizzaSlot2);
                 
                 _lerpPizza2 = true;
                 StartCoroutine(WaitForLerpAndStartBaking(false, pizza));

@@ -70,7 +70,7 @@ MonoBehaviour:
 
     Name
 
-    PizzaType'
+    DrinkType'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21c33ebcf90f2c84f9be985266f199de, type: 2}
   m_sharedMaterial: {fileID: -2659469600172246020, guid: 21c33ebcf90f2c84f9be985266f199de,
@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 4111242389421476051}
   - component: {fileID: 3291457667521329265}
   m_Layer: 5
-  m_Name: Pizza_Image
+  m_Name: Drink_Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -282,7 +282,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8e29c8630ebe07446bba63f1ee276ba1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 27f1c90ef8abd5b4fa7371e403bfbf86, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -531,9 +531,9 @@ GameObject:
   - component: {fileID: 8460793002004020756}
   - component: {fileID: 3345307295596870748}
   - component: {fileID: 3342092588443816841}
-  - component: {fileID: 6288753105445006444}
+  - component: {fileID: 2905301458002365746}
   m_Layer: 5
-  m_Name: OrderSheet
+  m_Name: OrderSheetDrink
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -603,7 +603,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6288753105445006444
+--- !u!114 &2905301458002365746
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -612,7 +612,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6812728337491856592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38ad83c2e0f78a149920647f9880ec1b, type: 3}
+  m_Script: {fileID: 11500000, guid: fcf531b5f38324d49aee117693611fb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _orderText: {fileID: 8767723176288843950}

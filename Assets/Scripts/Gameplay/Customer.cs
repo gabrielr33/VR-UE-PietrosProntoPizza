@@ -15,6 +15,7 @@ namespace Gameplay
         [SerializeField] private TMP_Text _customerNameText;
         [SerializeField] private Transform _floatingReviewStartPos;
         [SerializeField] private PizzaType _orderedPizza;
+        [SerializeField] private DrinkType _orderedDrink;
         [SerializeField] private bool _testCompare;
 
         private GameManager _gameManager;
@@ -51,13 +52,17 @@ namespace Gameplay
 
             List<PizzaType> pizzaTypes = prefabsManager.PizzaTypes;
             _orderedPizza = pizzaTypes[rand.Next(pizzaTypes.Count)];
-
+            
+            List<DrinkType> drinkTypes = prefabsManager.DrinkTypes;
+            _orderedDrink = drinkTypes[rand.Next(drinkTypes.Count)];
+            
             Order order = new Order
             {
                 TableNumber = tableNumber,
                 Pizza = _orderedPizza,
+                Drink = _orderedDrink,
                 CustomerName = Name,
-                MaxWaitTimeInSec = rand.Next(80, 120)   // TODO tweak this
+                MaxWaitTimeInSec = rand.Next(_gameManager.GameValues.CustomerMinWaitTime, _gameManager.GameValues.CustomerMaxWaitTime)   // TODO tweak this
             };
 
             StartCoroutine(StartWaitingProcedure(order.MaxWaitTimeInSec));
