@@ -91,7 +91,7 @@ public partial class @VRController_InputActions : IInputActionCollection2, IDisp
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""JoystickLeft"",
+                    ""name"": ""Joystick_Left"",
                     ""type"": ""Value"",
                     ""id"": ""0dacbb91-5e8b-41f7-9e51-31c796f22c6f"",
                     ""expectedControlType"": ""Vector2"",
@@ -262,18 +262,55 @@ public partial class @VRController_InputActions : IInputActionCollection2, IDisp
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""JoystickLeft"",
+                    ""action"": ""Joystick_Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""VRControllerHTC"",
+            ""id"": ""f61993b3-1040-40b9-af1d-9fe6c0a13abf"",
+            ""actions"": [
+                {
+                    ""name"": ""Joystick_Left"",
+                    ""type"": ""Value"",
+                    ""id"": ""b7838fcf-c599-4cdb-93b1-bcf5f032b933"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""TrackpadTouched_Left"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""d41e66e1-1751-4618-bfec-230fe7ebd4bf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""857cb6fe-31be-44a1-8d87-182e3d2c9803"",
+                    ""path"": ""<ViveController>{LeftHand}/trackpad"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Joystick_Left"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""d670764e-26f0-453f-9f55-013c87332e7b"",
-                    ""path"": ""<ViveController>{LeftHand}/trackpad"",
+                    ""id"": ""8a6b518d-b033-454c-99c6-cb784acf9533"",
+                    ""path"": ""<ViveController>{LeftHand}/trackpadTouched"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""JoystickLeft"",
+                    ""action"": ""TrackpadTouched_Left"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -291,7 +328,11 @@ public partial class @VRController_InputActions : IInputActionCollection2, IDisp
         m_VRControllers_AngularVelocities_Right = m_VRControllers.FindAction("AngularVelocities_Right", throwIfNotFound: true);
         m_VRControllers_AngularVelocities_Left = m_VRControllers.FindAction("AngularVelocities_Left", throwIfNotFound: true);
         m_VRControllers_ButtonPrimary_Right = m_VRControllers.FindAction("ButtonPrimary_Right", throwIfNotFound: true);
-        m_VRControllers_JoystickLeft = m_VRControllers.FindAction("JoystickLeft", throwIfNotFound: true);
+        m_VRControllers_Joystick_Left = m_VRControllers.FindAction("Joystick_Left", throwIfNotFound: true);
+        // VRControllerHTC
+        m_VRControllerHTC = asset.FindActionMap("VRControllerHTC", throwIfNotFound: true);
+        m_VRControllerHTC_Joystick_Left = m_VRControllerHTC.FindAction("Joystick_Left", throwIfNotFound: true);
+        m_VRControllerHTC_TrackpadTouched_Left = m_VRControllerHTC.FindAction("TrackpadTouched_Left", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -358,7 +399,7 @@ public partial class @VRController_InputActions : IInputActionCollection2, IDisp
     private readonly InputAction m_VRControllers_AngularVelocities_Right;
     private readonly InputAction m_VRControllers_AngularVelocities_Left;
     private readonly InputAction m_VRControllers_ButtonPrimary_Right;
-    private readonly InputAction m_VRControllers_JoystickLeft;
+    private readonly InputAction m_VRControllers_Joystick_Left;
     public struct VRControllersActions
     {
         private @VRController_InputActions m_Wrapper;
@@ -370,7 +411,7 @@ public partial class @VRController_InputActions : IInputActionCollection2, IDisp
         public InputAction @AngularVelocities_Right => m_Wrapper.m_VRControllers_AngularVelocities_Right;
         public InputAction @AngularVelocities_Left => m_Wrapper.m_VRControllers_AngularVelocities_Left;
         public InputAction @ButtonPrimary_Right => m_Wrapper.m_VRControllers_ButtonPrimary_Right;
-        public InputAction @JoystickLeft => m_Wrapper.m_VRControllers_JoystickLeft;
+        public InputAction @Joystick_Left => m_Wrapper.m_VRControllers_Joystick_Left;
         public InputActionMap Get() { return m_Wrapper.m_VRControllers; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -401,9 +442,9 @@ public partial class @VRController_InputActions : IInputActionCollection2, IDisp
                 @ButtonPrimary_Right.started -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnButtonPrimary_Right;
                 @ButtonPrimary_Right.performed -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnButtonPrimary_Right;
                 @ButtonPrimary_Right.canceled -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnButtonPrimary_Right;
-                @JoystickLeft.started -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnJoystickLeft;
-                @JoystickLeft.performed -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnJoystickLeft;
-                @JoystickLeft.canceled -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnJoystickLeft;
+                @Joystick_Left.started -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnJoystick_Left;
+                @Joystick_Left.performed -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnJoystick_Left;
+                @Joystick_Left.canceled -= m_Wrapper.m_VRControllersActionsCallbackInterface.OnJoystick_Left;
             }
             m_Wrapper.m_VRControllersActionsCallbackInterface = instance;
             if (instance != null)
@@ -429,13 +470,54 @@ public partial class @VRController_InputActions : IInputActionCollection2, IDisp
                 @ButtonPrimary_Right.started += instance.OnButtonPrimary_Right;
                 @ButtonPrimary_Right.performed += instance.OnButtonPrimary_Right;
                 @ButtonPrimary_Right.canceled += instance.OnButtonPrimary_Right;
-                @JoystickLeft.started += instance.OnJoystickLeft;
-                @JoystickLeft.performed += instance.OnJoystickLeft;
-                @JoystickLeft.canceled += instance.OnJoystickLeft;
+                @Joystick_Left.started += instance.OnJoystick_Left;
+                @Joystick_Left.performed += instance.OnJoystick_Left;
+                @Joystick_Left.canceled += instance.OnJoystick_Left;
             }
         }
     }
     public VRControllersActions @VRControllers => new VRControllersActions(this);
+
+    // VRControllerHTC
+    private readonly InputActionMap m_VRControllerHTC;
+    private IVRControllerHTCActions m_VRControllerHTCActionsCallbackInterface;
+    private readonly InputAction m_VRControllerHTC_Joystick_Left;
+    private readonly InputAction m_VRControllerHTC_TrackpadTouched_Left;
+    public struct VRControllerHTCActions
+    {
+        private @VRController_InputActions m_Wrapper;
+        public VRControllerHTCActions(@VRController_InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Joystick_Left => m_Wrapper.m_VRControllerHTC_Joystick_Left;
+        public InputAction @TrackpadTouched_Left => m_Wrapper.m_VRControllerHTC_TrackpadTouched_Left;
+        public InputActionMap Get() { return m_Wrapper.m_VRControllerHTC; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(VRControllerHTCActions set) { return set.Get(); }
+        public void SetCallbacks(IVRControllerHTCActions instance)
+        {
+            if (m_Wrapper.m_VRControllerHTCActionsCallbackInterface != null)
+            {
+                @Joystick_Left.started -= m_Wrapper.m_VRControllerHTCActionsCallbackInterface.OnJoystick_Left;
+                @Joystick_Left.performed -= m_Wrapper.m_VRControllerHTCActionsCallbackInterface.OnJoystick_Left;
+                @Joystick_Left.canceled -= m_Wrapper.m_VRControllerHTCActionsCallbackInterface.OnJoystick_Left;
+                @TrackpadTouched_Left.started -= m_Wrapper.m_VRControllerHTCActionsCallbackInterface.OnTrackpadTouched_Left;
+                @TrackpadTouched_Left.performed -= m_Wrapper.m_VRControllerHTCActionsCallbackInterface.OnTrackpadTouched_Left;
+                @TrackpadTouched_Left.canceled -= m_Wrapper.m_VRControllerHTCActionsCallbackInterface.OnTrackpadTouched_Left;
+            }
+            m_Wrapper.m_VRControllerHTCActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Joystick_Left.started += instance.OnJoystick_Left;
+                @Joystick_Left.performed += instance.OnJoystick_Left;
+                @Joystick_Left.canceled += instance.OnJoystick_Left;
+                @TrackpadTouched_Left.started += instance.OnTrackpadTouched_Left;
+                @TrackpadTouched_Left.performed += instance.OnTrackpadTouched_Left;
+                @TrackpadTouched_Left.canceled += instance.OnTrackpadTouched_Left;
+            }
+        }
+    }
+    public VRControllerHTCActions @VRControllerHTC => new VRControllerHTCActions(this);
     public interface IVRControllersActions
     {
         void OnTrigger_Right(InputAction.CallbackContext context);
@@ -445,6 +527,11 @@ public partial class @VRController_InputActions : IInputActionCollection2, IDisp
         void OnAngularVelocities_Right(InputAction.CallbackContext context);
         void OnAngularVelocities_Left(InputAction.CallbackContext context);
         void OnButtonPrimary_Right(InputAction.CallbackContext context);
-        void OnJoystickLeft(InputAction.CallbackContext context);
+        void OnJoystick_Left(InputAction.CallbackContext context);
+    }
+    public interface IVRControllerHTCActions
+    {
+        void OnJoystick_Left(InputAction.CallbackContext context);
+        void OnTrackpadTouched_Left(InputAction.CallbackContext context);
     }
 }

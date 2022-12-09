@@ -61,17 +61,19 @@ namespace Input
             _forwardLook.eulerAngles = new Vector3(0f, _camera.eulerAngles.y, 0f);
 
             Vector2 input = _inputController.InputJoystick.LeftJoystickInput;
+            Vector2 inputHTC = _inputController.InputJoystick.LeftJoystickInputHTC;
+            float trackpadTouched = _inputController.InputJoystick.LeftTrackpadTouched;
 
             //move forward and backwards
-            if (Math.Abs(input.y) >= 0.5f)
+            if (Math.Abs(input.y) >= 0.5f ^ (Math.Abs(inputHTC.y) >= 0.5f && trackpadTouched > 0.5f))
             {
-                _XRRig.transform.position += _forwardLook.forward * (input.y * _movementSpeed * Time.deltaTime);
+                _XRRig.transform.position += _forwardLook.forward * ((input.y + inputHTC.y) * _movementSpeed * Time.deltaTime);
             }
             
             //move left and right
-            if (Math.Abs(input.x) >= 0.5f)
+            if (Math.Abs(input.x) >= 0.5f ^ (Math.Abs(inputHTC.x) >= 0.5f && trackpadTouched > 0.5f))
             {
-                _XRRig.transform.position += _XRRig.transform.right * (input.x * _movementSpeed * Time.deltaTime);
+                _XRRig.transform.position += _forwardLook.right * ((input.x + inputHTC.x) * _movementSpeed * Time.deltaTime);
             }
         }
     }
