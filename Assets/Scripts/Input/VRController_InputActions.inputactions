@@ -69,7 +69,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "JoystickLeft",
+                    "name": "Joystick_Left",
                     "type": "Value",
                     "id": "0dacbb91-5e8b-41f7-9e51-31c796f22c6f",
                     "expectedControlType": "Vector2",
@@ -240,18 +240,55 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "JoystickLeft",
+                    "action": "Joystick_Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "VRControllerHTC",
+            "id": "f61993b3-1040-40b9-af1d-9fe6c0a13abf",
+            "actions": [
+                {
+                    "name": "Joystick_Left",
+                    "type": "Value",
+                    "id": "b7838fcf-c599-4cdb-93b1-bcf5f032b933",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "TrackpadTouched_Left",
+                    "type": "PassThrough",
+                    "id": "d41e66e1-1751-4618-bfec-230fe7ebd4bf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "857cb6fe-31be-44a1-8d87-182e3d2c9803",
+                    "path": "<ViveController>{LeftHand}/trackpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Joystick_Left",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "d670764e-26f0-453f-9f55-013c87332e7b",
-                    "path": "<ViveController>{LeftHand}/trackpad",
+                    "id": "8a6b518d-b033-454c-99c6-cb784acf9533",
+                    "path": "<ViveController>{LeftHand}/trackpadTouched",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "JoystickLeft",
+                    "action": "TrackpadTouched_Left",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

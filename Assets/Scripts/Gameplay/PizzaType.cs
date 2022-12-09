@@ -15,7 +15,7 @@ namespace Gameplay
     {
         TomatoSauce,
         Mozzarella,
-        Paprika,
+        Pepper,
         Salami,
         Onion,
         Tomato,

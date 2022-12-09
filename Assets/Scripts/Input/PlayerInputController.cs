@@ -29,9 +29,15 @@ namespace Input
                     i => InputTrigger.LeftTriggerInput = i.ReadValue<float>();
 
                 // Joystick/Trackpad
-                _inputActions.VRControllers.JoystickLeft.performed +=
+                _inputActions.VRControllers.Joystick_Left.performed +=
                     i => InputJoystick.LeftJoystickInput = i.ReadValue<Vector2>();
-                
+
+                _inputActions.VRControllerHTC.Joystick_Left.performed +=
+                    i => InputJoystick.LeftJoystickInputHTC = i.ReadValue<Vector2>();
+
+                _inputActions.VRControllerHTC.TrackpadTouched_Left.performed +=
+                    i => InputJoystick.LeftTrackpadTouched = i.ReadValue<float>();
+
                 // Hand Velocities
                 _inputActions.VRControllers.AngularVelocities_Right.performed +=
                     i => InputVelocities.RightControllerVelocity = i.ReadValue<Vector3>();
@@ -65,6 +71,8 @@ namespace Input
     public class InputJoystick
     {
         public Vector2 LeftJoystickInput;
+        public Vector2 LeftJoystickInputHTC;
+        public float LeftTrackpadTouched;
     }
 
     public class InputVelocities
