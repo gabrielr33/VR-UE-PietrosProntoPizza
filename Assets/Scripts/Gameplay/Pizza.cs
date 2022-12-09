@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 namespace Gameplay
@@ -7,10 +6,12 @@ namespace Gameplay
     public class Pizza : MonoBehaviour
     {
         public List<PizzaIngredient> Ingredients { get; set; }
+        public bool CanBePickedUp { get; set; }
 
         private void Start()
         {            
-            Ingredients = new List<PizzaIngredient>();            
+            Ingredients = new List<PizzaIngredient>();
+            CanBePickedUp = true;          
         }
 
         private void OnTriggerEnter(Collider other)
