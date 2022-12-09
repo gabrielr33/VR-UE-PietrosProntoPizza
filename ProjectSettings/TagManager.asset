@@ -8,7 +8,7 @@ TagManager:
   - LeftController
   - GameManager
   - InputController
-  - Onion
+  - PrefabsManager
   layers:
   - Default
   - TransparentFX

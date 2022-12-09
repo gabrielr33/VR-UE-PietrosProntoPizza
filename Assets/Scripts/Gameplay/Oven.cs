@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Gameplay
 {
@@ -33,10 +34,10 @@ namespace Gameplay
                 return;
 
             pizza.CanBePickedUp = false;
-            
+
             // Detach pizza from pizza shovel
             pizzaShovel.DetachPizza();
-            
+
             CheckForFreeSlot(pizza);
         }
 
@@ -50,20 +51,22 @@ namespace Gameplay
 
         private void LerpPizzaToSlot(Transform pizzaSlot)
         {
-            _pizzaTransform.localPosition = Vector3.Lerp(_pizzaTransform.localPosition, Vector3.zero, Time.deltaTime * 1.5f);
-            _pizzaTransform.localRotation = Quaternion.Lerp(_pizzaTransform.localRotation, Quaternion.identity, Time.deltaTime * 1.5f);
+            _pizzaTransform.localPosition =
+                Vector3.Lerp(_pizzaTransform.localPosition, Vector3.zero, Time.deltaTime * 1.5f);
+            _pizzaTransform.localRotation =
+                Quaternion.Lerp(_pizzaTransform.localRotation, Quaternion.identity, Time.deltaTime * 1.5f);
         }
 
         private void CheckForFreeSlot(Pizza pizza)
         {
             _pizzaTransform = pizza.transform;
-            
+
             if (_pizzaSlotsDictionary[_pizzaSlot1] == null)
             {
                 //pizza.GetComponent<Rigidbody>().isKinematic = true;
                 _pizzaSlotsDictionary[_pizzaSlot1] = pizza;
                 pizza.transform.SetParent(_pizzaSlot1);
-                
+
                 _lerpPizza1 = true;
                 StartCoroutine(WaitForLerpAndStartBaking(true, pizza));
             }
@@ -72,7 +75,7 @@ namespace Gameplay
                 //pizza.GetComponent<Rigidbody>().isKinematic = true;
                 _pizzaSlotsDictionary[_pizzaSlot2] = pizza;
                 pizza.transform.SetParent(_pizzaSlot2);
-                
+
                 _lerpPizza2 = true;
                 StartCoroutine(WaitForLerpAndStartBaking(false, pizza));
             }
@@ -89,14 +92,24 @@ namespace Gameplay
             else
                 _lerpPizza2 = false;
 
-            StartPizzaBakingProcess(pizza);
+            pizza.StartPizzaBakingProcess();
         }
 
-        private void StartPizzaBakingProcess(Pizza pizza)
+        public void RemovePizzaFromPizzaSlotIfAssigned(Pizza pizza)
         {
-            Debug.Log("Pizza inserted in oven! Start baking!");
-            pizza.CanBePickedUp = true;
-            // pizza.GetComponent<Rigidbody>().isKinematic = false;
+            Transform slot = null;
+            
+            foreach (KeyValuePair<Transform, Pizza> kvp in _pizzaSlotsDictionary)
+            {
+                if (kvp.Value == pizza)
+                {
+                    slot = kvp.Key;
+                    break;
+                }
+            }
+
+            if (slot != null)
+                _pizzaSlotsDictionary[slot] = null;
         }
     }
 }

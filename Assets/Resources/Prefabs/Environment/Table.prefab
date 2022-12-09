@@ -11,7 +11,9 @@ GameObject:
   - component: {fileID: 4668488008077536207}
   - component: {fileID: 783492955587041364}
   - component: {fileID: 147014744879835430}
+  - component: {fileID: 7119040351435801574}
   - component: {fileID: 5825714403659275066}
+  - component: {fileID: 5025756729506605727}
   m_Layer: 0
   m_Name: Table
   m_TagString: Untagged
@@ -86,6 +88,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!54 &7119040351435801574
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3614277571451084613}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
 --- !u!114 &5825714403659275066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101,6 +119,20 @@ MonoBehaviour:
   <TableNumber>k__BackingField: 0
   _audioSource: {fileID: 1946614487259376838}
   _seats: []
+--- !u!64 &5025756729506605727
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3614277571451084613}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 384529894880680253, guid: d62461550c52348bfb136d2130b93ef6, type: 3}
 --- !u!1 &7810939368605983234
 GameObject:
   m_ObjectHideFlags: 0

@@ -105,7 +105,7 @@ namespace Gameplay
             List<PizzaIngredient> missingIngredients = _orderedPizza.ingredients.Except(recPizza.Ingredients).ToList();
             List<PizzaIngredient> unwantedIngredients = recPizza.Ingredients.Except(_orderedPizza.ingredients).ToList();
 
-            decimal review = GameplayHelper.CalculateStarsReviewForOrder(missingIngredients, unwantedIngredients);
+            decimal review = GameplayHelper.CalculateStarsReviewForOrder(missingIngredients, unwantedIngredients, recPizza.BakingStage);
 
             GenerateVisibleReviewInScene(review);
 
