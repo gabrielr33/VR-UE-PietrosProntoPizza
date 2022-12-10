@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using Networking;
+using Photon.Pun;
 using UnityEngine;
 
 namespace Gameplay
 {
     public class Pizza : NetworkObject
     {
-        public List<PizzaIngredient> Ingredients { get; set; }
+        [field: SerializeField] public List<PizzaIngredient> Ingredients { get; set; }
         public bool CanBePickedUp { get; set; }
         public BakingStageEnum BakingStage  { get; private set; }
 
@@ -15,7 +16,12 @@ namespace Gameplay
         [SerializeField] private List<Material> _pizzaDoughMaterials;
 
         private int _bakingCounter = 0;
-        
+
+        private void Awake()
+        {
+            _rb = GetComponent<Rigidbody>();
+        }
+
         private void Start()
         {            
             Ingredients = new List<PizzaIngredient>();
@@ -25,13 +31,14 @@ namespace Gameplay
 
         private void OnTriggerEnter(Collider other)
         {
+            Debug.Log("Collided: " + other.name);
             Ingredient ingredient = other.GetComponent<Ingredient>();
 
             if (ingredient == null || ingredient.IsContainer)
                 return;
 
-            EnableIngredient(ingredient);                  
             Ingredients.Add(ingredient.IngredientType);
+            EnableIngredient(ingredient);
         }
 
         private void EnableIngredient(Ingredient ingredient)
@@ -45,7 +52,7 @@ namespace Gameplay
                     if (ingredient.IngredientType.Equals(PizzaIngredient.TomatoSauce))
                         break;
 
-                    Destroy(ingredient.gameObject);
+                    PhotonNetwork.Destroy(ingredient.gameObject);
                     break;
                 }
             }

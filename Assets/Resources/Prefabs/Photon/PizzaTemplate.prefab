@@ -590,6 +590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff91e51fdfe7292428c46d1832b20acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Ingredients>k__BackingField: 
   _pizzaDough: {fileID: 6640353464503399340}
   _pizzaDoughMaterials:
   - {fileID: 2100000, guid: bc594b2186c1bc84fb02043d5c4de8ab, type: 2}

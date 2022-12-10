@@ -5,13 +5,8 @@ namespace Networking
 {
     public abstract class NetworkObject : MonoBehaviourPun, IPunObservable
     {
-        private Rigidbody _rb;
+        protected Rigidbody _rb;
     
-        private void Awake()
-        {
-            _rb = GetComponent<Rigidbody>();
-        }
-
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
             // Would need to be observed by a PhotonView on the prefab

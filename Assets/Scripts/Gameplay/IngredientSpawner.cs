@@ -28,7 +28,7 @@ namespace Gameplay
                 
                 if (handGrabber != null && handGrabber.GrabbedObject == null)
                 {
-                    GameObject ingredient = PhotonNetwork.Instantiate(Path.Combine("Prefabs\\Ingredients", _ingredientName), Vector3.zero, Quaternion.identity);
+                    GameObject ingredient = PhotonNetwork.Instantiate(Path.Combine("Prefabs\\Ingredients", _ingredientName), handGrabber.transform.position, Quaternion.identity);
                     ingredient.transform.SetParent(handGrabber.transform);
                     ingredient.transform.localPosition = new Vector3(0f, 0f, 0.1f);
                     

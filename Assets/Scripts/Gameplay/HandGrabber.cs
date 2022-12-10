@@ -8,13 +8,11 @@ namespace Gameplay
     {
         public Transform GrabbedObject { get; set; }
         
-        private PrefabsManager _prefabsManager;
         private PlayerInputController _inputController;
         
         private void Awake()
         {
             _inputController = GameObject.FindWithTag("InputController").GetComponent<PlayerInputController>();
-            _prefabsManager = GameObject.FindWithTag("PrefabsManager").GetComponent<PrefabsManager>();
         }
 
         private void Update()

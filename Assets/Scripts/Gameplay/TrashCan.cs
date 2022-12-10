@@ -1,3 +1,4 @@
+using Photon.Pun;
 using UnityEngine;
 
 namespace Gameplay
@@ -8,7 +9,7 @@ namespace Gameplay
         {
             if (other.GetComponent<Pizza>() != null)
             {
-                Destroy(other.gameObject);
+                PhotonNetwork.Destroy(other.gameObject);
             }
         }
     }

@@ -13,6 +13,7 @@ namespace Networking
         private void Awake()
         {
             _pv = GetComponent<PhotonView>();
+            _rb = GetComponent<Rigidbody>();
         }
 
         private void Start()
