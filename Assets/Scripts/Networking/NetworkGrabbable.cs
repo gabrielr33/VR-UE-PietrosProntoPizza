@@ -1,27 +1,49 @@
 using Photon.Pun;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class NetworkGrabbable : MonoBehaviour, IPunObservable
+namespace Networking
 {
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    public class NetworkGrabbable : MonoBehaviour, IPunObservable
     {
-        // Would need to be observed by a PhotonView on the prefab
-
-        if (stream.IsWriting)
+        private Rigidbody _rb;
+        
+        private void Awake()
         {
-            // We own this player: send the others our data
-            //   stream.SendNext(Object obj); // can observe any variable
-            stream.SendNext(transform.position);
-            stream.SendNext(transform.rotation);
+            _rb = GetComponent<Rigidbody>();
         }
-        else
+
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
-            // Network player, receive data
-            //   this.obj = (Object)stream.ReceiveNext(); // receive the same variable from the stream if not local player
-            transform.position = (Vector3)stream.ReceiveNext();
-            transform.rotation = (Quaternion)stream.ReceiveNext();
+            // Would need to be observed by a PhotonView on the prefab
+
+            if (stream.IsWriting)
+            {
+                // We own this player: send the others our data
+                //   stream.SendNext(Object obj); // can observe any variable
+                stream.SendNext(transform.position);
+                stream.SendNext(transform.rotation);
+
+                if (_rb != null)
+                {
+                    stream.SendNext(_rb.velocity);
+                    stream.SendNext(_rb.angularVelocity);
+                    stream.SendNext(_rb.isKinematic);
+                }
+            }
+            else
+            {
+                // Network player, receive data
+                //   this.obj = (Object)stream.ReceiveNext(); // receive the same variable from the stream if not local player
+                transform.position = (Vector3)stream.ReceiveNext();
+                transform.rotation = (Quaternion)stream.ReceiveNext();
+
+                if (_rb != null)
+                {
+                    _rb.velocity = (Vector3)stream.ReceiveNext();
+                    _rb.angularVelocity = (Vector3)stream.ReceiveNext();
+                    _rb.isKinematic = (bool)stream.ReceiveNext();
+                }
+            }
         }
     }
 }

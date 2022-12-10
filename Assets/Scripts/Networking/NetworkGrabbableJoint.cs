@@ -2,15 +2,17 @@ using Input;
 using Photon.Pun;
 using UnityEngine;
 
-namespace Gameplay
+namespace Networking
 {
     public class NetworkGrabbableJoint : MonoBehaviour, IPunObservable
     {
+        private Rigidbody _rb;
         private PlayerInputController _inputController;
         private FixedJoint _fixedJoint;
         
         private void Awake()
         {
+            _rb = GetComponent<Rigidbody>();
             _inputController = GameObject.FindWithTag("InputController").GetComponent<PlayerInputController>();
             _fixedJoint = GetComponent<FixedJoint>();
         }
@@ -53,6 +55,13 @@ namespace Gameplay
                 //   stream.SendNext(Object obj); // can observe any variable
                 stream.SendNext(transform.position);
                 stream.SendNext(transform.rotation);
+                
+                if (_rb != null)
+                {
+                    stream.SendNext(_rb.velocity);
+                    stream.SendNext(_rb.angularVelocity);
+                    stream.SendNext(_rb.isKinematic);
+                }
             }
             else
             {
@@ -60,9 +69,14 @@ namespace Gameplay
                 //   this.obj = (Object)stream.ReceiveNext(); // receive the same variable from the stream if not local player
                 transform.position = (Vector3)stream.ReceiveNext();
                 transform.rotation = (Quaternion)stream.ReceiveNext();
+                
+                if (_rb != null)
+                {
+                    _rb.velocity = (Vector3)stream.ReceiveNext();
+                    _rb.angularVelocity = (Vector3)stream.ReceiveNext();
+                    _rb.isKinematic = (bool)stream.ReceiveNext();
+                }
             }
         }
     }
-
-
 }

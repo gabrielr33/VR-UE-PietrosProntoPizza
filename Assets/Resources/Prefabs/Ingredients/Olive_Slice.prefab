@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8421748641863084916}
   - component: {fileID: 3279586733205854932}
   - component: {fileID: -5415649283326395031}
+  - component: {fileID: -1334000907963454253}
   m_Layer: 0
   m_Name: Olive_Slice
   m_TagString: Untagged
@@ -152,3 +153,15 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &-1334000907963454253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7719384155451981342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bbf91603ae73ab40a2e0ab8b6f03aaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4758100448203277058}
   - component: {fileID: -2360273683826206468}
   - component: {fileID: 8247905314200457123}
+  - component: {fileID: 8212860854793987412}
   m_Layer: 0
   m_Name: Salami_Slice
   m_TagString: Untagged
@@ -152,3 +153,15 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &8212860854793987412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3087818137021513830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bbf91603ae73ab40a2e0ab8b6f03aaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
