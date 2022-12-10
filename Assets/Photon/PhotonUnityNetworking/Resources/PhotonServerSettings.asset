@@ -45,6 +45,8 @@ MonoBehaviour:
   - SetOwner
   - SpawnNewOrderPostIt
   - NewPlayerSpawned
+  - SetAnimatorControllerValues
+  - SetCustomerName
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

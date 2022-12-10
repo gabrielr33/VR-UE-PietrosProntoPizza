@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Photon.Pun;
 using TMPro;
 using UnityEngine;
 using Random = System.Random;
 
 namespace Gameplay
 {
-    public class Customer : MonoBehaviour
+    public class Customer : MonoBehaviourPun
     {
         [field: SerializeField] public bool Female { get; private set; }
         [field: SerializeField] public string Name { get; private set; }
@@ -41,8 +42,14 @@ namespace Gameplay
                 return;
 
             Random rand = new Random();
-            Name = customerNames[rand.Next(customerNames.Count)];
-            _customerNameText.text = Name;
+            photonView.RPC("SetCustomerName", RpcTarget.All, customerNames[rand.Next(customerNames.Count)]);
+        }
+
+        [PunRPC]
+        private void SetCustomerName(string name)
+        {
+            Name = name;
+            _customerNameText.text = name;
         }
 
         public Order GenerateOrder(PrefabsManager prefabsManager, int tableNumber)
@@ -77,27 +84,29 @@ namespace Gameplay
                 switch (state)
                 {
                     case CustomerAnimationState.Talking:
-                        _customerAnimator.SetFloat(CustomerStateX, 0f);
-                        _customerAnimator.SetFloat(CustomerStateY, 0f);
+                        photonView.RPC("SetAnimatorControllerValues", RpcTarget.All, 0f, 0f);
                         break;
                     case CustomerAnimationState.Angry:
-                        _customerAnimator.SetFloat(CustomerStateX, -1f);
-                        _customerAnimator.SetFloat(CustomerStateY, 0f);
+                        photonView.RPC("SetAnimatorControllerValues", RpcTarget.All, -1f, 0f);
                         break;
                     case CustomerAnimationState.Clap:
-                        _customerAnimator.SetFloat(CustomerStateX, 1f);
-                        _customerAnimator.SetFloat(CustomerStateY, 0f);
+                        photonView.RPC("SetAnimatorControllerValues", RpcTarget.All, 1f, 0f);
                         break;
                     case CustomerAnimationState.SitToStand:
-                        _customerAnimator.SetFloat(CustomerStateX, 0f);
-                        _customerAnimator.SetFloat(CustomerStateY, 1f);
+                        photonView.RPC("SetAnimatorControllerValues", RpcTarget.All, 0f, 1f);
                         break;
                     case CustomerAnimationState.StandAngry:
-                        _customerAnimator.SetFloat(CustomerStateX, 1f);
-                        _customerAnimator.SetFloat(CustomerStateY, 1f);
+                        photonView.RPC("SetAnimatorControllerValues", RpcTarget.All, 1f, 1f);
                         break;
                 }
             }
+        }
+
+        [PunRPC]
+        private void SetAnimatorControllerValues(float x, float y)
+        {
+            _customerAnimator.SetFloat(CustomerStateX, x);
+            _customerAnimator.SetFloat(CustomerStateY, y);
         }
 
         public void CompareReceivedPizzaWithOrder(Pizza recPizza)
