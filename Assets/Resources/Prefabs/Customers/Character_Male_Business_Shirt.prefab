@@ -1884,6 +1884,7 @@ GameObject:
   - component: {fileID: 8960068087783274688}
   - component: {fileID: 8960068087776085646}
   - component: {fileID: 2501031921108739708}
+  - component: {fileID: 6776786644941308613}
   m_Layer: 0
   m_Name: Character_Male_Business_Shirt
   m_TagString: Untagged
@@ -1954,7 +1955,30 @@ MonoBehaviour:
   _customerNameText: {fileID: 3511371910233299908}
   _floatingReviewStartPos: {fileID: 478783777247517221}
   _orderedPizza: {fileID: 0}
+  _orderedDrink: {fileID: 0}
   _testCompare: 0
+--- !u!114 &6776786644941308613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8960068087783508478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &8960068087783508586
 GameObject:
   m_ObjectHideFlags: 0

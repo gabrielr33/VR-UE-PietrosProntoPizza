@@ -2538,6 +2538,7 @@ GameObject:
   - component: {fileID: 3675290055396803620}
   - component: {fileID: 3675290055404376770}
   - component: {fileID: -7181173383006997045}
+  - component: {fileID: 1580518213159320956}
   m_Layer: 0
   m_Name: Character_Female_Police
   m_TagString: Untagged
@@ -2608,7 +2609,30 @@ MonoBehaviour:
   _customerNameText: {fileID: 6369717048067202187}
   _floatingReviewStartPos: {fileID: 9115777094844463786}
   _orderedPizza: {fileID: 0}
+  _orderedDrink: {fileID: 0}
   _testCompare: 0
+--- !u!114 &1580518213159320956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3675290055397060702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &3675290055397062274
 GameObject:
   m_ObjectHideFlags: 0

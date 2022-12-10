@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.IO;
+using Photon.Pun;
 using UnityEngine;
 using Random = System.Random;
 
@@ -17,8 +19,9 @@ namespace Gameplay
             Random rand = new Random();
 
             List<Customer> customerPrefabs = _prefabsManager.CustomerPrefabs;
+            string prefabName = customerPrefabs[rand.Next(customerPrefabs.Count)].name;
 
-            _customer = Instantiate(customerPrefabs[rand.Next(customerPrefabs.Count)], _spawnRootPos.position, transform.rotation);
+            _customer = PhotonNetwork.Instantiate(Path.Combine("Prefabs\\Customers", prefabName), _spawnRootPos.position, transform.rotation).GetComponent<Customer>();
             _customer.SelectCustomerName();
             _customer.SetAnimatorControllerState(CustomerAnimationState.Talking);
             

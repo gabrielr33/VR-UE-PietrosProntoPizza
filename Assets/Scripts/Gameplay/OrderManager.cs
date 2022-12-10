@@ -1,22 +1,25 @@
 using System.Collections.Generic;
 using System.Linq;
+using Photon.Pun;
 using UnityEngine;
 using Random = System.Random;
 
 namespace Gameplay
 {
-    public class OrderManager : MonoBehaviour
+    public class OrderManager : MonoBehaviourPun
     {
         [SerializeField] private List<Table> _tables;
         [SerializeField] private OrderSheetPizza _orderSheetPizzaPrefab;
         [SerializeField] private OrderSheetDrink _orderSheetDrinkPrefab;
         [SerializeField] private Transform _orderSheetPizzaTransform;
         [SerializeField] private Transform _orderSheetDrinkTransform;
+        [SerializeField] private PrefabsManager _prefabsManager;
 
         private void Start()
         {
             // TODO temporary
-            SpawnNewCustomers();
+            if (PhotonNetwork.IsMasterClient)
+                SpawnNewCustomers();
         }
 
         public void SpawnNewCustomers()
@@ -25,28 +28,41 @@ namespace Gameplay
 
             // Shuffle seats list
             _tables = _tables.OrderBy(a => rand.Next()).ToList();
-            
+
             foreach (Table table in _tables)
             {
                 if (!table.IsOccupied)
                 {
                     List<Order> orders = table.SpawnNewCustomers();
-                    SpawnNewOrderPostIt(orders);
+
+                    foreach (Order order in orders)
+                        photonView.RPC("SpawnNewOrderPostIt", RpcTarget.All, order.TableNumber, order.CustomerName,
+                            _prefabsManager.PizzaTypes.IndexOf(order.Pizza),
+                            _prefabsManager.DrinkTypes.IndexOf(order.Drink), order.MaxWaitTimeInSec);
+
                     break;
                 }
             }
         }
 
-        private void SpawnNewOrderPostIt(List<Order> orders)
+        [PunRPC]
+        private void SpawnNewOrderPostIt(int tableNumber, string customerName, int pizzaIndex, int drinkIndex,
+            int maxWaitTime)
         {
-            foreach (Order order in orders)
+            Order order = new Order()
             {
-                OrderSheetPizza sheetPizza = Instantiate(_orderSheetPizzaPrefab, _orderSheetPizzaTransform);
-                sheetPizza.SetUp(order);
-                
-                OrderSheetDrink sheetDrink = Instantiate(_orderSheetDrinkPrefab, _orderSheetDrinkTransform);
-                sheetDrink.SetUp(order);
-            }
+                TableNumber = tableNumber,
+                CustomerName = customerName,
+                Pizza = _prefabsManager.PizzaTypes[pizzaIndex],
+                Drink = _prefabsManager.DrinkTypes[drinkIndex],
+                MaxWaitTimeInSec = maxWaitTime
+            };
+
+            OrderSheetPizza sheetPizza = Instantiate(_orderSheetPizzaPrefab, _orderSheetPizzaTransform);
+            sheetPizza.SetUp(order);
+
+            OrderSheetDrink sheetDrink = Instantiate(_orderSheetDrinkPrefab, _orderSheetDrinkTransform);
+            sheetDrink.SetUp(order);
         }
     }
 }
