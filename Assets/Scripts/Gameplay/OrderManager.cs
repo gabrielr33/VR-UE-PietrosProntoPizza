@@ -15,13 +15,6 @@ namespace Gameplay
         [SerializeField] private Transform _orderSheetDrinkTransform;
         [SerializeField] private PrefabsManager _prefabsManager;
 
-        private void Start()
-        {
-            // TODO temporary
-            if (PhotonNetwork.IsMasterClient)
-                SpawnNewCustomers();
-        }
-
         public void SpawnNewCustomers()
         {
             Random rand = new Random();

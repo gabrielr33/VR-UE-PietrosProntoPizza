@@ -6,7 +6,7 @@ using Photon.Pun;
 using TMPro;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviourPun
 {
     public GameValues GameValues { get; private set; }
     
@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform _startPositionWaiter;
 
     [SerializeField] private GameObject _XRRig;
+    
+    [SerializeField] private OrderManager _orderManager;
 
     [Header("Gameplay")]
     [SerializeField] private TMP_Text _countdownTimerText;
@@ -23,18 +25,21 @@ public class GameManager : MonoBehaviour
     private List<decimal> _reviews;
     private decimal _gameScore; // ranges from 0 to 5
 
+    private int _playerCount = 0;
+    
     private void Awake()
     {
         _isMasterClient = PhotonNetwork.IsMasterClient;
         _reviews = new List<decimal>();
 
         GameValues = IOFileManager.ReadGameValuesFromFile();
-        
+
         SpawnPlayer();
     }
 
-    public void SpawnPlayer()
+    private void SpawnPlayer()
     {
+        
         // Distinguish between chef and waiter
         if (_isMasterClient)
         {
@@ -48,6 +53,20 @@ public class GameManager : MonoBehaviour
             _XRRig.transform.position = _startPositionChef.position;
             _XRRig.transform.rotation = _startPositionChef.rotation;
         }
+        
+        photonView.RPC("NewPlayerSpawned", RpcTarget.MasterClient);
+    }
+
+    [PunRPC]
+    private void NewPlayerSpawned()
+    {
+        if (!_isMasterClient)
+            return;
+
+        _playerCount++;
+
+        if (_playerCount >= 2)
+            _orderManager.SpawnNewCustomers();
     }
 
     public void AddReviewToGameScore(decimal review)

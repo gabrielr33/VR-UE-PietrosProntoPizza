@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d87b336f-b8b8-43f7-ae77-3a646ba17569" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Photon/PizzaTemplate.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Photon/PizzaTemplate.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/HandGrabber.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/HandGrabber.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/IngredientSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/IngredientSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Pizza.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/Pizza.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Gameplay/TrashCan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Gameplay/TrashCan.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Networking/NetworkObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Networking/NetworkObject.cs" afterDir="false" />
-    </list>
+    <list default="true" id="d87b336f-b8b8-43f7-ae77-3a646ba17569" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,6 +11,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/c6b52566f59b49fc861a7812a1ea2f6b157a00/f3/96fcfbc4/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/e78722ef08464ab79a3acef56ee8f2b23400/14/2ce9916d/JsonUtility.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/fdee1383db0f4513952862f91d61e50258200/d6/84ab83a2/JsonConvert.cs" root0="SKIP_HIGHLIGHTING" />
@@ -174,23 +169,25 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Gameplay/Pizza.cs</url>
-          <line>54</line>
-          <properties documentPath="C:\Users\Gabriel\Desktop\Uni\LVAs\4_Semester_WS22_23\VR_UE\vrue_finalproject\Assets\Scripts\Gameplay\Pizza.cs" initialLine="54" containingFunctionPresentation="method 'EnableIngredient'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Gameplay/OrderManager.cs</url>
+          <line>51</line>
+          <properties documentPath="C:\Users\Gabriel\Desktop\Uni\LVAs\4_Semester_WS22_23\VR_UE\vrue_finalproject\Assets\Scripts\Gameplay\OrderManager.cs" initialLine="51" containingFunctionPresentation="method 'SpawnNewOrderPostIt'">
             <startOffsets>
-              <option value="1691" />
+              <option value="1740" />
             </startOffsets>
             <endOffsets>
-              <option value="1764" />
+              <option value="2057" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="10" />
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="UNITY_DEBUG_RUN_CONFIGURATION">
         <watch expression="_gameValuesFilePath" language="C#" />
+        <watch expression="ingredient.GetComponent&lt;PhotonView&gt;().Owner" language="C#" />
+        <watch expression="photonView.Owner" language="C#" />
       </configuration>
     </watches-manager>
   </component>
