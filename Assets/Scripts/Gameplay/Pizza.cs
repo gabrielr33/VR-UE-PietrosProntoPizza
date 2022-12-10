@@ -1,11 +1,11 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using Networking;
 using UnityEngine;
 
 namespace Gameplay
 {
-    public class Pizza : MonoBehaviour
+    public class Pizza : NetworkObject
     {
         public List<PizzaIngredient> Ingredients { get; set; }
         public bool CanBePickedUp { get; set; }

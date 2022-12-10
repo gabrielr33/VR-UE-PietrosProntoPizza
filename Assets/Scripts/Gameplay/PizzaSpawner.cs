@@ -29,8 +29,7 @@ namespace Gameplay
         {
             if (_startLerp == false && other.CompareTag("RightController") && _inputController.InputButtons.ButtonPrimary_Right > 0.5f)
             {
-                _pizzaTemplate = PhotonNetwork.Instantiate(Path.Combine("Prefabs\\Photon", "PizzaTemplate") , Vector3.zero, Quaternion.identity).transform;
-                _pizzaTemplate.localPosition = transform.position;
+                _pizzaTemplate = PhotonNetwork.Instantiate(Path.Combine("Prefabs\\Photon", "PizzaTemplate") , transform.position, Quaternion.identity).transform;
                 _pizzaTemplate.localScale = new Vector3(10, 10, 10);
                 _pizzaTemplate.GetComponent<BoxCollider>().enabled = false;
                 _startLerp = true;

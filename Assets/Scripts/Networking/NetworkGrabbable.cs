@@ -1,47 +1,47 @@
 using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
 
 namespace Networking
 {
-    public class NetworkGrabbable : MonoBehaviour, IPunObservable
+    public class NetworkGrabbable : NetworkObject
     {
-        private Rigidbody _rb;
-        
+        private PhotonView _pv;
+
+        private int _localPlayerID;
+
         private void Awake()
         {
-            _rb = GetComponent<Rigidbody>();
+            _pv = GetComponent<PhotonView>();
         }
 
-        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        private void Start()
         {
-            // Would need to be observed by a PhotonView on the prefab
-
-            if (stream.IsWriting)
+            GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+            foreach (GameObject player in players)
             {
-                // We own this player: send the others our data
-                //   stream.SendNext(Object obj); // can observe any variable
-                stream.SendNext(transform.position);
-                stream.SendNext(transform.rotation);
-
-                if (_rb != null)
-                {
-                    stream.SendNext(_rb.velocity);
-                    stream.SendNext(_rb.angularVelocity);
-                    stream.SendNext(_rb.isKinematic);
-                }
+                PhotonView pv = player.GetComponent<PhotonView>();
+                if (pv != null && pv.IsMine)
+                    _localPlayerID = pv.Owner.ActorNumber;
             }
-            else
-            {
-                // Network player, receive data
-                //   this.obj = (Object)stream.ReceiveNext(); // receive the same variable from the stream if not local player
-                transform.position = (Vector3)stream.ReceiveNext();
-                transform.rotation = (Quaternion)stream.ReceiveNext();
+        }
 
-                if (_rb != null)
+        public void SetNewOwnerOfObject()
+        {
+            _pv.RPC("SetOwner", RpcTarget.All, _localPlayerID);
+        }
+
+        [PunRPC]
+        private void SetOwner(int newOwnerID)
+        {
+            if (_pv.IsMine)
+            {
+                GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+                foreach (GameObject player in players)
                 {
-                    _rb.velocity = (Vector3)stream.ReceiveNext();
-                    _rb.angularVelocity = (Vector3)stream.ReceiveNext();
-                    _rb.isKinematic = (bool)stream.ReceiveNext();
+                    Player pl = player.GetComponent<PhotonView>().Owner;
+                    if (pl != null && pl.ActorNumber.Equals(newOwnerID))
+                        _pv.TransferOwnership(pl);
                 }
             }
         }
