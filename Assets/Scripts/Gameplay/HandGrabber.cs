@@ -19,6 +19,7 @@ namespace Gameplay
         {
             if (GrabbedObject != null && _inputController.InputTrigger.RightTriggerInput < 0.5f)
             {
+                // GrabbedObject.GetComponent<Rigidbody>().useGravity = true;
                 GrabbedObject.GetComponent<Rigidbody>().isKinematic = false;
                 GrabbedObject.SetParent(null);
                 GrabbedObject = null;
@@ -36,6 +37,7 @@ namespace Gameplay
                     other.transform.SetParent(transform);
                     GrabbedObject = other.transform;
                     GrabbedObject.GetComponent<Rigidbody>().isKinematic = true;
+                    // GrabbedObject.GetComponent<Rigidbody>().useGravity = false;
                 }
             }
         }

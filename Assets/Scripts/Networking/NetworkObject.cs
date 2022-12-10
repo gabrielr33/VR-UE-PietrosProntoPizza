@@ -23,6 +23,7 @@ namespace Networking
                     stream.SendNext(_rb.velocity);
                     stream.SendNext(_rb.angularVelocity);
                     stream.SendNext(_rb.isKinematic);
+                    stream.SendNext(_rb.useGravity);
                 }
             }
             else
@@ -37,6 +38,7 @@ namespace Networking
                     _rb.velocity = (Vector3)stream.ReceiveNext();
                     _rb.angularVelocity = (Vector3)stream.ReceiveNext();
                     _rb.isKinematic = (bool)stream.ReceiveNext();
+                    _rb.useGravity = (bool)stream.ReceiveNext();
                 }
             }
         }

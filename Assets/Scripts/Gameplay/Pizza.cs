@@ -52,7 +52,9 @@ namespace Gameplay
                     if (ingredient.IngredientType.Equals(PizzaIngredient.TomatoSauce))
                         break;
 
-                    PhotonNetwork.Destroy(ingredient.gameObject);
+                    if (PhotonNetwork.LocalPlayer.Equals(ingredient.GetComponent<PhotonView>().Owner))
+                        PhotonNetwork.Destroy(ingredient.gameObject);
+
                     break;
                 }
             }

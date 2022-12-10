@@ -9,7 +9,8 @@ namespace Gameplay
         {
             if (other.GetComponent<Pizza>() != null)
             {
-                PhotonNetwork.Destroy(other.gameObject);
+                if (PhotonNetwork.LocalPlayer.Equals(other.GetComponent<PhotonView>().Owner))
+                    PhotonNetwork.Destroy(other.gameObject);
             }
         }
     }
