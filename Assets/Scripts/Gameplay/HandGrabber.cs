@@ -1,4 +1,6 @@
 using Input;
+using Photon.Pun;
+using System.IO;
 using UnityEngine;
 
 namespace Gameplay
@@ -30,7 +32,7 @@ namespace Gameplay
             if ((gameObject.tag.Equals("RightController") && _inputController.InputTrigger.RightTriggerInput > 0.5f) ||
                 (gameObject.tag.Equals("LeftController") && _inputController.InputTrigger.LeftTriggerInput > 0.5f))
             {
-                if (_grabbedObject == null && other.GetComponent<GrabbableObject>() != null)
+                if (_grabbedObject == null && other.GetComponent<NetworkGrabbable>() != null)
                 {
                     other.transform.SetParent(transform);
                     _grabbedObject = other.transform;
@@ -38,10 +40,10 @@ namespace Gameplay
                 }
                 else if (_grabbedObject == null && other.GetComponent<Ingredient>() != null)
                 {
-                    GameObject ingredientPrefab = _prefabsManager.GetIngredientPrefabFromPizzaIngredientType(other.GetComponent<Ingredient>().IngredientType);
-                    if (ingredientPrefab == null)
+                    string ingredientPrefabName = _prefabsManager.GetIngredientNameFromPizzaIngredientType(other.GetComponent<Ingredient>().IngredientType);
+                    if (ingredientPrefabName == "")
                         return;
-                    GameObject ingredient = Instantiate(ingredientPrefab, Vector3.zero, Quaternion.identity);
+                    GameObject ingredient = PhotonNetwork.Instantiate(Path.Combine("Prefabs\\Ingredients", ingredientPrefabName), Vector3.zero, Quaternion.identity);
                     ingredient.transform.SetParent(transform);
                     ingredient.transform.localPosition = new Vector3(0f, 0f, 0.1f);
                     _grabbedObject = ingredient.transform;

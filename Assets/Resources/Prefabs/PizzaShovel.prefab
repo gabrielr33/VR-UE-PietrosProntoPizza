@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5149538119404166209}
   - component: {fileID: 4189599958366353703}
   - component: {fileID: 1381475678702126595}
-  - component: {fileID: 2189147161941163149}
+  - component: {fileID: 1713182163902771432}
   m_Layer: 0
   m_Name: GrabPosition
   m_TagString: Untagged
@@ -131,7 +131,7 @@ FixedJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &2189147161941163149
+--- !u!114 &1713182163902771432
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -169,7 +169,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6286066271936058325}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.24, z: -0.01}
+  m_LocalPosition: {x: 0, y: 0.24, z: -0.003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -222,6 +222,7 @@ GameObject:
   - component: {fileID: 5018275679735666272}
   - component: {fileID: 732230096351039525}
   - component: {fileID: 5587832847590887909}
+  - component: {fileID: 508962115797145523}
   m_Layer: 0
   m_Name: PizzaShovel
   m_TagString: Untagged
@@ -236,7 +237,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7678413393632321966}
-  m_LocalRotation: {x: 0.70710707, y: -0, z: -0, w: 0.70710653}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.3, y: 1.3, z: 2}
   m_ConstrainProportionsScale: 0
@@ -353,3 +354,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pizzaPosition: {fileID: 27552309127924815}
+  _pizzaOven: {fileID: 0}
+--- !u!114 &508962115797145523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7678413393632321966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 1713182163902771432}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0

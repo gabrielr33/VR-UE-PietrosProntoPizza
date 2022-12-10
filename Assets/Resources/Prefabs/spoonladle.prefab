@@ -15,8 +15,9 @@ GameObject:
   - component: {fileID: 2966434702927264666}
   - component: {fileID: 4551791161635967366}
   - component: {fileID: 7510260304905002322}
+  - component: {fileID: 3850588535665305843}
   m_Layer: 0
-  m_Name: Spoonladle
+  m_Name: spoonladle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,6 +148,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <IngredientType>k__BackingField: 0
+  <IsContainer>k__BackingField: 0
+--- !u!114 &3850588535665305843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564919597245425080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &3420485849740868673
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,8 +184,8 @@ GameObject:
   - component: {fileID: 1071963942301702544}
   - component: {fileID: 3037950197217220168}
   - component: {fileID: 4833613995376592058}
+  - component: {fileID: 7966569187405186027}
   - component: {fileID: 6538920952734528383}
-  - component: {fileID: 6521151337782093302}
   m_Layer: 0
   m_Name: GrabPosition
   m_TagString: Untagged
@@ -263,6 +287,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &7966569187405186027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3420485849740868673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d5c93df96e94e4a913befbf5798730, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!138 &6538920952734528383
 FixedJoint:
   m_ObjectHideFlags: 0
@@ -278,18 +314,6 @@ FixedJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &6521151337782093302
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3420485849740868673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9d5c93df96e94e4a913befbf5798730, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6597694553810997023
 GameObject:
   m_ObjectHideFlags: 0

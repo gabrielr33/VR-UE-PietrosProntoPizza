@@ -21,5 +21,17 @@ namespace Gameplay
 
             return null;
         }
+
+
+        public string GetIngredientNameFromPizzaIngredientType(PizzaIngredient type)
+        {
+            foreach (Ingredient ingredient in PizzaIngredients)
+            {
+                if (ingredient.IngredientType.Equals(type))
+                    return ingredient.gameObject.name;
+            }
+
+            return "";
+        }
     }
 }

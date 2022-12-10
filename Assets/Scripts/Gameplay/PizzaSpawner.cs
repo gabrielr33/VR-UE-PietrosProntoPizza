@@ -1,16 +1,18 @@
 using System.Collections;
+using System.IO;
 using Input;
+using Photon.Pun;
 using UnityEngine;
 
 namespace Gameplay
 {
     public class PizzaSpawner : MonoBehaviour
     {
-        [SerializeField] private GameObject _pizzaTemplatePrefab;
 
         private PlayerInputController _inputController;
         private Transform _pizzaTemplate;
         private bool _startLerp;
+        private int _pizzaScale = 125;
 
         private void Awake()
         {
@@ -20,14 +22,14 @@ namespace Gameplay
         private void Update()
         {
             if (_startLerp)
-                _pizzaTemplate.localScale = Vector3.Lerp(_pizzaTemplate.localScale, new Vector3(150, 150, 150), Time.deltaTime * 0.5f);
+                _pizzaTemplate.localScale = Vector3.Lerp(_pizzaTemplate.localScale, new Vector3(_pizzaScale, _pizzaScale, _pizzaScale), Time.deltaTime * 0.5f);
         }
 
         private void OnTriggerStay(Collider other)
         {
             if (_startLerp == false && other.CompareTag("RightController") && _inputController.InputButtons.ButtonPrimary_Right > 0.5f)
             {
-                _pizzaTemplate = Instantiate(_pizzaTemplatePrefab, Vector3.zero, Quaternion.identity).transform;
+                _pizzaTemplate = PhotonNetwork.Instantiate(Path.Combine("Prefabs\\Photon", "PizzaTemplate") , Vector3.zero, Quaternion.identity).transform;
                 _pizzaTemplate.localPosition = transform.position;
                 _pizzaTemplate.localScale = new Vector3(10, 10, 10);
                 _pizzaTemplate.GetComponent<BoxCollider>().enabled = false;
