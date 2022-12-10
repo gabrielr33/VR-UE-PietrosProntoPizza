@@ -1175,7 +1175,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &282354958
 MonoBehaviour:
@@ -1199,7 +1199,7 @@ MonoBehaviour:
   transmitEnabled: 1
   samplingRate: 48000
   frameDuration: 20000
-  bitrate: 30000
+  bitrate: 100000
   sourceType: 0
   microphoneType: 0
   audioClip: {fileID: 0}
@@ -8718,7 +8718,7 @@ PrefabInstance:
     - target: {fileID: 3732853183426856532, guid: 960fa1a1a9f2e504fb4177974b43a20d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3732853183426856532, guid: 960fa1a1a9f2e504fb4177974b43a20d,
         type: 3}

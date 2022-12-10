@@ -166,23 +166,6 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Gameplay/OrderManager.cs</url>
-          <line>51</line>
-          <properties documentPath="C:\Users\Gabriel\Desktop\Uni\LVAs\4_Semester_WS22_23\VR_UE\vrue_finalproject\Assets\Scripts\Gameplay\OrderManager.cs" initialLine="51" containingFunctionPresentation="method 'SpawnNewOrderPostIt'">
-            <startOffsets>
-              <option value="1740" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2057" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="UNITY_DEBUG_RUN_CONFIGURATION">
         <watch expression="_gameValuesFilePath" language="C#" />
