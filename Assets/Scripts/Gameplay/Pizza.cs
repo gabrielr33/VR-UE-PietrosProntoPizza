@@ -38,19 +38,28 @@ namespace Gameplay
                 return;
 
             Ingredients.Add(ingredient.IngredientType);
-            EnableIngredient(ingredient);
+            EnableIngredient(ingredient, other);
         }
 
-        private void EnableIngredient(Ingredient ingredient)
+        private void EnableIngredient(Ingredient ingredient, Collider other)
         {
             foreach(Ingredient child in transform.GetComponentsInChildren<Ingredient>(true))
             {
                 if(child.IngredientType.Equals(ingredient.IngredientType))
                 {
-                    child.gameObject.SetActive(true);
+                    
 
                     if (ingredient.IngredientType.Equals(PizzaIngredient.TomatoSauce))
+                    {
+                        if (other.GetComponent<TomatoSauceFillingManager>().getIsSpoonFilled())
+                        {
+                            child.gameObject.SetActive(true);
+                            other.GetComponent<TomatoSauceFillingManager>().emptySpoon();
+                        }                   
                         break;
+                    }
+
+                    child.gameObject.SetActive(true);
 
                     if (PhotonNetwork.LocalPlayer.Equals(ingredient.GetComponent<PhotonView>().Owner))
                         PhotonNetwork.Destroy(ingredient.gameObject);
