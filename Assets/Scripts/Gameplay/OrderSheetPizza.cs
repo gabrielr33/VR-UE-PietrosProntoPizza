@@ -7,6 +7,8 @@ namespace Gameplay
 {
     public class OrderSheetPizza : MonoBehaviour
     {
+        public Order Order { get; private set; }
+        
         [SerializeField] private TMP_Text _orderText;
         [SerializeField] private Slider _maxWaitTimeSlider;
         [SerializeField] private GameObject _failedOverlayImage;
@@ -15,6 +17,8 @@ namespace Gameplay
         {
             if (order == null)
                 return;
+
+            Order = order;
             
             _failedOverlayImage.SetActive(false);
             _orderText.text = $"No. {order.TableNumber}\n{order.CustomerName}\n{order.Pizza.pizzaName}";
@@ -36,6 +40,17 @@ namespace Gameplay
             // TODO
             Debug.Log("Order expired!");
             _failedOverlayImage.SetActive(true);
+        }
+
+        public override bool Equals(object other)
+        {
+            OrderSheetPizza otherSheet = (OrderSheetPizza)other;
+            
+            return Order.TableNumber == otherSheet.Order.TableNumber &&
+                   Order.CustomerName == otherSheet.Order.CustomerName &&
+                   Order.Pizza.pizzaName == otherSheet.Order.Pizza.pizzaName &&
+                   Order.Drink.drinkName == otherSheet.Order.Drink.drinkName &&
+                   Order.MaxWaitTimeInSec == otherSheet.Order.MaxWaitTimeInSec;
         }
     }
 }

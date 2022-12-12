@@ -26,7 +26,7 @@ namespace Gameplay
             {
                 if (!table.IsOccupied)
                 {
-                    List<Order> orders = table.SpawnNewCustomers();
+                    List<Order> orders = table.SpawnNewCustomers(this);
 
                     foreach (Order order in orders)
                         photonView.RPC("SpawnNewOrderPostIt", RpcTarget.All, order.TableNumber, order.CustomerName,
@@ -39,8 +39,7 @@ namespace Gameplay
         }
 
         [PunRPC]
-        private void SpawnNewOrderPostIt(int tableNumber, string customerName, int pizzaIndex, int drinkIndex,
-            int maxWaitTime)
+        private void SpawnNewOrderPostIt(int tableNumber, string customerName, int pizzaIndex, int drinkIndex, int maxWaitTime)
         {
             Order order = new Order()
             {
@@ -56,6 +55,33 @@ namespace Gameplay
 
             OrderSheetDrink sheetDrink = Instantiate(_orderSheetDrinkPrefab, _orderSheetDrinkTransform);
             sheetDrink.SetUp(order);
+        }
+
+        public void RemoveOrderSheet(Order order)
+        {
+            foreach (OrderSheetPizza orderSheet in _orderSheetPizzaTransform.GetComponentsInChildren<OrderSheetPizza>())
+            {
+                if (orderSheet.Order.TableNumber == order.TableNumber &&
+                    orderSheet.Order.CustomerName == order.CustomerName &&
+                    orderSheet.Order.Pizza.pizzaName == order.Pizza.pizzaName &&
+                    orderSheet.Order.Drink.drinkName == order.Drink.drinkName &&
+                    orderSheet.Order.MaxWaitTimeInSec == order.MaxWaitTimeInSec)
+                {
+                    Destroy(orderSheet.gameObject);
+                }
+            }
+            
+            foreach (OrderSheetDrink orderSheet in _orderSheetDrinkTransform.GetComponentsInChildren<OrderSheetDrink>())
+            {
+                if (orderSheet.Order.TableNumber == order.TableNumber &&
+                    orderSheet.Order.CustomerName == order.CustomerName &&
+                    orderSheet.Order.Pizza.pizzaName == order.Pizza.pizzaName &&
+                    orderSheet.Order.Drink.drinkName == order.Drink.drinkName &&
+                    orderSheet.Order.MaxWaitTimeInSec == order.MaxWaitTimeInSec)
+                {
+                    Destroy(orderSheet.gameObject);
+                }
+            }
         }
     }
 }

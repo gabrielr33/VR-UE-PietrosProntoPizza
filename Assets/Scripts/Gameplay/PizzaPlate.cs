@@ -4,14 +4,21 @@ namespace Gameplay
 {
     public class PizzaPlate : MonoBehaviour
     {
+        public Pizza AttachedPizza { get; private set; }
+        
         private void OnTriggerEnter(Collider other)
         {
-            if (other.GetComponent<Pizza>() != null)
-            {
-                other.transform.SetParent(transform);
-                other.transform.localPosition = Vector3.zero;
-                other.transform.localRotation = Quaternion.identity;
-            }
+            Pizza pizza = other.GetComponent<Pizza>();
+
+            if (pizza == null)
+                return;
+            
+            AttachedPizza = pizza;
+            
+            Transform pizzaTransform = other.transform; 
+            pizzaTransform.SetParent(transform);
+            pizzaTransform.localPosition = Vector3.zero;
+            pizzaTransform.localRotation = Quaternion.identity;
         }
     }
 }

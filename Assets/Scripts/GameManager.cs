@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviourPun
 
         _playerCount++;
 
-        if (_playerCount >= 2)
+        //if (_playerCount >= 2)
             _orderManager.SpawnNewCustomers();
     }
 

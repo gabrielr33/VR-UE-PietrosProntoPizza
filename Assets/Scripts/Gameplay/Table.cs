@@ -13,7 +13,7 @@ namespace Gameplay
         [SerializeField]  private AudioSource _audioSource;
         [SerializeField] private List<Seat> _seats;
 
-        public List<Order> SpawnNewCustomers()
+        public List<Order> SpawnNewCustomers(OrderManager orderManager)
         {
             List<Order> orders = new List<Order>();
             Random rand = new Random();
@@ -24,8 +24,11 @@ namespace Gameplay
             // Spawn n new customers
             int numberOfNewCustomers = rand.Next(2, _seats.Count + 1);
             for (int i = 0; i < numberOfNewCustomers; i++)
-                orders.Add(_seats[i].SpawnCustomer(TableNumber));
-            
+            {
+                if (!_seats[i].IsOccupied)
+                    orders.Add(_seats[i].SpawnCustomer(TableNumber, orderManager));
+            }
+
             _audioSource.Play();
             IsOccupied = true;
             return orders;

@@ -15,17 +15,22 @@ namespace Gameplay
 
         [SerializeField] private TMP_Text _customerNameText;
         [SerializeField] private Transform _floatingReviewStartPos;
-        [SerializeField] private PizzaType _orderedPizza;
-        [SerializeField] private DrinkType _orderedDrink;
+        // [SerializeField] private PizzaType _orderedPizza;
+        // [SerializeField] private DrinkType _orderedDrink;
         [SerializeField] private bool _testCompare;
 
         private GameManager _gameManager;
         private PrefabsManager _prefabsManager;
+        private OrderManager _orderManager;
         private Transform _cameraTransform;
         private Animator _customerAnimator;
         private static readonly int CustomerStateX = Animator.StringToHash("CustomerStateX");
         private static readonly int CustomerStateY = Animator.StringToHash("CustomerStateY");
 
+        private Order _order;
+        private Seat _seat;
+        private Drink _receivedDrink;
+        
         private void Awake()
         {
             _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
@@ -52,29 +57,29 @@ namespace Gameplay
             _customerNameText.text = name;
         }
 
-        public Order GenerateOrder(PrefabsManager prefabsManager, int tableNumber)
+        public Order GenerateOrder(PrefabsManager prefabsManager, OrderManager orderManager, int tableNumber, Seat seat)
         {
             _prefabsManager = prefabsManager;
-            Random rand = new Random();
+            _orderManager = orderManager;
+            
+            _seat = seat;
 
             List<PizzaType> pizzaTypes = prefabsManager.PizzaTypes;
-            _orderedPizza = pizzaTypes[rand.Next(pizzaTypes.Count)];
-            
             List<DrinkType> drinkTypes = prefabsManager.DrinkTypes;
-            _orderedDrink = drinkTypes[rand.Next(drinkTypes.Count)];
             
-            Order order = new Order
+            Random rand = new Random();
+            _order = new Order
             {
                 TableNumber = tableNumber,
-                Pizza = _orderedPizza,
-                Drink = _orderedDrink,
+                Pizza = pizzaTypes[rand.Next(pizzaTypes.Count)],
+                Drink = drinkTypes[rand.Next(drinkTypes.Count)],
                 CustomerName = Name,
                 MaxWaitTimeInSec = rand.Next(_gameManager.GameValues.CustomerMinWaitTime, _gameManager.GameValues.CustomerMaxWaitTime)   // TODO tweak this
             };
 
-            StartCoroutine(StartWaitingProcedure(order.MaxWaitTimeInSec));
+            StartCoroutine(StartWaitingProcedure(_order.MaxWaitTimeInSec));
 
-            return order;
+            return _order;
         }
 
         public void SetAnimatorControllerState(CustomerAnimationState state)
@@ -111,15 +116,17 @@ namespace Gameplay
 
         public void CompareReceivedPizzaWithOrder(Pizza recPizza)
         {
-            List<PizzaIngredient> missingIngredients = _orderedPizza.ingredients.Except(recPizza.Ingredients).ToList();
-            List<PizzaIngredient> unwantedIngredients = recPizza.Ingredients.Except(_orderedPizza.ingredients).ToList();
+            List<PizzaIngredient> missingIngredients = _order.Pizza.ingredients.Except(recPizza.Ingredients).ToList();
+            List<PizzaIngredient> unwantedIngredients = recPizza.Ingredients.Except(_order.Pizza.ingredients).ToList();
 
-            decimal review = GameplayHelper.CalculateStarsReviewForOrder(missingIngredients, unwantedIngredients, recPizza.BakingStage);
+            decimal review = GameplayHelper.CalculateStarsReviewForOrder(missingIngredients, unwantedIngredients, recPizza.BakingStage, _order.Drink, _receivedDrink);
 
             GenerateVisibleReviewInScene(review);
+        }
 
-            // _customerNameText.text = review.ToString();
-            // TODO
+        public void DrinkReceived(Drink drink)
+        {
+            _receivedDrink = drink;
         }
 
         private void Update()
@@ -153,14 +160,29 @@ namespace Gameplay
             SetAnimatorControllerState(CustomerAnimationState.SitToStand);
             
             GenerateVisibleReviewInScene(0);
-        }
 
+            StartCoroutine(DisappearAfterSeconds(5f));
+        }
+        
         private void GenerateVisibleReviewInScene(decimal review)
         {
             FloatingReviewText text = Instantiate(_prefabsManager.ReviewText, _floatingReviewStartPos.position, Quaternion.identity, _floatingReviewStartPos);
             text.SetUp(review);
+
+            StopAllCoroutines();
+            
+            _orderManager.RemoveOrderSheet(_order);
+
+            StartCoroutine(DisappearAfterSeconds(5f));
             
             _gameManager.AddReviewToGameScore(review);
+        }
+
+        private IEnumerator DisappearAfterSeconds(float sec)
+        {
+            yield return new WaitForSeconds(sec);
+
+            _seat.CustomerDisappeared();
         }
     }
 
