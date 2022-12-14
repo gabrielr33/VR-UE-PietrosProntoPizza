@@ -23,10 +23,8 @@ namespace Input
                 _inputActions = new VRController_InputActions();
 
                 // Hand Trigger
-                _inputActions.VRControllers.Trigger_Right.performed +=
-                    i => InputTrigger.RightTriggerInput = i.ReadValue<float>();
-                _inputActions.VRControllers.Trigger_Left.performed +=
-                    i => InputTrigger.LeftTriggerInput = i.ReadValue<float>();
+                _inputActions.VRControllers.Trigger_Right.performed += i => InputTrigger.RightTriggerInput = i.ReadValue<float>();
+                _inputActions.VRControllers.Trigger_Left.performed += i => InputTrigger.LeftTriggerInput = i.ReadValue<float>();
 
                 // Joystick/Trackpad
                 _inputActions.VRControllers.Joystick_Left.performed +=

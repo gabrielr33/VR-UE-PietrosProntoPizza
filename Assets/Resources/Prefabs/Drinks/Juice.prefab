@@ -95,6 +95,8 @@ GameObject:
   - component: {fileID: 3402641081681706586}
   - component: {fileID: 6618112086665172328}
   - component: {fileID: 743582568170974882}
+  - component: {fileID: 8274366346048822087}
+  - component: {fileID: -1899552984913014915}
   m_Layer: 0
   m_Name: Juice
   m_TagString: Untagged
@@ -169,3 +171,29 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &8274366346048822087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541702660376031378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bbf91603ae73ab40a2e0ab8b6f03aaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-1899552984913014915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1541702660376031378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c11e28abfd797a49bbe13a62366baa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <DrinkType>k__BackingField: {fileID: 11400000, guid: 51e626a612f8d03409840253bb7e2390,
+    type: 2}

@@ -10,7 +10,7 @@ namespace Gameplay
         {
             Pizza pizza = other.GetComponent<Pizza>();
 
-            if (pizza == null)
+            if (pizza == null || AttachedPizza != null)
                 return;
             
             AttachedPizza = pizza;

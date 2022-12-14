@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: -3680537737869108355}
   - component: {fileID: -8336247669902851176}
   - component: {fileID: 6317960059040856270}
+  - component: {fileID: -5868134109770012354}
+  - component: {fileID: 7971136238849262522}
   m_Layer: 0
   m_Name: Water
   m_TagString: Untagged
@@ -82,10 +84,37 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: -5868134109770012354}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &-5868134109770012354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4678313863723012268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bbf91603ae73ab40a2e0ab8b6f03aaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7971136238849262522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4678313863723012268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c11e28abfd797a49bbe13a62366baa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <DrinkType>k__BackingField: {fileID: 11400000, guid: ecd7dcf0fa0603c429e6e055802ae685,
+    type: 2}
 --- !u!1 &5793163900620338183
 GameObject:
   m_ObjectHideFlags: 0

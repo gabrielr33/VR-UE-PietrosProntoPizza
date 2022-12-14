@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: -8793175255794337609}
   - component: {fileID: -1105895341195042504}
   - component: {fileID: -6629208753924616517}
+  - component: {fileID: -6922731429582315841}
+  - component: {fileID: -2690284470643917305}
   m_Layer: 0
   m_Name: Energy
   m_TagString: Untagged
@@ -86,6 +88,32 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &-6922731429582315841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2262505523604494479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bbf91603ae73ab40a2e0ab8b6f03aaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-2690284470643917305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2262505523604494479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c11e28abfd797a49bbe13a62366baa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <DrinkType>k__BackingField: {fileID: 11400000, guid: ba83e2851e02e554db4e58967d1e5a41,
+    type: 2}
 --- !u!1 &4398360324245090282
 GameObject:
   m_ObjectHideFlags: 0

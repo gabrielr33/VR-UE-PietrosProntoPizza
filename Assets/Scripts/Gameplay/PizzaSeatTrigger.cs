@@ -39,6 +39,7 @@ namespace Gameplay
 
             plate.GetComponentInChildren<Pizza>().CanBePickedUp = false;
             plate.GetComponent<NetworkGrabbable>().enabled = false;
+            plate.GetComponent<BoxCollider>().enabled = false;
             plate.GetComponent<Rigidbody>().isKinematic = true;
             GetComponentInParent<Seat>().PizzaReceived(plate.AttachedPizza);
             

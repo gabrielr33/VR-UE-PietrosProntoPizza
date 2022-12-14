@@ -7,6 +7,8 @@ namespace Gameplay
     public class HandGrabber : MonoBehaviour
     {
         public Transform GrabbedObject { get; set; }
+
+        [SerializeField] private bool _isRightHand;
         
         private PlayerInputController _inputController;
         
@@ -17,7 +19,9 @@ namespace Gameplay
 
         private void Update()
         {
-            if (GrabbedObject != null && _inputController.InputTrigger.RightTriggerInput < 0.5f)
+            if (GrabbedObject != null && 
+                ((_isRightHand && _inputController.InputTrigger.RightTriggerInput < 0.5f) ||
+                 (!_isRightHand && _inputController.InputTrigger.LeftTriggerInput < 0.5f)))
             {
                 GrabbedObject.GetComponent<Rigidbody>().isKinematic = false;
                 GrabbedObject.SetParent(null);
@@ -27,8 +31,8 @@ namespace Gameplay
 
         private void OnTriggerStay(Collider other)
         {
-            if ((gameObject.tag.Equals("RightController") && _inputController.InputTrigger.RightTriggerInput > 0.5f) ||
-                (gameObject.tag.Equals("LeftController") && _inputController.InputTrigger.LeftTriggerInput > 0.5f))
+            if ((_isRightHand && _inputController.InputTrigger.RightTriggerInput > 0.5f) ||
+                (!_isRightHand && _inputController.InputTrigger.LeftTriggerInput > 0.5f))
             {
                 if (GrabbedObject == null && other.GetComponent<NetworkGrabbable>() != null)
                 {

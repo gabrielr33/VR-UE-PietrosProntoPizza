@@ -36,6 +36,7 @@ namespace Gameplay
             drink.transform.SetParent(transform);
 
             drink.GetComponent<NetworkGrabbable>().enabled = false;
+            drink.GetComponent<BoxCollider>().enabled = false;
             drink.GetComponent<Rigidbody>().isKinematic = true;
             GetComponentInParent<Seat>().DrinkReceived(drink);
             

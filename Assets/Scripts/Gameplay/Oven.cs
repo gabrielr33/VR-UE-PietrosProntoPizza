@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Gameplay
 {
@@ -14,6 +13,9 @@ namespace Gameplay
         private bool _lerpPizza1;
         private bool _lerpPizza2;
         private Dictionary<Transform, Pizza> _pizzaSlotsDictionary;
+
+        private Coroutine _routine1;
+        private Coroutine _routine2;
 
         private void Awake()
         {
@@ -68,7 +70,7 @@ namespace Gameplay
                 pizza.transform.SetParent(_pizzaSlot1);
 
                 _lerpPizza1 = true;
-                StartCoroutine(WaitForLerpAndStartBaking(true, pizza));
+                _routine1 = StartCoroutine(WaitForLerp1AndStartBaking(pizza));
             }
             else if (_pizzaSlotsDictionary[_pizzaSlot2] == null)
             {
@@ -77,21 +79,23 @@ namespace Gameplay
                 pizza.transform.SetParent(_pizzaSlot2);
 
                 _lerpPizza2 = true;
-                StartCoroutine(WaitForLerpAndStartBaking(false, pizza));
+                _routine2 = StartCoroutine(WaitForLerp2AndStartBaking(pizza));
             }
             else
                 Debug.Log("No free pizza slots right now!");
         }
 
-        private IEnumerator WaitForLerpAndStartBaking(bool lerpPizza1, Pizza pizza)
+        private IEnumerator WaitForLerp1AndStartBaking( Pizza pizza)
         {
             yield return new WaitForSeconds(2.5f);
-
-            if (lerpPizza1)
-                _lerpPizza1 = false;
-            else
-                _lerpPizza2 = false;
-
+            _lerpPizza1 = false;
+            pizza.StartPizzaBakingProcess();
+        }
+        
+        private IEnumerator WaitForLerp2AndStartBaking(Pizza pizza)
+        {
+            yield return new WaitForSeconds(2.5f);
+            _lerpPizza2 = false;
             pizza.StartPizzaBakingProcess();
         }
 
@@ -104,6 +108,12 @@ namespace Gameplay
                 if (kvp.Value == pizza)
                 {
                     slot = kvp.Key;
+                    
+                    if (slot.Equals(_pizzaSlot1))
+                        StopCoroutine(_routine1);
+                    else if (slot.Equals(_pizzaSlot2))
+                        StopCoroutine(_routine2);
+                    
                     break;
                 }
             }

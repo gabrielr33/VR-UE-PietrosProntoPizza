@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.57471687, g: 0.61301094, b: 0.607223, a: 1}
+  m_IndirectSpecularColor: {r: 0.5747052, g: 0.61300576, b: 0.60721654, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2052,6 +2052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f43d2dc42e89d44684f1d119a72c2d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isRightHand: 1
 --- !u!1 &545739945
 GameObject:
   m_ObjectHideFlags: 0
@@ -4750,6 +4751,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TestPlate
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428210596109850120, guid: 40572040519458d4e8f886d3e8aa80ff,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7548970335635989334, guid: 40572040519458d4e8f886d3e8aa80ff,
         type: 3}
@@ -8012,6 +8018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f43d2dc42e89d44684f1d119a72c2d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isRightHand: 0
 --- !u!224 &1731990927 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1731990927, guid: 273dcedcb1ed88649b685bdc6fae2d51,

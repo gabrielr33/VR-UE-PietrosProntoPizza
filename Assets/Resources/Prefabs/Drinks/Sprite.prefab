@@ -95,6 +95,8 @@ GameObject:
   - component: {fileID: 7883979594426872925}
   - component: {fileID: -4147214852894763276}
   - component: {fileID: -6168896096007512323}
+  - component: {fileID: 3344992543925211326}
+  - component: {fileID: 5653346392145389979}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -169,3 +171,29 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &3344992543925211326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7278196476937399551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bbf91603ae73ab40a2e0ab8b6f03aaf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5653346392145389979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7278196476937399551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c11e28abfd797a49bbe13a62366baa5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <DrinkType>k__BackingField: {fileID: 11400000, guid: 39b20da23df935040845ad503cd7d699,
+    type: 2}
