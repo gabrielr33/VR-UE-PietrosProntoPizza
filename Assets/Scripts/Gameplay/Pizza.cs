@@ -51,10 +51,10 @@ namespace Gameplay
 
                     if (ingredient.IngredientType.Equals(PizzaIngredient.TomatoSauce))
                     {
-                        if (other.GetComponent<TomatoSauceFillingManager>().getIsSpoonFilled())
+                        if (other.GetComponent<TomatoSauceFillingManager>().GetIsSpoonFilled())
                         {
                             child.gameObject.SetActive(true);
-                            other.GetComponent<TomatoSauceFillingManager>().emptySpoon();
+                            other.GetComponent<TomatoSauceFillingManager>().EmptySpoon();
                         }                   
                         break;
                     }

@@ -11,7 +11,7 @@ public class TomatoSauceFillingManager : MonoBehaviour
     void Start()
     {
         isSpoonFilled = true;
-        fillSpoon();
+        FillSpoon();
     }
 
     // Update is called once per frame
@@ -20,20 +20,20 @@ public class TomatoSauceFillingManager : MonoBehaviour
         
     }
 
-    public void emptySpoon()
+    public void EmptySpoon()
     {
         transform.GetChild(0).GetComponent<MeshRenderer>().enabled = false;
         isSpoonFilled=false;
     }
 
-    public void fillSpoon()
+    public void FillSpoon()
     {
         transform.GetChild(0).GetComponent<MeshRenderer>().enabled = true;
         isSpoonFilled = true;
     }
 
 
-    public bool getIsSpoonFilled()
+    public bool GetIsSpoonFilled()
     {
         return isSpoonFilled;
     }

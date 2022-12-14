@@ -19,7 +19,6 @@ namespace Gameplay
         {
             if (GrabbedObject != null && _inputController.InputTrigger.RightTriggerInput < 0.5f)
             {
-                // GrabbedObject.GetComponent<Rigidbody>().useGravity = true;
                 GrabbedObject.GetComponent<Rigidbody>().isKinematic = false;
                 GrabbedObject.SetParent(null);
                 GrabbedObject = null;

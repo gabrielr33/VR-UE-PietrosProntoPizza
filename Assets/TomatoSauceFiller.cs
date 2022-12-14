@@ -4,22 +4,13 @@ using UnityEngine;
 
 public class TomatoSauceFiller : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Coll" + other.name);
-        other.transform.GetComponent<TomatoSauceFillingManager>().fillSpoon();
+        if(other.GetComponent<TomatoSauceFillingManager>() != null)
+        { 
+            other.transform.GetComponent<TomatoSauceFillingManager>().FillSpoon(); 
+        }
+        
     }
 
 }
