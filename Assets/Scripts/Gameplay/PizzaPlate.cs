@@ -1,3 +1,4 @@
+using Photon.Pun;
 using UnityEngine;
 
 namespace Gameplay
@@ -8,17 +9,21 @@ namespace Gameplay
         
         private void OnTriggerEnter(Collider other)
         {
-            Pizza pizza = other.GetComponent<Pizza>();
+            PizzaShovel pizzaShovel = other.GetComponent<PizzaShovel>();
 
-            if (pizza == null || AttachedPizza != null)
+            if (pizzaShovel == null || pizzaShovel.AttachedPizza == null || AttachedPizza != null)
                 return;
             
-            AttachedPizza = pizza;
+            AttachedPizza = pizzaShovel.AttachedPizza;
+            AttachedPizza.CanBePickedUp = false;
             
-            Transform pizzaTransform = other.transform; 
+            Transform pizzaTransform = pizzaShovel.AttachedPizza.transform; 
             pizzaTransform.SetParent(transform);
             pizzaTransform.localPosition = Vector3.zero;
             pizzaTransform.localRotation = Quaternion.identity;
+            AttachedPizza.GetComponent<PhotonView>().enabled = false;
+            
+            pizzaShovel.DetachPizza();
         }
     }
 }

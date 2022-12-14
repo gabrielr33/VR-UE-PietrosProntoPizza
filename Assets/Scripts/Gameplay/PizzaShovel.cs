@@ -41,6 +41,7 @@ namespace Gameplay
                 return;
 
             // AttachedPizza.GetComponent<FixedJoint>().connectedBody = null;
+            AttachedPizza.CanBePickedUp = false;
             AttachedPizza = null;
         }
     }
