@@ -5,18 +5,19 @@ using UnityEngine;
 
 namespace Gameplay
 {
-    public class IngredientSpawner : MonoBehaviour
+    public class DrinkSpawner : MonoBehaviour
     {
         private PrefabsManager _prefabsManager;
         private PlayerInputController _inputController;
+        [SerializeField] private DrinkType _drinkType;
 
-        private string _ingredientName;
-        
+        private string _drinkName;
+
         private void Awake()
         {
             _inputController = GameObject.FindWithTag("InputController").GetComponent<PlayerInputController>();
             _prefabsManager = GameObject.FindWithTag("PrefabsManager").GetComponent<PrefabsManager>();
-            _ingredientName = _prefabsManager.GetIngredientNameFromPizzaIngredientType(GetComponent<Ingredient>().IngredientType);
+            _drinkName = _prefabsManager.GetDrinkNameFromDrinkType(_drinkType);
         }
 
         private void OnTriggerStay(Collider other)
@@ -25,18 +26,18 @@ namespace Gameplay
                 (other.tag.Equals("LeftController") && _inputController.InputTrigger.LeftTriggerInput > 0.5f))
             {
                 HandGrabber handGrabber = other.GetComponent<HandGrabber>();
-                
+
                 if (handGrabber != null && handGrabber.GrabbedObject == null)
                 {
-                    GameObject ingredient = PhotonNetwork.Instantiate(Path.Combine("Prefabs\\Ingredients", _ingredientName), handGrabber.transform.position, Quaternion.identity);
-                    ingredient.transform.SetParent(handGrabber.transform);
-                    ingredient.transform.localPosition = new Vector3(-0.0021f, -0.033f, 0.049f);
+                    GameObject drink = PhotonNetwork.Instantiate(Path.Combine("Prefabs\\Drinks", _drinkName), handGrabber.transform.position, Quaternion.identity);
+                    drink.transform.SetParent(handGrabber.transform);
+                    drink.transform.localPosition = new Vector3(-0.0021f, -0.033f, 0.049f);
                     // ingredient.GetComponent<Rigidbody>().useGravity = false;
                     // ingredient.GetComponent<Rigidbody>().velocity = Vector3.zero;
                     // ingredient.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-                    ingredient.GetComponent<Rigidbody>().isKinematic = true;
-                    
-                    handGrabber.GrabbedObject = ingredient.transform;
+                    drink.GetComponent<Rigidbody>().isKinematic = true;
+
+                    handGrabber.GrabbedObject = drink.transform;
                 }
             }
         }

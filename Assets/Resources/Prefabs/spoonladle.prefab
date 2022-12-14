@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 656533188442095526}
   - component: {fileID: 656533188442095524}
   m_Layer: 0
-  m_Name: SpoonLadle
+  m_Name: spoonladle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -367,6 +367,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <IngredientType>k__BackingField: 0
   <IsContainer>k__BackingField: 0
+--- !u!114 &8614734757068494707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422512241303288857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46c4a81754b70b245b897e6fa39f3f50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1051238710115477155 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a40da381fc52ade4892f01278ed16ad8,

@@ -33,5 +33,16 @@ namespace Gameplay
 
             return "";
         }
+
+        public string GetDrinkNameFromDrinkType(DrinkType type)
+        {
+            foreach (DrinkType drinkType in DrinkTypes)
+            {
+                if (drinkType.drinkName.Equals(type.drinkName))
+                    return drinkType.drinkName;
+            }
+
+            return "";
+        }
     }
 }
