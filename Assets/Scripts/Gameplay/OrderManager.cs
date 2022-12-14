@@ -56,8 +56,8 @@ namespace Gameplay
             OrderSheetDrink sheetDrink = Instantiate(_orderSheetDrinkPrefab, _orderSheetDrinkTransform);
             sheetDrink.SetUp(order);
         }
-
-        public void RemoveOrderSheet(Order order)
+        
+        public void RemovePizzaOrderSheet(Order order)
         {
             foreach (OrderSheetPizza orderSheet in _orderSheetPizzaTransform.GetComponentsInChildren<OrderSheetPizza>())
             {
@@ -70,7 +70,10 @@ namespace Gameplay
                     Destroy(orderSheet.gameObject);
                 }
             }
-            
+        }
+
+        public void RemoveDrinkOrderSheet(Order order)
+        {
             foreach (OrderSheetDrink orderSheet in _orderSheetDrinkTransform.GetComponentsInChildren<OrderSheetDrink>())
             {
                 if (orderSheet.Order.TableNumber == order.TableNumber &&

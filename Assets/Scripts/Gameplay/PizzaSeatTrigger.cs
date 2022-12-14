@@ -11,13 +11,18 @@ namespace Gameplay
         private void Update()
         {
             if (_lerpPizza)
-                _plateTransform.localPosition = Vector3.Lerp(_plateTransform.localPosition, Vector3.zero, Time.deltaTime * 1.5f);
+            {
+                _plateTransform.localPosition =
+                    Vector3.Lerp(_plateTransform.localPosition, Vector3.zero, Time.deltaTime * 1.5f);
+                // _plateTransform.localRotation =
+                //     Quaternion.Lerp(_plateTransform.localRotation, Quaternion.identity, Time.deltaTime * 1.5f);
+            }
         }
 
         public void ClearPizzaFromTrigger()
         {
             _lerpPizza = false;
-            if (_plateTransform.childCount > 0)
+            if (_plateTransform != null && _plateTransform.childCount > 0)
                 Destroy(_plateTransform.GetChild(0).gameObject);
         }
         
@@ -29,12 +34,15 @@ namespace Gameplay
                 return;
             
             _plateTransform = plate.transform;
-            _plateTransform.SetParent(transform);
+            plate.transform.localRotation = Quaternion.identity;
+            plate.transform.SetParent(transform);
 
-            _lerpPizza = true;
-
+            plate.GetComponentInChildren<Pizza>().CanBePickedUp = false;
             plate.GetComponent<NetworkGrabbable>().enabled = false;
+            plate.GetComponent<Rigidbody>().isKinematic = true;
             GetComponentInParent<Seat>().PizzaReceived(plate.AttachedPizza);
+            
+            _lerpPizza = true;
         }
     }
 }

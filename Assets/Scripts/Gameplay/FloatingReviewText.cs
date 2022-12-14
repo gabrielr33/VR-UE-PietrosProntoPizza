@@ -17,8 +17,8 @@ namespace Gameplay
         private void Awake()
         {
             _startPos = transform.localPosition;
-            _endPos = new Vector3(_startPos.x, _startPos.y + 100f, _startPos.z);
-            Destroy(gameObject, 5f);
+            _endPos = new Vector3(_startPos.x, _startPos.y + 120f, _startPos.z);
+            Destroy(gameObject, 7f);
         }
 
         private void Update()

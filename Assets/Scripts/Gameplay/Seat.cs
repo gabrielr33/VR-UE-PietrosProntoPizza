@@ -50,7 +50,7 @@ namespace Gameplay
             _drinkTrigger.GetComponent<MeshRenderer>().enabled = false;
         }
 
-        public void CustomerDisappeared()
+        public void FinishedEating()
         {
             _pizzaTrigger.gameObject.SetActive(false);
             _drinkTrigger.gameObject.SetActive(false);

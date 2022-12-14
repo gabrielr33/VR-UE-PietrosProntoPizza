@@ -116,17 +116,20 @@ namespace Gameplay
 
         public void CompareReceivedPizzaWithOrder(Pizza recPizza)
         {
+            SetAnimatorControllerState(CustomerAnimationState.Clap);
+            
             List<PizzaIngredient> missingIngredients = _order.Pizza.ingredients.Except(recPizza.Ingredients).ToList();
             List<PizzaIngredient> unwantedIngredients = recPizza.Ingredients.Except(_order.Pizza.ingredients).ToList();
 
             decimal review = GameplayHelper.CalculateStarsReviewForOrder(missingIngredients, unwantedIngredients, recPizza.BakingStage, _order.Drink, _receivedDrink);
 
-            GenerateVisibleReviewInScene(review);
+            CustomerReceivedPizza(review);
         }
 
         public void DrinkReceived(Drink drink)
         {
             _receivedDrink = drink;
+            _orderManager.RemoveDrinkOrderSheet(_order);
         }
 
         private void Update()
@@ -157,10 +160,16 @@ namespace Gameplay
             
             // TODO
             Debug.Log("Order expired!");
-            SetAnimatorControllerState(CustomerAnimationState.SitToStand);
-            
-            GenerateVisibleReviewInScene(0);
 
+            GenerateVisibleReviewInScene(0);
+            RemoveOrderAndAddReview(0);
+            StartCoroutine(DisappearAfterSeconds(0f));
+        }
+
+        private void CustomerReceivedPizza(decimal review)
+        {
+            GenerateVisibleReviewInScene(review);
+            RemoveOrderAndAddReview(review);
             StartCoroutine(DisappearAfterSeconds(5f));
         }
         
@@ -168,13 +177,13 @@ namespace Gameplay
         {
             FloatingReviewText text = Instantiate(_prefabsManager.ReviewText, _floatingReviewStartPos.position, Quaternion.identity, _floatingReviewStartPos);
             text.SetUp(review);
+        }
 
+        private void RemoveOrderAndAddReview(decimal review)
+        {
             StopAllCoroutines();
-            
-            _orderManager.RemoveOrderSheet(_order);
-
-            StartCoroutine(DisappearAfterSeconds(5f));
-            
+            _orderManager.RemoveDrinkOrderSheet(_order);
+            _orderManager.RemovePizzaOrderSheet(_order);
             _gameManager.AddReviewToGameScore(review);
         }
 
@@ -182,7 +191,15 @@ namespace Gameplay
         {
             yield return new WaitForSeconds(sec);
 
-            _seat.CustomerDisappeared();
+            _seat.FinishedEating();
+            GetUpAndDisappear();
+        }
+
+        private void GetUpAndDisappear()
+        {
+            SetAnimatorControllerState(CustomerAnimationState.SitToStand);
+            
+            // TODO seat back
         }
     }
 
