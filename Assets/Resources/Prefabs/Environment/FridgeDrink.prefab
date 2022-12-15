@@ -188,6 +188,8 @@ GameObject:
   - component: {fileID: 4847168044139941807}
   - component: {fileID: 4078988890758806255}
   - component: {fileID: 7429449660494328982}
+  - component: {fileID: 4040046191858799238}
+  - component: {fileID: 2344864201289620611}
   m_Layer: 0
   m_Name: FridgeDrink
   m_TagString: Untagged
@@ -265,6 +267,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4040046191858799238
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7189699903278322215}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0, y: 1.5089766, z: 0.46013242}
+  m_Center: {x: -0.3072571, y: 0.7551748, z: 0.04220302}
+--- !u!65 &2344864201289620611
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7189699903278322215}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.014996171, y: 1.5089766, z: 0.44097042}
+  m_Center: {x: 0.31107512, y: 0.7551748, z: 0.03262203}
 --- !u!1 &7821591728614269674
 GameObject:
   m_ObjectHideFlags: 0

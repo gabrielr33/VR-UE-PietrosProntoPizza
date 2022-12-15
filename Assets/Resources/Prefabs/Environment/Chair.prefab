@@ -153,6 +153,7 @@ GameObject:
   - component: {fileID: 3318970607860578260}
   - component: {fileID: 5842373969353650139}
   - component: {fileID: 7367522932190768970}
+  - component: {fileID: 1975358032681225171}
   m_Layer: 0
   m_Name: Chair
   m_TagString: Untagged
@@ -244,6 +245,19 @@ MonoBehaviour:
   _spawnRootPos: {fileID: 1808488582886805513}
   _pizzaTrigger: {fileID: 1801242657865950256}
   _drinkTrigger: {fileID: 6483930886100615053}
+--- !u!65 &1975358032681225171
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5293196347165754878}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.42317596, y: 0.7909334, z: 0.429301}
+  m_Center: {x: 0.000000007450582, y: 0.0058934987, z: -0.019445445}
 --- !u!1 &7920604105000800216
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,14 +10,16 @@ namespace Input
         [SerializeField] private Transform _forwardLook;
 
         //[SerializeField] private bool _moveUsingKeyboard;
-        [SerializeField] private float _movementSpeed = 1.5f;
-        [SerializeField] private float _rotateSpeed = 50.0f;
+        private float _movementSpeed = 1.0f;
+        private float _rotateSpeed = 50.0f;
+        private Rigidbody _rigidBody;
 
         private PlayerInputController _inputController;
 
         private void Awake()
         {
             _inputController = GetComponent<PlayerInputController>();
+            _rigidBody = Camera.main.GetComponent<Rigidbody>();
         }
 
         private void Update()
@@ -38,7 +40,13 @@ namespace Input
             //move forward
             if (UnityEngine.Input.GetKey(KeyCode.W))
             {
+
                 _XRRig.transform.position += _forwardLook.forward * (_movementSpeed * Time.deltaTime);
+
+                //_rigidBody.MovePosition(_XRRig.transform.position + (_forwardLook.forward * (_movementSpeed * Time.deltaTime)));
+
+                /*_rigidBody.AddForce((_forwardLook.forward * (0.5f * Time.deltaTime)), ForceMode.Force);                
+                _XRRig.transform.localPosition = _rigidBody.position;*/
             }
 
             //move left
