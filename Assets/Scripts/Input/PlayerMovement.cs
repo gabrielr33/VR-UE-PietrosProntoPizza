@@ -10,7 +10,8 @@ namespace Input
         [SerializeField] private Transform _forwardLook;
 
         [SerializeField] private bool _moveUsingKeyboard;
-        [SerializeField] private float _movementSpeed = 1.0f;
+        [SerializeField] private float _movementSpeed = 1.5f;
+        [SerializeField] private float _rotateSpeed = 50.0f;
 
         private PlayerInputController _inputController;
 
@@ -60,20 +61,30 @@ namespace Input
         {
             _forwardLook.eulerAngles = new Vector3(0f, _camera.eulerAngles.y, 0f);
 
-            Vector2 input = _inputController.InputJoystick.LeftJoystickInput;
-            Vector2 inputHTC = _inputController.InputJoystick.LeftJoystickInputHTC;
-            float trackpadTouched = _inputController.InputJoystick.LeftTrackpadTouched;
+            Vector2 inputLeft = _inputController.InputJoystick.LeftJoystickInput;
+            Vector2 inputLeftHTC = _inputController.InputJoystick.LeftJoystickInputHTC;
+            float trackpadTouchedLeft = _inputController.InputJoystick.LeftTrackpadTouched;
+
+            Vector2 inputRight = _inputController.InputJoystick.RightJoystickInput;
+            Vector2 inputRightHTC = _inputController.InputJoystick.RightJoystickInputHTC;
+            float trackpadTouchedRight = _inputController.InputJoystick.RightTrackpadTouched;
 
             //move forward and backwards
-            if (Math.Abs(input.y) >= 0.5f ^ (Math.Abs(inputHTC.y) >= 0.5f && trackpadTouched > 0.5f))
+            if (Math.Abs(inputLeft.y) >= 0.5f ^ (Math.Abs(inputLeftHTC.y) >= 0.5f && trackpadTouchedLeft > 0.5f))
             {
-                _XRRig.transform.position += _forwardLook.forward * ((input.y + inputHTC.y) * _movementSpeed * Time.deltaTime);
+                _XRRig.transform.position += _forwardLook.forward * ((inputLeft.y + inputLeftHTC.y) * _movementSpeed * Time.deltaTime);
             }
             
             //move left and right
-            if (Math.Abs(input.x) >= 0.5f ^ (Math.Abs(inputHTC.x) >= 0.5f && trackpadTouched > 0.5f))
+            if (Math.Abs(inputLeft.x) >= 0.5f ^ (Math.Abs(inputLeftHTC.x) >= 0.5f && trackpadTouchedLeft > 0.5f))
             {
-                _XRRig.transform.position += _forwardLook.right * ((input.x + inputHTC.x) * _movementSpeed * Time.deltaTime);
+                _XRRig.transform.position += _forwardLook.right * ((inputLeft.x + inputLeftHTC.x) * _movementSpeed * Time.deltaTime);
+            }
+
+            //turn right and left
+            if (Math.Abs(inputRight.x) >= 0.5f ^ (Math.Abs(inputRightHTC.x) >= 0.5f && trackpadTouchedRight > 0.5f))
+            {
+                _XRRig.transform.Rotate(0, inputRightHTC.x * _rotateSpeed * Time.deltaTime, 0);
             }
         }
     }

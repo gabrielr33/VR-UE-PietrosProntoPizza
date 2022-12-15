@@ -76,6 +76,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Joystick_Right",
+                    "type": "Value",
+                    "id": "7915cdb7-5171-4c6d-84b9-5e53f898f6ad",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -243,6 +252,17 @@
                     "action": "Joystick_Left",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "97db287b-00a1-4685-9075-4526c042aec4",
+                    "path": "<OculusTouchController>{RightHand}/thumbstick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Joystick_Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -263,6 +283,24 @@
                     "name": "TrackpadTouched_Left",
                     "type": "PassThrough",
                     "id": "d41e66e1-1751-4618-bfec-230fe7ebd4bf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Joystick_Right",
+                    "type": "Value",
+                    "id": "9c4d15f6-3851-42de-b928-6635795c5b9a",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "TrackpadTouched_Right",
+                    "type": "PassThrough",
+                    "id": "5af4f6b8-e8ae-46ff-b6fb-ae005bf8e484",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -289,6 +327,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "TrackpadTouched_Left",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ba0787de-8694-4e90-956e-0a3967a58d4d",
+                    "path": "<ViveController>{RightHand}/trackpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Joystick_Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "52123498-a384-4ad7-9941-2556d42187e4",
+                    "path": "<ViveController>{RightHand}/trackpadTouched",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TrackpadTouched_Right",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

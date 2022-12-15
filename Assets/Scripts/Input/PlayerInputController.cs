@@ -30,6 +30,16 @@ namespace Input
                 _inputActions.VRControllers.Joystick_Left.performed +=
                     i => InputJoystick.LeftJoystickInput = i.ReadValue<Vector2>();
 
+                _inputActions.VRControllers.Joystick_Right.performed +=
+                    i => InputJoystick.RightJoystickInput = i.ReadValue<Vector2>();
+
+
+                _inputActions.VRControllerHTC.Joystick_Right.performed +=
+                    i => InputJoystick.RightJoystickInputHTC = i.ReadValue<Vector2>();
+
+                _inputActions.VRControllerHTC.TrackpadTouched_Right.performed +=
+                    i => InputJoystick.RightTrackpadTouched = i.ReadValue<float>();
+
                 _inputActions.VRControllerHTC.Joystick_Left.performed +=
                     i => InputJoystick.LeftJoystickInputHTC = i.ReadValue<Vector2>();
 
@@ -69,6 +79,11 @@ namespace Input
     public class InputJoystick
     {
         public Vector2 LeftJoystickInput;
+        public Vector2 RightJoystickInput;
+
+        public Vector2 RightJoystickInputHTC;
+        public float RightTrackpadTouched;
+
         public Vector2 LeftJoystickInputHTC;
         public float LeftTrackpadTouched;
     }
