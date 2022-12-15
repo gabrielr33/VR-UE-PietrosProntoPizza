@@ -4257,7 +4257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 1299557815}
-  _vrMode: 1
+  _vrMode: 0
   _menus:
   - {fileID: 235368228}
   - {fileID: 315608099}

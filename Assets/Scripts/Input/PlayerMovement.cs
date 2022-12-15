@@ -9,7 +9,7 @@ namespace Input
         [SerializeField] private Transform _camera;
         [SerializeField] private Transform _forwardLook;
 
-        [SerializeField] private bool _moveUsingKeyboard;
+        //[SerializeField] private bool _moveUsingKeyboard;
         [SerializeField] private float _movementSpeed = 1.5f;
         [SerializeField] private float _rotateSpeed = 50.0f;
 
@@ -22,10 +22,13 @@ namespace Input
 
         private void Update()
         {
-            if (_moveUsingKeyboard)
-                HandleMovementWithKeyboard();
+            /*if (_moveUsingKeyboard)
+                
             else
-                HandleMovementWithController();
+                HandleMovementWithController();*/
+
+            HandleMovementWithKeyboard();
+            HandleMovementWithController();
         }
 
         private void HandleMovementWithKeyboard()
