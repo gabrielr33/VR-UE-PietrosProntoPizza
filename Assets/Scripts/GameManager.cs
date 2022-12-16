@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviourPun
 
     [SerializeField] private Oven _oven;
     [SerializeField] private BillboardButtonManager _billboardButtonManager;
-    [SerializeField] private PlateSpawner _plateSpawner;
+    [SerializeField] private List<PlateSpawner> _plateSpawner;
 
     private bool _isMasterClient;
 
@@ -114,12 +114,13 @@ public class GameManager : MonoBehaviourPun
     {
         if (!_isMasterClient)
             return;
-        
+
         StopAllCoroutines();
         _gameStarted = false;
         _orderManager.RemoveAllOrdersAndCustomers();
         _oven.ClearOven();
-        _plateSpawner.RemoveAllPlatesInScene();
+        foreach (PlateSpawner spawner in _plateSpawner)
+            spawner.RemoveAllPlatesInScene();
     }
 
     private void CheckForFreeTablesAndSpawnCustomers()
