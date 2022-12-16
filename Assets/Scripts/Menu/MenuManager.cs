@@ -1,7 +1,4 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
-using UnityEngine.Video;
 using UnityEngine.XR.Interaction.Toolkit.UI;
 
 namespace Menu
@@ -9,13 +6,14 @@ namespace Menu
     public class MenuManager : MonoBehaviour
     {
         public static MenuManager Instance;
-        private Canvas _canvas;
-        [SerializeField] private Camera _camera;
-        private GameObject _eventSystem;
 
         [SerializeField] private bool _vrMode = false;
-        [SerializeField] private global::Menu.Menu[] _menus;
-    
+        [SerializeField] private Camera _camera;
+        [SerializeField] private Menu[] _menus;
+
+        private Canvas _canvas;
+        private GameObject _eventSystem;
+
         void Awake()
         {
             Instance = this;
@@ -26,7 +24,8 @@ namespace Menu
             _canvas = GetComponent<Canvas>();
             _eventSystem = GameObject.Find("EventSystem");
 
-            if(_canvas != null && _camera != null && _eventSystem != null){
+            if (_canvas != null && _camera != null && _eventSystem != null)
+            {
                 if (_vrMode)
                 {
                     _canvas.renderMode = RenderMode.WorldSpace;
@@ -43,16 +42,17 @@ namespace Menu
             }
         }
 
-        public void OpenMenu(global::Menu.Menu menuToOpen)
+        public void OpenMenu(Menu menuToOpen)
         {
             foreach (var menu in _menus)
             {
                 if (menu.open || menu.gameObject.activeSelf)
                     CloseMenu(menu);
             }
+
             menuToOpen.Open();
         }
-    
+
         public void OpenMenu(string menuName)
         {
             foreach (var menu in _menus)
@@ -64,8 +64,8 @@ namespace Menu
                     CloseMenu(menu);
             }
         }
-    
-        public void CloseMenu(global::Menu.Menu menu)
+
+        public void CloseMenu(Menu menu)
         {
             menu.Close();
         }

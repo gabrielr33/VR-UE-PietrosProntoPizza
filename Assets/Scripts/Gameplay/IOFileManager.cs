@@ -49,5 +49,7 @@ namespace Gameplay
         public string CustomerNamesFemale { get; set; }
         public int CustomerMinWaitTime { get; set; }
         public int CustomerMaxWaitTime { get; set; }
+        public int CustomerSpawnSpeed { get; set; }
+        public int GameTime { get; set; }
     }
 }

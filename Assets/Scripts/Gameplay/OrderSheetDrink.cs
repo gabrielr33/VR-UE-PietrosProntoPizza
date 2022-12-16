@@ -52,5 +52,10 @@ namespace Gameplay
                    Order.Drink.drinkName == otherSheet.Order.Drink.drinkName &&
                    Order.MaxWaitTimeInSec == otherSheet.Order.MaxWaitTimeInSec;
         }
+        
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }
