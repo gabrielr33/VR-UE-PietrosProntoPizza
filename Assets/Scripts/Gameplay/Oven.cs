@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using UnityEngine;
 
 namespace Gameplay
@@ -85,13 +86,13 @@ namespace Gameplay
                 Debug.Log("No free pizza slots right now!");
         }
 
-        private IEnumerator WaitForLerp1AndStartBaking( Pizza pizza)
+        private IEnumerator WaitForLerp1AndStartBaking(Pizza pizza)
         {
             yield return new WaitForSeconds(2.5f);
             _lerpPizza1 = false;
             pizza.StartPizzaBakingProcess();
         }
-        
+
         private IEnumerator WaitForLerp2AndStartBaking(Pizza pizza)
         {
             yield return new WaitForSeconds(2.5f);
@@ -102,24 +103,42 @@ namespace Gameplay
         public void RemovePizzaFromPizzaSlotIfAssigned(Pizza pizza)
         {
             Transform slot = null;
-            
+
             foreach (KeyValuePair<Transform, Pizza> kvp in _pizzaSlotsDictionary)
             {
                 if (kvp.Value == pizza)
                 {
                     slot = kvp.Key;
-                    
+
                     if (slot.Equals(_pizzaSlot1))
                         StopCoroutine(_routine1);
                     else if (slot.Equals(_pizzaSlot2))
                         StopCoroutine(_routine2);
-                    
+
                     break;
                 }
             }
 
             if (slot != null)
                 _pizzaSlotsDictionary[slot] = null;
+        }
+
+        public void ClearOven()
+        {
+            StopAllCoroutines();
+            _pizzaSlotsDictionary.Clear();
+            _pizzaTransform = null;
+            _lerpPizza1 = false;
+            _lerpPizza2 = false;
+
+            if (!PhotonNetwork.IsMasterClient)
+                return;
+
+            if (_pizzaSlot1.childCount > 0)
+                PhotonNetwork.Destroy(_pizzaSlot1.GetChild(0).gameObject);
+
+            if (_pizzaSlot2.childCount > 0)
+                PhotonNetwork.Destroy(_pizzaSlot2.GetChild(0).gameObject);
         }
     }
 }

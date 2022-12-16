@@ -6356,6 +6356,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1280312246281893730, guid: 151ba080ad432a746bd2b5897fae4f00,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 2724050862782987205, guid: 151ba080ad432a746bd2b5897fae4f00,
         type: 3}
       propertyPath: m_RootOrder
@@ -6411,15 +6416,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3025062475536133501, guid: 151ba080ad432a746bd2b5897fae4f00,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.41409382
+      objectReference: {fileID: 0}
     - target: {fileID: 3352390608381993343, guid: 151ba080ad432a746bd2b5897fae4f00,
         type: 3}
       propertyPath: m_Name
       value: Pizzeria
       objectReference: {fileID: 0}
+    - target: {fileID: 3500756214803235468, guid: 151ba080ad432a746bd2b5897fae4f00,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.0009765625
+      objectReference: {fileID: 0}
     - target: {fileID: 4512907659396078856, guid: 151ba080ad432a746bd2b5897fae4f00,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5152184461406458256, guid: 151ba080ad432a746bd2b5897fae4f00,
+        type: 3}
+      propertyPath: m_fontSizeBase
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 9035237917758365195, guid: 151ba080ad432a746bd2b5897fae4f00,
         type: 3}
@@ -6440,6 +6460,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07964603ee0496e4cab6fe7fbce7595c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &1315147070 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5121148932657913249, guid: 151ba080ad432a746bd2b5897fae4f00,
+    type: 3}
+  m_PrefabInstance: {fileID: 1315147068}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1321900824
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6751,7 +6777,9 @@ MonoBehaviour:
   _startPositionWaiter: {fileID: 1407424979}
   _XRRig: {fileID: 1725982592}
   _orderManager: {fileID: 822711791}
+  _oven: {fileID: 0}
   _billboardButtonManager: {fileID: 1315147069}
+  _plateSpawner: {fileID: 0}
 --- !u!114 &1394918445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9186,6 +9214,82 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 623e1d6c9b2765e4394c9da8589ec7a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1893293987
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1893293988}
+  - component: {fileID: 1893293990}
+  - component: {fileID: 1893293989}
+  m_Layer: 0
+  m_Name: Pizza_Icon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1893293988
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893293987}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.00000015347}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1315147070}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -149.1, y: 123}
+  m_SizeDelta: {x: 340, y: 300}
+  m_Pivot: {x: 1, y: 1}
+--- !u!114 &1893293989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893293987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 40bf920b27e24da45a83199867dc4e69, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1893293990
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893293987}
+  m_CullTransparentMesh: 1
 --- !u!1 &1913427570
 GameObject:
   m_ObjectHideFlags: 0

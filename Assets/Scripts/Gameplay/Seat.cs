@@ -15,10 +15,13 @@ namespace Gameplay
         [SerializeField] private PizzaSeatTrigger _pizzaTrigger;
         [SerializeField] private DrinkSeatTrigger _drinkTrigger;
 
+        private Table _table;
         private Customer _customer;
 
-        public Order SpawnCustomer(int tableNumber, OrderManager orderManager)
+        public Order SpawnCustomer(Table table, OrderManager orderManager)
         {
+            _table = table;
+            
             Random rand = new Random();
 
             List<Customer> customerPrefabs = _prefabsManager.CustomerPrefabs;
@@ -31,7 +34,7 @@ namespace Gameplay
             _pizzaTrigger.gameObject.SetActive(true);
             _drinkTrigger.gameObject.SetActive(true);
 
-            return _customer.GenerateOrder(_prefabsManager, orderManager, tableNumber, this);
+            return _customer.GenerateOrder(_prefabsManager, orderManager, table.TableNumber, this);
         }
 
         public void PizzaReceived(Pizza pizza)
@@ -56,8 +59,14 @@ namespace Gameplay
             _drinkTrigger.gameObject.SetActive(false);
             _pizzaTrigger.ClearPizzaFromTrigger();
             _drinkTrigger.ClearDrinkFromTrigger();
-            _customer = null;
             IsOccupied = false;
+            _table.CustomerLeft();
+        }
+
+        public void RemoveCustomer()
+        {
+            if (_customer != null)
+                PhotonNetwork.Destroy(_customer.gameObject);
         }
     }
 }

@@ -18,7 +18,9 @@ public class GameManager : MonoBehaviourPun
 
     [SerializeField] private OrderManager _orderManager;
 
+    [SerializeField] private Oven _oven;
     [SerializeField] private BillboardButtonManager _billboardButtonManager;
+    [SerializeField] private PlateSpawner _plateSpawner;
 
     private bool _isMasterClient;
 
@@ -26,6 +28,7 @@ public class GameManager : MonoBehaviourPun
     private decimal _gameScore; // ranges from 0 to 5
 
     private int _playerCount = 0;
+    private bool _gameStarted;
 
     private void Awake()
     {
@@ -64,19 +67,59 @@ public class GameManager : MonoBehaviourPun
             return;
 
         _playerCount++;
-
-        // if (_playerCount >= 2)
-        // {
-        _orderManager.SpawnNewCustomers();
-        StartCoroutine(WaitForNextCustomerSpawn());
-        //}
     }
 
-    private IEnumerator WaitForNextCustomerSpawn()
+    public void AddReviewToGameScore(decimal review, bool drinkServed)
     {
-        yield return new WaitForSeconds(GameValues.CustomerSpawnSpeed);
+        if (!_isMasterClient || !_gameStarted)
+            return;
+
+        _reviews.Add(review);
+        _gameScore = _reviews.Average();
+
+        GameResultValues.ReviewScore = _gameScore;
+
+        if (review > 0)
+        {
+            GameResultValues.ServedCustomers++;
+            GameResultValues.CorrectlyServedPizzas++;
+        }
+
+        if (drinkServed)
+            GameResultValues.CorrectlyServedDrinks++;
+    }
+
+    public void StartGame(GameMode gameMode)
+    {
+        if (!_isMasterClient) // || _playerCount < 2
+            return;
+
+        _gameStarted = true;
+
+        StopAllCoroutines();
+        _reviews.Clear();
+        _gameScore = 0;
+        GameResultValues.ReviewScore = 0;
+        GameResultValues.ServedCustomers = 0;
+        GameResultValues.TotalCustomers = 0;
+        GameResultValues.CorrectlyServedPizzas = 0;
+        GameResultValues.CorrectlyServedDrinks = 0;
 
         CheckForFreeTablesAndSpawnCustomers();
+
+        photonView.RPC("StartGame", RpcTarget.All, (int)gameMode);
+    }
+
+    public void GameEnded()
+    {
+        if (!_isMasterClient)
+            return;
+        
+        StopAllCoroutines();
+        _gameStarted = false;
+        _orderManager.RemoveAllOrdersAndCustomers();
+        _oven.ClearOven();
+        _plateSpawner.RemoveAllPlatesInScene();
     }
 
     private void CheckForFreeTablesAndSpawnCustomers()
@@ -89,21 +132,11 @@ public class GameManager : MonoBehaviourPun
         StartCoroutine(WaitForNextCustomerSpawn());
     }
 
-    public void AddReviewToGameScore(decimal review)
+    private IEnumerator WaitForNextCustomerSpawn()
     {
-        _reviews.Add(review);
-        _gameScore = _reviews.Average();
+        yield return new WaitForSeconds(GameValues.CustomerSpawnSpeed / ((int)_billboardButtonManager.GameMode + 1));
 
-        GameResultValues.ReviewScore = _gameScore;
-    }
-
-    public void StartGame(GameMode gameMode)
-    {
-        StopAllCoroutines();
-        _reviews.Clear();
-        _gameScore = 0;
-
-        photonView.RPC("StartGame", RpcTarget.All, (int)gameMode);
+        CheckForFreeTablesAndSpawnCustomers();
     }
 
     [PunRPC]
@@ -117,6 +150,7 @@ public class GameResultValues
 {
     public decimal ReviewScore { get; set; }
     public int ServedCustomers { get; set; }
+    public int TotalCustomers { get; set; }
     public int CorrectlyServedPizzas { get; set; }
     public int CorrectlyServedDrinks { get; set; }
 }

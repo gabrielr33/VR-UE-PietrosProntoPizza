@@ -17,6 +17,9 @@ namespace Gameplay
 
         public void SpawnNewCustomers()
         {
+            if (!PhotonNetwork.IsMasterClient)
+                return;
+
             Random rand = new Random();
 
             // Shuffle seats list
@@ -39,7 +42,8 @@ namespace Gameplay
         }
 
         [PunRPC]
-        private void SpawnNewOrderPostIt(int tableNumber, string customerName, int pizzaIndex, int drinkIndex, int maxWaitTime)
+        private void SpawnNewOrderPostIt(int tableNumber, string customerName, int pizzaIndex, int drinkIndex,
+            int maxWaitTime)
         {
             Order order = new Order()
             {
@@ -56,16 +60,27 @@ namespace Gameplay
             OrderSheetDrink sheetDrink = Instantiate(_orderSheetDrinkPrefab, _orderSheetDrinkTransform);
             sheetDrink.SetUp(order);
         }
-        
+
         public void RemovePizzaOrderSheet(Order order)
+        {
+            if (!PhotonNetwork.IsMasterClient)
+                return;
+
+            photonView.RPC("DestroyPizzaOrderSheet", RpcTarget.All, order.TableNumber, order.CustomerName,
+                order.Pizza.pizzaName, order.Drink.drinkName, order.MaxWaitTimeInSec);
+        }
+
+        [PunRPC]
+        private void DestroyPizzaOrderSheet(int tableNumber, string customerName, string pizzaName, string drinkName,
+            int maxWaitTime)
         {
             foreach (OrderSheetPizza orderSheet in _orderSheetPizzaTransform.GetComponentsInChildren<OrderSheetPizza>())
             {
-                if (orderSheet.Order.TableNumber == order.TableNumber &&
-                    orderSheet.Order.CustomerName == order.CustomerName &&
-                    orderSheet.Order.Pizza.pizzaName == order.Pizza.pizzaName &&
-                    orderSheet.Order.Drink.drinkName == order.Drink.drinkName &&
-                    orderSheet.Order.MaxWaitTimeInSec == order.MaxWaitTimeInSec)
+                if (orderSheet.Order.TableNumber == tableNumber &&
+                    orderSheet.Order.CustomerName == customerName &&
+                    orderSheet.Order.Pizza.pizzaName == pizzaName &&
+                    orderSheet.Order.Drink.drinkName == drinkName &&
+                    orderSheet.Order.MaxWaitTimeInSec == maxWaitTime)
                 {
                     Destroy(orderSheet.gameObject);
                 }
@@ -74,17 +89,46 @@ namespace Gameplay
 
         public void RemoveDrinkOrderSheet(Order order)
         {
+            if (!PhotonNetwork.IsMasterClient)
+                return;
+
+            photonView.RPC("DestroyDrinkOrderSheet", RpcTarget.All, order.TableNumber, order.CustomerName,
+                order.Pizza.pizzaName, order.Drink.drinkName, order.MaxWaitTimeInSec);
+        }
+
+        [PunRPC]
+        private void DestroyDrinkOrderSheet(int tableNumber, string customerName, string pizzaName, string drinkName,
+            int maxWaitTime)
+        {
             foreach (OrderSheetDrink orderSheet in _orderSheetDrinkTransform.GetComponentsInChildren<OrderSheetDrink>())
             {
-                if (orderSheet.Order.TableNumber == order.TableNumber &&
-                    orderSheet.Order.CustomerName == order.CustomerName &&
-                    orderSheet.Order.Pizza.pizzaName == order.Pizza.pizzaName &&
-                    orderSheet.Order.Drink.drinkName == order.Drink.drinkName &&
-                    orderSheet.Order.MaxWaitTimeInSec == order.MaxWaitTimeInSec)
+                if (orderSheet.Order.TableNumber == tableNumber &&
+                    orderSheet.Order.CustomerName == customerName &&
+                    orderSheet.Order.Pizza.pizzaName == pizzaName &&
+                    orderSheet.Order.Drink.drinkName == drinkName &&
+                    orderSheet.Order.MaxWaitTimeInSec == maxWaitTime)
                 {
                     Destroy(orderSheet.gameObject);
                 }
             }
+        }
+
+        public void RemoveAllOrdersAndCustomers()
+        {
+            photonView.RPC("RemoveOrdersAndCustomers", RpcTarget.All);
+            
+            foreach (Table table in _tables)
+                table.RemoveAllCustomers();
+        }
+
+        [PunRPC]
+        private void RemoveOrdersAndCustomers()
+        {
+            foreach (OrderSheetPizza orderSheet in _orderSheetPizzaTransform.GetComponentsInChildren<OrderSheetPizza>())
+                Destroy(orderSheet.gameObject);
+
+            foreach (OrderSheetDrink orderSheet in _orderSheetDrinkTransform.GetComponentsInChildren<OrderSheetDrink>())
+                Destroy(orderSheet.gameObject);
         }
     }
 }

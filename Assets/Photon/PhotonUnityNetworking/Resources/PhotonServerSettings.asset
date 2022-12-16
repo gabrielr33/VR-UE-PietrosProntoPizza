@@ -48,6 +48,10 @@ MonoBehaviour:
   - SetAnimatorControllerValues
   - SetCustomerName
   - StartGame
+  - GenerateReviewText
+  - DestroyDrinkOrderSheet
+  - DestroyPizzaOrderSheet
+  - RemoveOrdersAndCustomers
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

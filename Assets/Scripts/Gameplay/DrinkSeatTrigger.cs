@@ -1,4 +1,5 @@
 using Networking;
+using Photon.Pun;
 using UnityEngine;
 
 namespace Gameplay
@@ -21,7 +22,7 @@ namespace Gameplay
         {
             _lerpDrink = false;
             if (_drinkTransform != null && _drinkTransform.childCount > 0)
-                Destroy(_drinkTransform.GetChild(0).gameObject);
+                PhotonNetwork.Destroy(_drinkTransform.GetChild(0).gameObject);
         }
         
         private void OnTriggerEnter(Collider other)

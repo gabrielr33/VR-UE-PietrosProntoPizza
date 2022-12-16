@@ -1,4 +1,5 @@
 using Networking;
+using Photon.Pun;
 using UnityEngine;
 
 namespace Gameplay
@@ -23,7 +24,7 @@ namespace Gameplay
         {
             _lerpPizza = false;
             if (_plateTransform != null && _plateTransform.childCount > 0)
-                Destroy(_plateTransform.GetChild(0).gameObject);
+                PhotonNetwork.Destroy(_plateTransform.GetChild(0).gameObject);
         }
         
         private void OnTriggerEnter(Collider other)

@@ -15,9 +15,6 @@ namespace Gameplay
 
         [SerializeField] private TMP_Text _customerNameText;
         [SerializeField] private Transform _floatingReviewStartPos;
-        // [SerializeField] private PizzaType _orderedPizza;
-        // [SerializeField] private DrinkType _orderedDrink;
-        [SerializeField] private bool _testCompare;
 
         private GameManager _gameManager;
         private PrefabsManager _prefabsManager;
@@ -63,6 +60,8 @@ namespace Gameplay
             _orderManager = orderManager;
             
             _seat = seat;
+
+            _gameManager.GameResultValues.TotalCustomers++;
 
             List<PizzaType> pizzaTypes = prefabsManager.PizzaTypes;
             List<DrinkType> drinkTypes = prefabsManager.DrinkTypes;
@@ -136,18 +135,6 @@ namespace Gameplay
         {
             _customerNameText.transform.LookAt(_cameraTransform.position);
             _customerNameText.transform.Rotate(0f, 180f, 0f);
-
-            if (_testCompare)
-            {
-                CompareReceivedPizzaWithOrder(new Pizza() { Ingredients = new List<PizzaIngredient>()
-                    {
-                        PizzaIngredient.Mozzarella,
-                        PizzaIngredient.Egg,
-                        PizzaIngredient.Bacon,
-                        PizzaIngredient.TomatoSauce
-                    }});
-                _testCompare = false;
-            }
         }
 
         private IEnumerator StartWaitingProcedure(int waitTime)
@@ -162,29 +149,38 @@ namespace Gameplay
             Debug.Log("Order expired!");
 
             GenerateVisibleReviewInScene(0);
-            RemoveOrderAndAddReview(0);
+            RemoveOrderAndAddReview(0, false);
             StartCoroutine(DisappearAfterSeconds(0f));
         }
 
         private void CustomerReceivedPizza(decimal review)
         {
             GenerateVisibleReviewInScene(review);
-            RemoveOrderAndAddReview(review);
+            RemoveOrderAndAddReview(review, _receivedDrink != null);
             StartCoroutine(DisappearAfterSeconds(5f));
         }
         
         private void GenerateVisibleReviewInScene(decimal review)
         {
+            if (!PhotonNetwork.IsMasterClient)
+                return;
+            
+            photonView.RPC("GenerateReviewText", RpcTarget.All, (int)review);
+        }
+
+        [PunRPC]
+        private void GenerateReviewText(int review)
+        {
             FloatingReviewText text = Instantiate(_prefabsManager.ReviewText, _floatingReviewStartPos.position, Quaternion.identity, _floatingReviewStartPos);
             text.SetUp(review);
         }
 
-        private void RemoveOrderAndAddReview(decimal review)
+        private void RemoveOrderAndAddReview(decimal review, bool drinkServed)
         {
             StopAllCoroutines();
             _orderManager.RemoveDrinkOrderSheet(_order);
             _orderManager.RemovePizzaOrderSheet(_order);
-            _gameManager.AddReviewToGameScore(review);
+            _gameManager.AddReviewToGameScore(review, drinkServed);
         }
 
         private IEnumerator DisappearAfterSeconds(float sec)
@@ -192,14 +188,11 @@ namespace Gameplay
             yield return new WaitForSeconds(sec);
 
             _seat.FinishedEating();
-            GetUpAndDisappear();
-        }
-
-        private void GetUpAndDisappear()
-        {
             SetAnimatorControllerState(CustomerAnimationState.SitToStand);
             
-            // TODO seat back
+            yield return new WaitForSeconds(3);
+            
+            PhotonNetwork.Destroy(gameObject);
         }
     }
 

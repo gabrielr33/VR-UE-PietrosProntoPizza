@@ -6,6 +6,8 @@ namespace Gameplay
 {
     public class BillboardButtonManager : MonoBehaviour
     {
+        public GameMode GameMode { get; private set; }
+        
         [SerializeField] private TMP_Text _countdownTimerText;
         [SerializeField] private Button _startGameButton;
         [SerializeField] private Button _stopGameButton;
@@ -15,7 +17,6 @@ namespace Gameplay
         [SerializeField] private TMP_Text _resultsBillboardText;
 
         private GameManager _gameManager;
-        private GameMode _gameMode;
 
         // Countdown
         [SerializeField] private bool _countdownStarted;
@@ -48,9 +49,11 @@ namespace Gameplay
                     ResetGameValues();
                     _resultsBillboard.SetActive(true);
 
+                    _gameManager.GameEnded();
+                    
                     GameResultValues values = _gameManager.GameResultValues;
                     _resultsBillboardText.text =
-                        $"\n\n{values.ReviewScore}/5.0\n\n{values.ServedCustomers}\n\n{values.CorrectlyServedPizzas}/{values.ServedCustomers}\n{values.CorrectlyServedDrinks}/{values.ServedCustomers}";
+                        $"\n\n{values.ReviewScore}/5.0\n\n{values.ServedCustomers}/{values.TotalCustomers}\n\n{values.CorrectlyServedPizzas}/{values.TotalCustomers}\n{values.CorrectlyServedDrinks}/{values.TotalCustomers}";
                 }
             }
         }
@@ -85,7 +88,7 @@ namespace Gameplay
             {
                 Toggle toggle = _toggleGroup.GetChild(i).GetComponent<Toggle>();
                 if (toggle.isOn)
-                    _gameMode = (GameMode)i;
+                    GameMode = (GameMode)i;
 
                 toggle.interactable = false;
             }
@@ -93,7 +96,7 @@ namespace Gameplay
             _startGameButton.interactable = false;
             _stopGameButton.interactable = true;
 
-            _gameManager.StartGame(_gameMode);
+            _gameManager.StartGame(GameMode);
             _countdownStarted = true;
             _resultsBillboard.SetActive(false);
         }
