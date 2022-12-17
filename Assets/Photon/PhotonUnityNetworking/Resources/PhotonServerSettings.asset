@@ -34,27 +34,29 @@ MonoBehaviour:
   RunInBackground: 1
   StartInOfflineMode: 0
   RpcList:
+  - AttachPizzaToPizzaShovel
+  - AttachPizzaToPlate
   - CantHearYou
-  - ClickRpc
-  - DestroyRpc
-  - DestroySpaceship
-  - Fire
-  - HeresWhy
-  - RespawnSpaceship
   - ChangeColour
-  - SetOwner
-  - SpawnNewOrderPostIt
-  - NewPlayerSpawned
-  - SetAnimatorControllerValues
-  - SetCustomerName
-  - StartGame
-  - GenerateReviewText
+  - ClickRpc
   - DestroyDrinkOrderSheet
   - DestroyPizzaOrderSheet
-  - RemoveOrdersAndCustomers
-  - SetCustomerAnimation
-  - SetPlayerListText
+  - DestroyRpc
+  - DestroySpaceship
   - EnableIngredientForOthers
+  - Fire
+  - GenerateReviewText
+  - HeresWhy
+  - NewPlayerSpawned
+  - RemoveOrdersAndCustomers
+  - RespawnSpaceship
+  - SetAnimatorControllerValues
+  - SetCustomerAnimation
+  - SetCustomerName
+  - SetOwner
+  - SetPlayerListText
+  - SpawnNewOrderPostIt
+  - StartGame
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

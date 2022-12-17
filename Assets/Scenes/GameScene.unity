@@ -2756,6 +2756,11 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4541758823501695474, guid: 3bb59f11953a5c0438fd8229656cc95a,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8175896223050093033, guid: 3bb59f11953a5c0438fd8229656cc95a,
         type: 3}
       propertyPath: _pizzaOven
@@ -4266,6 +4271,11 @@ PrefabInstance:
         type: 3}
       propertyPath: OwnershipTransfer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541758823501695474, guid: 3bb59f11953a5c0438fd8229656cc95a,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 8175896223050093033, guid: 3bb59f11953a5c0438fd8229656cc95a,
         type: 3}
