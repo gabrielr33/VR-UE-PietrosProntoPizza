@@ -48,13 +48,13 @@ public class GameManager : MonoBehaviourPun
     private void SpawnPlayer()
     {
         // Distinguish between chef and waiter
-        if (_isMasterClient)
+        if (_isMasterClient && _XRRig.transform.position != _startPositionWaiter.position)
         {
             PhotonNetwork.Instantiate(Path.Combine("Prefabs\\Photon", "Player"), Vector3.zero, Quaternion.identity);
             _XRRig.transform.position = _startPositionWaiter.position;
             _XRRig.transform.rotation = _startPositionWaiter.rotation;
         }
-        else
+        else if (!_isMasterClient && _XRRig.transform.position != _startPositionChef.position)
         {
             PhotonNetwork.Instantiate(Path.Combine("Prefabs\\Photon", "Player"), Vector3.zero, Quaternion.identity);
             _XRRig.transform.position = _startPositionChef.position;

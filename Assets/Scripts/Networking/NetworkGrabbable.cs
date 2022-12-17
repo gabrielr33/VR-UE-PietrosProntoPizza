@@ -42,7 +42,12 @@ namespace Networking
                 {
                     Player pl = player.GetComponent<PhotonView>().Owner;
                     if (pl != null && pl.ActorNumber.Equals(newOwnerID))
+                    {
                         _pv.TransferOwnership(pl);
+                        
+                        foreach (PhotonView pv in GetComponentsInChildren<PhotonView>())
+                            pv.TransferOwnership(pl);
+                    }
                 }
             }
         }
