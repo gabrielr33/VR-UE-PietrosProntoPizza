@@ -38,6 +38,8 @@ namespace Networking
 
                 _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
                 _playerInputs = GetComponent<PlayerInputController>();
+
+                _body.GetComponent<MeshRenderer>().enabled = false;
             }
         }
 
@@ -55,6 +57,7 @@ namespace Networking
                 _head.rotation = _headRotation;
 
                 _body.position = new Vector3(_headPosition.x, _headPosition.y - 0.3f, _headPosition.z);
+                
 
                 _left.position = _leftControllerRoot.position;
                 _left.rotation = _leftControllerRoot.rotation;

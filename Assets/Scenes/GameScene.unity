@@ -8229,7 +8229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startPositionChef: {fileID: 1773315494}
   _startPositionWaiter: {fileID: 1407424979}
-  _XRRig: {fileID: 1725982592}
+  _XRRig: {fileID: 22387928}
   _orderManager: {fileID: 822711791}
   _oven: {fileID: 1720373308}
   _billboardButtonManager: {fileID: 1315147069}
