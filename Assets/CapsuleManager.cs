@@ -14,6 +14,7 @@ public class CapsuleManager : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
+        gameObject.transform.position = new Vector3(gameObject.transform.position.x, 0.0f, gameObject.transform.position.z);
     }
 
     // Update is called once per frame

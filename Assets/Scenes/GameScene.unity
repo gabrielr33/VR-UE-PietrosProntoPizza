@@ -319,6 +319,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5598652361584928377, guid: 8b70f85db02e3c2489e6efc09c3aed60,
+        type: 3}
+      propertyPath: m_GravityApplicationMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5598652361584928378, guid: 8b70f85db02e3c2489e6efc09c3aed60,
+        type: 3}
+      propertyPath: m_TurnSpeed
+      value: 45
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5598652360157782150, guid: 8b70f85db02e3c2489e6efc09c3aed60, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8b70f85db02e3c2489e6efc09c3aed60, type: 3}
@@ -417,8 +427,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   m_ValidColorGradient:
     serializedVersion: 2
-    key0: {r: 0, g: 0.46274513, b: 0.9921569, a: 0}
-    key1: {r: 0, g: 0.26666668, b: 0.5647059, a: 0}
+    key0: {r: 0, g: 0.46274513, b: 0.9921569, a: 1}
+    key1: {r: 0, g: 0.26666668, b: 0.5647059, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -446,8 +456,8 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   m_InvalidColorGradient:
     serializedVersion: 2
-    key0: {r: 0, g: 0.46666667, b: 1, a: 1}
-    key1: {r: 0, g: 0.2627451, b: 0.5568628, a: 1}
+    key0: {r: 0, g: 0.46666667, b: 1, a: 0}
+    key1: {r: 0, g: 0.2627451, b: 0.5568628, a: 0}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1671,8 +1681,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   m_ValidColorGradient:
     serializedVersion: 2
-    key0: {r: 0, g: 0.46274513, b: 0.9921569, a: 0}
-    key1: {r: 0, g: 0.26666668, b: 0.5647059, a: 0}
+    key0: {r: 0, g: 0.46274513, b: 0.9921569, a: 1}
+    key1: {r: 0, g: 0.26666668, b: 0.5647059, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -1700,8 +1710,8 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   m_InvalidColorGradient:
     serializedVersion: 2
-    key0: {r: 0, g: 0.46666667, b: 1, a: 1}
-    key1: {r: 0, g: 0.2627451, b: 0.5568628, a: 1}
+    key0: {r: 0, g: 0.46666667, b: 1, a: 0}
+    key1: {r: 0, g: 0.2627451, b: 0.5568628, a: 0}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -7786,6 +7796,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1315147079, guid: 151ba080ad432a746bd2b5897fae4f00, type: 3}
+      propertyPath: m_Size.z
+      value: 0.0020590944
+      objectReference: {fileID: 0}
+    - target: {fileID: 1315147079, guid: 151ba080ad432a746bd2b5897fae4f00, type: 3}
+      propertyPath: m_Center.z
+      value: 0.00093565084
+      objectReference: {fileID: 0}
     - target: {fileID: 13484582128807425, guid: 151ba080ad432a746bd2b5897fae4f00,
         type: 3}
       propertyPath: m_text
