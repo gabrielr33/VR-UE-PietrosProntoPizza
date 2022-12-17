@@ -17,7 +17,7 @@ namespace Gameplay
             AttachedPizza = pizzaShovel.AttachedPizza;
             AttachedPizza.CanBePickedUp = false;
             
-            Transform pizzaTransform = pizzaShovel.AttachedPizza.transform; 
+            Transform pizzaTransform = AttachedPizza.transform;
             pizzaTransform.SetParent(transform);
             pizzaTransform.localPosition = Vector3.zero;
             pizzaTransform.localRotation = Quaternion.identity;

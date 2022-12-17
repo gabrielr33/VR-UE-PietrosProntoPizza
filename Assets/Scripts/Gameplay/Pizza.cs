@@ -14,6 +14,7 @@ namespace Gameplay
 
         [SerializeField] private Transform _pizzaDough;
         [SerializeField] private List<Material> _pizzaDoughMaterials;
+        [SerializeField] private Ingredient _tomatoSauce;
 
         private int _bakingCounter = 0;
 
@@ -38,32 +39,31 @@ namespace Gameplay
                 return;
 
             Ingredients.Add(ingredient.IngredientType);
-            EnableIngredient(ingredient, other);
+            // EnableIngredient(ingredient, other);
+
+            if (photonView.Owner.Equals(PhotonNetwork.LocalPlayer))
+            {
+                if (ingredient.IngredientType.Equals(PizzaIngredient.TomatoSauce) && other.GetComponent<TomatoSauceFillingManager>().GetIsSpoonFilled())
+                {
+                        _tomatoSauce.gameObject.SetActive(true);
+                        other.GetComponent<TomatoSauceFillingManager>().EmptySpoon();
+                }
+                
+                photonView.RPC("EnableIngredientForOthers", RpcTarget.All, (int)ingredient.IngredientType);
+                
+                if (PhotonNetwork.LocalPlayer.Equals(ingredient.GetComponent<PhotonView>().Owner))
+                    PhotonNetwork.Destroy(ingredient.gameObject);
+            }
         }
 
-        private void EnableIngredient(Ingredient ingredient, Collider other)
+        [PunRPC]
+        private void EnableIngredientForOthers(int ingredientType)
         {
             foreach(Ingredient child in transform.GetComponentsInChildren<Ingredient>(true))
             {
-                if(child.IngredientType.Equals(ingredient.IngredientType))
+                if(child.IngredientType.Equals((PizzaIngredient)ingredientType))
                 {
-                    
-
-                    if (ingredient.IngredientType.Equals(PizzaIngredient.TomatoSauce))
-                    {
-                        if (other.GetComponent<TomatoSauceFillingManager>().GetIsSpoonFilled())
-                        {
-                            child.gameObject.SetActive(true);
-                            other.GetComponent<TomatoSauceFillingManager>().EmptySpoon();
-                        }                   
-                        break;
-                    }
-
                     child.gameObject.SetActive(true);
-
-                    if (PhotonNetwork.LocalPlayer.Equals(ingredient.GetComponent<PhotonView>().Owner))
-                        PhotonNetwork.Destroy(ingredient.gameObject);
-
                     break;
                 }
             }
@@ -79,12 +79,12 @@ namespace Gameplay
             Debug.Log("Pizza inserted in oven! Start baking!");
             CanBePickedUp = true;
             
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(4f);
 
             _bakingCounter++;
             SetPizzaBakingStage(_bakingCounter);
 
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(20f);
 
             _bakingCounter++;
             SetPizzaBakingStage(_bakingCounter);

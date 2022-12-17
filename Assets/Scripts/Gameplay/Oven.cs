@@ -56,8 +56,8 @@ namespace Gameplay
         {
             _pizzaTransform.localPosition =
                 Vector3.Lerp(_pizzaTransform.localPosition, Vector3.zero, Time.deltaTime * 1.5f);
-            // _pizzaTransform.localRotation =
-            //     Quaternion.Lerp(_pizzaTransform.localRotation, Quaternion.identity, Time.deltaTime * 1.5f);
+            _pizzaTransform.localRotation =
+                Quaternion.Lerp(_pizzaTransform.localRotation, Quaternion.identity, Time.deltaTime * 1.5f);
         }
 
         private void CheckForFreeSlot(Pizza pizza)
