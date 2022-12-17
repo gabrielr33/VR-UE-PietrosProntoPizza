@@ -13,7 +13,7 @@ namespace Gameplay
 
     public enum PizzaIngredient
     {
-        TomatoSauce = 1,
+        TomatoSauce,
         Mozzarella,
         Pepper,
         Salami,
