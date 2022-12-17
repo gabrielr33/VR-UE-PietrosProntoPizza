@@ -2608,9 +2608,6 @@ MonoBehaviour:
   <Name>k__BackingField: 
   _customerNameText: {fileID: 6369717048067202187}
   _floatingReviewStartPos: {fileID: 9115777094844463786}
-  _orderedPizza: {fileID: 0}
-  _orderedDrink: {fileID: 0}
-  _testCompare: 0
 --- !u!114 &1580518213159320956
 MonoBehaviour:
   m_ObjectHideFlags: 0

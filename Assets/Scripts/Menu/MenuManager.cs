@@ -38,13 +38,13 @@ namespace Menu
                     _canvas.renderMode = RenderMode.WorldSpace;
                     _canvas.worldCamera = _camera;
 
-                    transform.localScale = new Vector3(0.0015f, 0.0015f, 0.0015f);
-                    transform.position = _camera.transform.position + new Vector3(0.0f, 0.0f, 3.0f);
+                    _canvas.transform.localScale = new Vector3(0.0015f, 0.0015f, 0.0015f);
+                    _canvas.transform.position = _camera.transform.position + new Vector3(0.0f, 0.0f, 3.0f);
                 }
                 else
                 {
                     _canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-                    GetComponent<TrackedDeviceGraphicRaycaster>().enabled = false;
+                    _canvas.GetComponent<TrackedDeviceGraphicRaycaster>().enabled = false;
                 }
             }
         }
@@ -80,7 +80,7 @@ namespace Menu
         public void LoadData()
         {
             _camera = Camera.main;
-            _canvas = GetComponent<Canvas>();
+            _canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
             _eventSystem = GameObject.Find("EventSystem");
             _menus = GameObject.FindGameObjectsWithTag("Menu").Select(x => x.GetComponent<Menu>()).ToArray();
         }
