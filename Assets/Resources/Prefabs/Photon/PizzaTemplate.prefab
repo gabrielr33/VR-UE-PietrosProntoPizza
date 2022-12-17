@@ -598,7 +598,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: bc594b2186c1bc84fb02043d5c4de8ab, type: 2}
   - {fileID: 2100000, guid: 37d6e3cbf33648f41953d5018d92b517, type: 2}
   - {fileID: 2100000, guid: 62fde722b3374b746b258bc9ba10ec64, type: 2}
-  _tomateoSauce: {fileID: 2524409504601175634}
+  _tomatoSauce: {fileID: 2524409504601175634}
 --- !u!114 &331816449228119464
 MonoBehaviour:
   m_ObjectHideFlags: 0
