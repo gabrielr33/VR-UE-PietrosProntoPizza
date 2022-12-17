@@ -1,8 +1,10 @@
+using System.Linq;
+using Photon.Pun;
 using UnityEngine;
 
 namespace Gameplay
 {
-    public class PizzaShovel : MonoBehaviour
+    public class PizzaShovel : MonoBehaviourPun
     {
         [SerializeField] private Transform _pizzaPosition;
         [SerializeField] private Oven _pizzaOven;
@@ -17,11 +19,16 @@ namespace Gameplay
             if (pizza == null || AttachedPizza != null || !pizza.CanBePickedUp)
                 return;
 
-            AttachPizzaToPizzaShovel(pizza);
+            photonView.RPC("AttachPizzaToPizzaShovel", RpcTarget.All, pizza.photonView.ViewID);
+            // AttachPizzaToPizzaShovel(pizza);
         }
 
-        private void AttachPizzaToPizzaShovel(Pizza pizza)
+        [PunRPC]
+        private void AttachPizzaToPizzaShovel(int pizzaViewId)
         {
+            Pizza[] pizzas = GameObject.FindObjectsOfType<Pizza>();
+            Pizza pizza = pizzas.First(x => x.photonView.ViewID == pizzaViewId);
+            
             _pizzaOven.RemovePizzaFromPizzaSlotIfAssigned(pizza);
             pizza.StopBakingProcess();
             AttachedPizza = pizza;

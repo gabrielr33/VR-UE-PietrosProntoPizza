@@ -1,9 +1,10 @@
+using System.Linq;
 using Photon.Pun;
 using UnityEngine;
 
 namespace Gameplay
 {
-    public class PizzaPlate : MonoBehaviour
+    public class PizzaPlate : MonoBehaviourPun
     {
         public Pizza AttachedPizza { get; private set; }
         
@@ -13,8 +14,16 @@ namespace Gameplay
 
             if (pizzaShovel == null || pizzaShovel.AttachedPizza == null || AttachedPizza != null)
                 return;
+
+            photonView.RPC("AttachPizzaToPlate", RpcTarget.All, pizzaShovel.AttachedPizza.photonView.ViewID, pizzaShovel.photonView.ViewID);
+        }
+        
+        [PunRPC]
+        private void AttachPizzaToPlate(int pizzaViewId, int shovelViewId)
+        {
+            Pizza[] pizzas = GameObject.FindObjectsOfType<Pizza>();
             
-            AttachedPizza = pizzaShovel.AttachedPizza;
+            AttachedPizza = pizzas.First(x => x.photonView.ViewID == pizzaViewId);
             AttachedPizza.CanBePickedUp = false;
             
             Transform pizzaTransform = AttachedPizza.transform;
@@ -23,7 +32,8 @@ namespace Gameplay
             pizzaTransform.localRotation = Quaternion.identity;
             AttachedPizza.GetComponent<PhotonView>().enabled = false;
             
-            pizzaShovel.DetachPizza();
+            PizzaShovel[] shovels = GameObject.FindObjectsOfType<PizzaShovel>();
+            shovels.First(x => x.photonView.ViewID == shovelViewId).DetachPizza();
         }
     }
 }

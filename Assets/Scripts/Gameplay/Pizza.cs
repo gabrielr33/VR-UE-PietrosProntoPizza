@@ -38,9 +38,6 @@ namespace Gameplay
             if (ingredient == null || ingredient.IsContainer)
                 return;
 
-            Ingredients.Add(ingredient.IngredientType);
-            // EnableIngredient(ingredient, other);
-
             if (photonView.Owner.Equals(PhotonNetwork.LocalPlayer))
             {
                 if (ingredient.IngredientType.Equals(PizzaIngredient.TomatoSauce) && other.GetComponent<TomatoSauceFillingManager>().GetIsSpoonFilled())
@@ -59,6 +56,8 @@ namespace Gameplay
         [PunRPC]
         private void EnableIngredientForOthers(int ingredientType)
         {
+            Ingredients.Add((PizzaIngredient)ingredientType);
+            
             foreach(Ingredient child in transform.GetComponentsInChildren<Ingredient>(true))
             {
                 if(child.IngredientType.Equals((PizzaIngredient)ingredientType))
