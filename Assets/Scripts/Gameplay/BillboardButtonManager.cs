@@ -1,13 +1,17 @@
+using System.Text;
+using Photon.Pun;
+using Photon.Realtime;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Gameplay
 {
-    public class BillboardButtonManager : MonoBehaviour
+    public class BillboardButtonManager : MonoBehaviourPun
     {
         public GameMode GameMode { get; private set; }
         
+        [SerializeField] private TMP_Text _connectedPlayersText;
         [SerializeField] private TMP_Text _countdownTimerText;
         [SerializeField] private Button _startGameButton;
         [SerializeField] private Button _stopGameButton;
@@ -58,6 +62,27 @@ namespace Gameplay
             }
         }
 
+        public void UpdatePlayerListText(Player[] players)
+        {
+            if (!PhotonNetwork.IsMasterClient)
+                return;
+            
+            StringBuilder sb = new StringBuilder();
+            foreach (Player player in players)
+            {
+                sb.Append($"- {player.NickName}");
+                sb.Append("\n");
+            }
+            
+            photonView.RPC("SetPlayerListText", RpcTarget.All, sb.ToString());
+        }
+
+        [PunRPC]
+        private void SetPlayerListText(string text)
+        {
+            _connectedPlayersText.text = text;
+        }
+
         private void ResetGameValues()
         {
             _countdownStarted = false;
@@ -104,6 +129,11 @@ namespace Gameplay
         public void OnStopGamePressed()
         {
             ResetGameValues();
+        }
+
+        public void OnDisconnectPressed()
+        {
+            _gameManager.DisconnectFromGame();
         }
 
         public void StartGameCountdown()

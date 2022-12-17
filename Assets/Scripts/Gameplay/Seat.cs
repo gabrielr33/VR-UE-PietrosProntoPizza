@@ -29,7 +29,7 @@ namespace Gameplay
 
             _customer = PhotonNetwork.Instantiate(Path.Combine("Prefabs\\Customers", prefabName), _spawnRootPos.position, transform.rotation).GetComponent<Customer>();
             _customer.SelectCustomerName();
-            _customer.SetAnimatorControllerState(CustomerAnimationState.Talking);
+            _customer.SetAnimatorControllerState(CustomerAnimationState.Idle);
 
             _pizzaTrigger.gameObject.SetActive(true);
             _drinkTrigger.gameObject.SetActive(true);

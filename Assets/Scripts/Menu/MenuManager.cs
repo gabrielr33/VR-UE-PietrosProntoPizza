@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.UI;
 
@@ -7,23 +8,29 @@ namespace Menu
     {
         public static MenuManager Instance;
 
-        [SerializeField] private bool _vrMode = false;
-        [SerializeField] private Camera _camera;
-        [SerializeField] private Menu[] _menus;
+        [SerializeField] private bool _vrMode;
 
+        private Camera _camera;
         private Canvas _canvas;
         private GameObject _eventSystem;
+        
+        private Menu[] _menus;
 
         void Awake()
         {
+            if (Instance)
+            {
+                Destroy(gameObject);
+                return;
+            }
+            DontDestroyOnLoad(gameObject);
             Instance = this;
         }
 
         private void Start()
         {
-            _canvas = GetComponent<Canvas>();
-            _eventSystem = GameObject.Find("EventSystem");
-
+            LoadData();
+            
             if (_canvas != null && _camera != null && _eventSystem != null)
             {
                 if (_vrMode)
@@ -68,6 +75,14 @@ namespace Menu
         public void CloseMenu(Menu menu)
         {
             menu.Close();
+        }
+
+        public void LoadData()
+        {
+            _camera = Camera.main;
+            _canvas = GetComponent<Canvas>();
+            _eventSystem = GameObject.Find("EventSystem");
+            _menus = GameObject.FindGameObjectsWithTag("Menu").Select(x => x.GetComponent<Menu>()).ToArray();
         }
     }
 }

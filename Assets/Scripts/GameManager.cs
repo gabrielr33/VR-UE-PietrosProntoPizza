@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using Gameplay;
 using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
 
 public class GameManager : MonoBehaviourPun
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviourPun
     private List<decimal> _reviews;
     private decimal _gameScore; // ranges from 0 to 5
 
+    private List<Player> _players;
     private int _playerCount = 0;
     private bool _gameStarted;
 
@@ -37,6 +39,8 @@ public class GameManager : MonoBehaviourPun
 
         GameValues = IOFileManager.ReadGameValuesFromFile();
         GameResultValues = new GameResultValues();
+
+        _players = new List<Player>();
 
         SpawnPlayer();
     }
@@ -60,6 +64,15 @@ public class GameManager : MonoBehaviourPun
         photonView.RPC("NewPlayerSpawned", RpcTarget.MasterClient);
     }
 
+    public void DisconnectFromGame()
+    {
+        if (photonView.IsMine)
+        {
+            PhotonNetwork.DestroyPlayerObjects(PhotonNetwork.LocalPlayer);
+            PhotonNetwork.LeaveRoom();
+        }
+    }
+
     [PunRPC]
     private void NewPlayerSpawned()
     {
@@ -67,6 +80,7 @@ public class GameManager : MonoBehaviourPun
             return;
 
         _playerCount++;
+        _billboardButtonManager.UpdatePlayerListText(PhotonNetwork.PlayerList);
     }
 
     public void AddReviewToGameScore(decimal review, bool drinkServed)

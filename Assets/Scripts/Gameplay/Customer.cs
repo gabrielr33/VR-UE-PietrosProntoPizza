@@ -83,25 +83,31 @@ namespace Gameplay
 
         public void SetAnimatorControllerState(CustomerAnimationState state)
         {
+            photonView.RPC("SetCustomerAnimation", RpcTarget.All, (int)state);
+        }
+
+        [PunRPC]
+        private void SetCustomerAnimation(int stateIndex)
+        {
             if (_customerAnimator != null)
             {
-                switch (state)
+                switch ((CustomerAnimationState)stateIndex)
                 {
-                    case CustomerAnimationState.Talking:
+                    case CustomerAnimationState.Idle:
                         photonView.RPC("SetAnimatorControllerValues", RpcTarget.All, 0f, 0f);
                         break;
-                    case CustomerAnimationState.Angry:
-                        photonView.RPC("SetAnimatorControllerValues", RpcTarget.All, -1f, 0f);
-                        break;
-                    case CustomerAnimationState.Clap:
+                    case CustomerAnimationState.Eating:
                         photonView.RPC("SetAnimatorControllerValues", RpcTarget.All, 1f, 0f);
                         break;
                     case CustomerAnimationState.SitToStand:
                         photonView.RPC("SetAnimatorControllerValues", RpcTarget.All, 0f, 1f);
                         break;
-                    case CustomerAnimationState.StandAngry:
-                        photonView.RPC("SetAnimatorControllerValues", RpcTarget.All, 1f, 1f);
-                        break;
+                    // case CustomerAnimationState.Angry:
+                    //     photonView.RPC("SetAnimatorControllerValues", RpcTarget.All, -1f, 0f);
+                    //     break;
+                    // case CustomerAnimationState.StandAngry:
+                    //     photonView.RPC("SetAnimatorControllerValues", RpcTarget.All, 1f, 1f);
+                    //     break;
                 }
             }
         }
@@ -115,7 +121,7 @@ namespace Gameplay
 
         public void CompareReceivedPizzaWithOrder(Pizza recPizza)
         {
-            SetAnimatorControllerState(CustomerAnimationState.Clap);
+            SetAnimatorControllerState(CustomerAnimationState.Eating);
             
             List<PizzaIngredient> missingIngredients = _order.Pizza.ingredients.Except(recPizza.Ingredients).ToList();
             List<PizzaIngredient> unwantedIngredients = recPizza.Ingredients.Except(_order.Pizza.ingredients).ToList();
@@ -198,10 +204,10 @@ namespace Gameplay
 
     public enum CustomerAnimationState
     {
-        Talking,
-        Angry,
-        Clap,
-        SitToStand,
-        StandAngry
+        Idle,
+        Eating,
+        SitToStand
+        // Angry,
+        // StandAngry
     }
 }

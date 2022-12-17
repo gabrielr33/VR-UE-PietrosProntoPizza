@@ -8,8 +8,6 @@ namespace Networking
     public class NetworkRoomManager : MonoBehaviourPunCallbacks
     {
         public static NetworkRoomManager Instance;
-
-        [SerializeField] private GameManager _gameManager;
         
         private void Awake()
         {
@@ -18,6 +16,7 @@ namespace Networking
                 Destroy(gameObject);
                 return;
             }
+            DontDestroyOnLoad(gameObject);
             Instance = this;
         }
         
@@ -48,15 +47,17 @@ namespace Networking
         public override void OnJoinedRoom()
         {
             if (PhotonNetwork.IsMasterClient)
-                Debug.Log("In game as master.");
+                Debug.Log($"{PhotonNetwork.LocalPlayer.NickName} in game as master.");
             else
-                Debug.Log("In game as client.");
+                Debug.Log($"{PhotonNetwork.LocalPlayer.NickName} in game as client.");
             
             PhotonNetwork.LoadLevel(1);
         }
 
         public override void OnLeftRoom()
         {
+            PhotonNetwork.LoadLevel(0);
+            MenuManager.Instance.LoadData();
             MenuManager.Instance.OpenMenu("mainMenu");
         }
         

@@ -9,6 +9,7 @@ TagManager:
   - GameManager
   - InputController
   - PrefabsManager
+  - Menu
   layers:
   - Default
   - TransparentFX
