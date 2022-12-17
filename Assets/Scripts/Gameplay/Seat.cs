@@ -55,10 +55,10 @@ namespace Gameplay
 
         public void FinishedEating()
         {
-            _pizzaTrigger.gameObject.SetActive(false);
-            _drinkTrigger.gameObject.SetActive(false);
             _pizzaTrigger.ClearPizzaFromTrigger();
             _drinkTrigger.ClearDrinkFromTrigger();
+            _pizzaTrigger.gameObject.SetActive(false);
+            _drinkTrigger.gameObject.SetActive(false);
             IsOccupied = false;
             _table.CustomerLeft();
         }

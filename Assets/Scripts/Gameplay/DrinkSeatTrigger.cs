@@ -21,8 +21,11 @@ namespace Gameplay
         public void ClearDrinkFromTrigger()
         {
             _lerpDrink = false;
-            if (_drinkTransform != null && _drinkTransform.childCount > 0)
-                PhotonNetwork.Destroy(_drinkTransform.GetChild(0).gameObject);
+            if (_drinkTransform != null)
+            {
+                PhotonNetwork.Destroy(_drinkTransform.gameObject);
+                _drinkTransform = null;
+            }
         }
         
         private void OnTriggerEnter(Collider other)

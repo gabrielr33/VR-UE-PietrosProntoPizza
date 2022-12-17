@@ -47,11 +47,13 @@ namespace Networking
         public override void OnJoinedRoom()
         {
             if (PhotonNetwork.IsMasterClient)
+            {
                 Debug.Log($"{PhotonNetwork.LocalPlayer.NickName} in game as master.");
+                PhotonNetwork.LoadLevel(1);
+            }
             else
                 Debug.Log($"{PhotonNetwork.LocalPlayer.NickName} in game as client.");
             
-            PhotonNetwork.LoadLevel(1);
         }
 
         public override void OnLeftRoom()

@@ -168,9 +168,6 @@ namespace Gameplay
         
         private void GenerateVisibleReviewInScene(decimal review)
         {
-            if (!PhotonNetwork.IsMasterClient)
-                return;
-            
             photonView.RPC("GenerateReviewText", RpcTarget.All, (int)review);
         }
 

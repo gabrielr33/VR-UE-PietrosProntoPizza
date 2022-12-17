@@ -23,8 +23,11 @@ namespace Gameplay
         public void ClearPizzaFromTrigger()
         {
             _lerpPizza = false;
-            if (_plateTransform != null && _plateTransform.childCount > 0)
-                PhotonNetwork.Destroy(_plateTransform.GetChild(0).gameObject);
+            if (_plateTransform != null)
+            {
+                PhotonNetwork.Destroy(_plateTransform.gameObject);
+                _plateTransform = null;
+            }
         }
         
         private void OnTriggerEnter(Collider other)
