@@ -10,6 +10,7 @@ TagManager:
   - InputController
   - PrefabsManager
   - Menu
+  - BillboardButtonManager
   layers:
   - Default
   - TransparentFX

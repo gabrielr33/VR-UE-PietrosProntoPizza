@@ -50,6 +50,8 @@ namespace Gameplay
         public int CustomerMinWaitTime { get; set; }
         public int CustomerMaxWaitTime { get; set; }
         public int CustomerSpawnSpeed { get; set; }
+        public int PizzaDoneTime { get; set; }
+        public int PizzaBurnTime { get; set; }
         public int GameTime { get; set; }
     }
 }

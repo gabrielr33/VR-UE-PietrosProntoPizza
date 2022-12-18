@@ -17,10 +17,12 @@ namespace Gameplay
         [SerializeField] private Ingredient _tomatoSauce;
 
         private int _bakingCounter = 0;
+        private GameManager _gameManager;
 
         private void Awake()
         {
             _rb = GetComponent<Rigidbody>();
+            _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         }
 
         private void Start()
@@ -78,12 +80,12 @@ namespace Gameplay
             Debug.Log("Pizza inserted in oven! Start baking!");
             CanBePickedUp = true;
             
-            yield return new WaitForSeconds(4f);
+            yield return new WaitForSeconds(_gameManager.GameValues.PizzaDoneTime);
 
             _bakingCounter++;
             SetPizzaBakingStage(_bakingCounter);
 
-            yield return new WaitForSeconds(20f);
+            yield return new WaitForSeconds(_gameManager.GameValues.PizzaBurnTime);
 
             _bakingCounter++;
             SetPizzaBakingStage(_bakingCounter);

@@ -11856,6 +11856,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pizzeria
       objectReference: {fileID: 0}
+    - target: {fileID: 3469868935643713523, guid: 151ba080ad432a746bd2b5897fae4f00,
+        type: 3}
+      propertyPath: m_TagString
+      value: BillboardButtonManager
+      objectReference: {fileID: 0}
     - target: {fileID: 3806933878289627987, guid: 151ba080ad432a746bd2b5897fae4f00,
         type: 3}
       propertyPath: m_SizeDelta.y

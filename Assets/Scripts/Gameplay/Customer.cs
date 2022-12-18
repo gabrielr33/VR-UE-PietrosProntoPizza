@@ -18,6 +18,7 @@ namespace Gameplay
         
         private PrefabsManager _prefabsManager;
         private GameManager _gameManager;
+        private BillboardButtonManager _billboardButtonManager;
         private OrderManager _orderManager;
         private Transform _cameraTransform;
         private Animator _customerAnimator;
@@ -32,6 +33,7 @@ namespace Gameplay
         {
             _prefabsManager = GameObject.FindWithTag("PrefabsManager").GetComponent<PrefabsManager>();
             _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
+            _billboardButtonManager = GameObject.FindWithTag("BillboardButtonManager").GetComponent<BillboardButtonManager>();
             _customerAnimator = GetComponent<Animator>();
             _cameraTransform = Camera.main.transform;
         }
@@ -73,7 +75,7 @@ namespace Gameplay
                 Pizza = pizzaTypes[rand.Next(pizzaTypes.Count)],
                 Drink = drinkTypes[rand.Next(drinkTypes.Count)],
                 CustomerName = Name,
-                MaxWaitTimeInSec = rand.Next(_gameManager.GameValues.CustomerMinWaitTime, _gameManager.GameValues.CustomerMaxWaitTime)   // TODO tweak this
+                MaxWaitTimeInSec = rand.Next(_gameManager.GameValues.CustomerMinWaitTime / ((int)_billboardButtonManager.GameMode + 1), _gameManager.GameValues.CustomerMaxWaitTime / ((int)_billboardButtonManager.GameMode + 1))   // TODO tweak this
             };
 
             StartCoroutine(StartWaitingProcedure(_order.MaxWaitTimeInSec));

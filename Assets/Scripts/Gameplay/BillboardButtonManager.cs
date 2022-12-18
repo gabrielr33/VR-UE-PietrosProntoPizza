@@ -25,7 +25,7 @@ namespace Gameplay
         // Countdown
         [SerializeField] private bool _countdownStarted;
         private float _countDownTimer;
-        private float _currentGameTimeSelected;
+        // private float _currentGameTimeSelected;
 
         void Awake()
         {
@@ -89,8 +89,8 @@ namespace Gameplay
             _stopGameButton.interactable = false;
             _startGameButton.interactable = true;
             _countdownTimerText.color = Color.black;
-            _countDownTimer = _currentGameTimeSelected;
-            _countdownTimerText.text = CalculateTimeFromGameTime(_currentGameTimeSelected);
+            _countDownTimer = _gameManager.GameValues.GameTime;
+            _countdownTimerText.text = CalculateTimeFromGameTime(_countDownTimer);
 
             for (int i = 0; i < _toggleGroup.childCount; i++)
             {
@@ -101,8 +101,8 @@ namespace Gameplay
 
         public void OnToggleSelected(int index)
         {
-            _countDownTimer = _gameManager.GameValues.GameTime / (index + 1);
-            _currentGameTimeSelected = _countDownTimer;
+            _countDownTimer = _gameManager.GameValues.GameTime;
+            // _currentGameTimeSelected = _countDownTimer;
 
             _countdownTimerText.text = CalculateTimeFromGameTime(_countDownTimer);
         }
