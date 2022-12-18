@@ -40,7 +40,7 @@ namespace Gameplay
 
             if (photonView.Owner.Equals(PhotonNetwork.LocalPlayer))
             {
-                if (ingredient.IngredientType.Equals(PizzaIngredient.TomatoSauce) && other.GetComponent<TomatoSauceFillingManager>().GetIsSpoonFilled())
+                if (ingredient.IngredientType.Equals(PizzaIngredient.TomatoSauce) && other.GetComponent<TomatoSauceFillingManager>().IsSpoonFilled)
                 {
                         _tomatoSauce.gameObject.SetActive(true);
                         other.GetComponent<TomatoSauceFillingManager>().EmptySpoon();

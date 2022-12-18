@@ -1,16 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class TomatoSauceFiller : MonoBehaviour
+namespace Gameplay
 {
-    private void OnTriggerEnter(Collider other)
+    public class TomatoSauceFiller : MonoBehaviour
     {
-        if(other.GetComponent<TomatoSauceFillingManager>() != null)
-        { 
-            other.transform.GetComponent<TomatoSauceFillingManager>().FillSpoon(); 
-        }
-        
-    }
+        private void OnTriggerEnter(Collider other)
+        {
+            TomatoSauceFillingManager fillingManager = other.GetComponent<TomatoSauceFillingManager>();
 
+            if (fillingManager == null)
+                return;
+
+            fillingManager.FillSpoon();
+        }
+    }
 }

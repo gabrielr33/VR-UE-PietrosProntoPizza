@@ -1,31 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PizzaPositionManager : MonoBehaviour
+namespace Gameplay
 {
-    // Start is called before the first frame update
-    void Start()
+    public class PizzaPositionManager : MonoBehaviour
     {
-        
-    }
+        private MeshRenderer _renderer;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        private void Awake()
+        {
+            _renderer = GetComponent<MeshRenderer>();
+        }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        other.transform.position = transform.position;
+        private void OnTriggerEnter(Collider other)
+        {
+            other.transform.position = transform.position;
 
+            _renderer.enabled = false;
+        }
 
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        gameObject.GetComponent<MeshRenderer>().enabled = true;
+        private void OnTriggerExit(Collider other)
+        {
+            _renderer.enabled = true;
+        }
     }
 }

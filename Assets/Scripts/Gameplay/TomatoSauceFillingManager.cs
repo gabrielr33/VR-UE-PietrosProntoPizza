@@ -1,41 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class TomatoSauceFillingManager : MonoBehaviour
+namespace Gameplay
 {
-
-    [SerializeField] private bool isSpoonFilled = false;
-
-    // Start is called before the first frame update
-    void Start()
+    public class TomatoSauceFillingManager : MonoBehaviour
     {
-        isSpoonFilled = true;
-        FillSpoon();
-    }
+        [field: SerializeField] public bool IsSpoonFilled { get; private set; }
 
-    // Update is called once per frame
-    void Update()
-    {
+        private MeshRenderer _filling;
         
+        private void Start()
+        {
+            _filling = transform.GetChild(0).GetComponent<MeshRenderer>();
+            IsSpoonFilled = true;
+            FillSpoon();
+        }
+
+        public void EmptySpoon()
+        {
+            _filling.enabled = false;
+            IsSpoonFilled = false;
+        }
+
+        public void FillSpoon()
+        {
+            _filling.enabled = true;
+            IsSpoonFilled = true;
+        }
     }
-
-    public void EmptySpoon()
-    {
-        transform.GetChild(0).GetComponent<MeshRenderer>().enabled = false;
-        isSpoonFilled=false;
-    }
-
-    public void FillSpoon()
-    {
-        transform.GetChild(0).GetComponent<MeshRenderer>().enabled = true;
-        isSpoonFilled = true;
-    }
-
-
-    public bool GetIsSpoonFilled()
-    {
-        return isSpoonFilled;
-    }
-
 }

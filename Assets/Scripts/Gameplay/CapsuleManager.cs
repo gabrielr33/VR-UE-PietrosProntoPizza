@@ -1,27 +1,26 @@
-using System.Collections;
-using System.Collections.Generic;
 using Unity.XR.CoreUtils;
 using UnityEngine;
 
-public class CapsuleManager : MonoBehaviour
+namespace Gameplay
 {
-    private CharacterController characterController;
-    [SerializeField] private XROrigin rig;
-    private float additionalHeight = 0.2f;
-
-
-    // Start is called before the first frame update
-    void Start()
+    public class CapsuleManager : MonoBehaviour
     {
-        characterController = GetComponent<CharacterController>();
-        gameObject.transform.position = new Vector3(gameObject.transform.position.x, 0.0f, gameObject.transform.position.z);
-    }
+        private XROrigin _rig;
+        private CharacterController _characterController;
+        private readonly float _additionalHeight = 0.2f;
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        characterController.height = rig.CameraInOriginSpaceHeight + additionalHeight;
-        Vector3 capsulecenter = transform.InverseTransformPoint(rig.Camera.gameObject.transform.position);
-        characterController.center = new Vector3(capsulecenter.x, characterController.height / 2.0f + characterController.skinWidth, capsulecenter.z);
+        private void Start()
+        {
+            _rig = GetComponent<XROrigin>();
+            _characterController = GetComponent<CharacterController>();
+            transform.position = new Vector3(transform.position.x, 0.0f, transform.position.z);
+        }
+
+        private void FixedUpdate()
+        {
+            _characterController.height = _rig.CameraInOriginSpaceHeight + _additionalHeight;
+            Vector3 capsuleCenter = transform.InverseTransformPoint(_rig.Camera.gameObject.transform.position);
+            _characterController.center = new Vector3(capsuleCenter.x, _characterController.height / 2.0f + _characterController.skinWidth, capsuleCenter.z);
+        }
     }
 }

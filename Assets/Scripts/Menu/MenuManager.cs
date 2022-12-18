@@ -1,4 +1,7 @@
 using System.Linq;
+using Photon.Pun;
+using Photon.Realtime;
+using TMPro;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.UI;
 
@@ -9,6 +12,9 @@ namespace Menu
         public static MenuManager Instance;
 
         [SerializeField] private bool _vrMode;
+        [SerializeField] private TMP_InputField _playerNameInputField;
+        
+        private const string RoomName = "PietrosProntoPizzaRoom";
 
         private Camera _camera;
         private Canvas _canvas;
@@ -16,7 +22,7 @@ namespace Menu
         
         private Menu[] _menus;
 
-        void Awake()
+        private void Awake()
         {
             if (Instance)
             {
@@ -25,6 +31,43 @@ namespace Menu
             }
             DontDestroyOnLoad(gameObject);
             Instance = this;
+        }
+        
+        public void OnPlayPressed()
+        {
+            PhotonNetwork.JoinLobby();
+        }
+
+        public void OnExitPressed()
+        {
+            Application.Quit();
+        }
+        
+        public void OnAboutPressed()
+        {
+            Instance.OpenMenu("aboutMenu");
+        }
+        
+        public void OnBackLobbyPressed()
+        {
+            Instance.OpenMenu("mainMenu");
+        }
+        
+        public void OnBackAboutPressed()
+        {
+            Instance.OpenMenu("mainMenu");
+        }
+        
+        public void OnConnectPressed()
+        {
+            RoomOptions roomOptions = new RoomOptions {MaxPlayers = 4};
+            TypedLobby typedLobby = new TypedLobby(RoomName, LobbyType.Default);
+            
+            PhotonNetwork.NickName = !string.IsNullOrEmpty(_playerNameInputField.text)
+                ? _playerNameInputField.text
+                : "Player#" + Random.Range(0, 100).ToString("000");
+            
+            PhotonNetwork.JoinOrCreateRoom(RoomName, roomOptions, typedLobby);
         }
 
         private void Start()
