@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Gameplay
 {
-    public class PizzaShovel : MonoBehaviour
+    public class PizzaShovel : MonoBehaviourPun
     {
         [SerializeField] private Transform _pizzaPosition;
         [SerializeField] private Oven _pizzaOven;
