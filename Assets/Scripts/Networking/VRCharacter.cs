@@ -64,16 +64,6 @@ namespace Networking
 
                 _right.position = _rightControllerRoot.position;
                 _right.rotation = _rightControllerRoot.rotation;
-
-                HandleControllerInputs();
-            }
-        }
-
-        private void HandleControllerInputs()
-        {
-            if (_playerInputs.InputButtons.ButtonPrimary_Right > 0.9f)
-            {
-                // TODO
             }
         }
 

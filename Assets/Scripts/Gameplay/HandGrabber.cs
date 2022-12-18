@@ -40,7 +40,6 @@ namespace Gameplay
                     other.transform.SetParent(transform);
                     GrabbedObject = other.transform;
                     GrabbedObject.GetComponent<Rigidbody>().isKinematic = true;
-                    // GrabbedObject.GetComponent<Rigidbody>().useGravity = false;
                 }
             }
         }

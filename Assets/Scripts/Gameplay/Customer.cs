@@ -106,12 +106,6 @@ namespace Gameplay
                     case CustomerAnimationState.SitToStand:
                         photonView.RPC("SetAnimatorControllerValues", RpcTarget.All, 0f, 1f);
                         break;
-                    // case CustomerAnimationState.Angry:
-                    //     photonView.RPC("SetAnimatorControllerValues", RpcTarget.All, -1f, 0f);
-                    //     break;
-                    // case CustomerAnimationState.StandAngry:
-                    //     photonView.RPC("SetAnimatorControllerValues", RpcTarget.All, 1f, 1f);
-                    //     break;
                 }
             }
         }
@@ -158,7 +152,6 @@ namespace Gameplay
                 counter--;
             }
             
-            // TODO
             Debug.Log("Order expired!");
 
             GenerateVisibleReviewInScene(0);
@@ -211,7 +204,5 @@ namespace Gameplay
         Idle,
         Eating,
         SitToStand
-        // Angry,
-        // StandAngry
     }
 }

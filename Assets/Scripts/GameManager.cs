@@ -28,7 +28,6 @@ public class GameManager : MonoBehaviourPun
     private List<decimal> _reviews;
     private decimal _gameScore; // ranges from 0 to 5
 
-    private List<Player> _players;
     private int _playerCount = 0;
     private bool _gameStarted;
 
@@ -39,8 +38,6 @@ public class GameManager : MonoBehaviourPun
 
         GameValues = IOFileManager.ReadGameValuesFromFile();
         GameResultValues = new GameResultValues();
-
-        _players = new List<Player>();
 
         SpawnPlayer();
     }
@@ -105,7 +102,7 @@ public class GameManager : MonoBehaviourPun
 
     public void StartGame(GameMode gameMode)
     {
-        if (!_isMasterClient) // || _playerCount < 2
+        if (!_isMasterClient || _playerCount < 2)
             return;
 
         _gameStarted = true;

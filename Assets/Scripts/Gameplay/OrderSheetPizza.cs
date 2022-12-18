@@ -37,7 +37,6 @@ namespace Gameplay
                 _maxWaitTimeSlider.value = --counter;
             }
             
-            // TODO
             Debug.Log("Order expired!");
             _failedOverlayImage.SetActive(true);
         }

@@ -24,7 +24,6 @@ namespace Gameplay
             _pizzaShovel.AttachedPizza = pizza;
             Transform pizzaTransform = _pizzaShovel.AttachedPizza.transform;
 
-            // pizza.GetComponent<Rigidbody>().isKinematic = true;
             pizzaTransform.SetParent(_pizzaPosition);
             pizzaTransform.localPosition = Vector3.zero;
             pizzaTransform.localRotation = Quaternion.identity;

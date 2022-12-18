@@ -111,8 +111,6 @@ namespace Gameplay
 
             _bakingCounter++;
             SetPizzaBakingStage(_bakingCounter);
-
-            // pizza.GetComponent<Rigidbody>().isKinematic = false;
         }
 
         private void SetPizzaBakingStage(int bakingCounter)

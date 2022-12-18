@@ -12,7 +12,7 @@ namespace Gameplay
         private PlayerInputController _inputController;
         private Transform _pizzaTemplate;
         private bool _startLerp;
-        private int _pizzaScale = 125;
+        private readonly int _pizzaScale = 125;
 
         private void Awake()
         {

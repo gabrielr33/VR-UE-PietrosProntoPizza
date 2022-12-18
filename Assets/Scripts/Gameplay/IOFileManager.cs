@@ -7,8 +7,6 @@ namespace Gameplay
 {
     public static class IOFileManager
     {
-        // public static GameValues GameValues { get; private set; }
-        
         private static string _gameValuesFilePath = "";
         private static GameValues _gameValues;
 

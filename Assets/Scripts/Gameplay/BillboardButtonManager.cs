@@ -26,7 +26,6 @@ namespace Gameplay
         [SerializeField] private bool _countdownStarted;
 
         private float _countDownTimer;
-        // private float _currentGameTimeSelected;
 
         void Awake()
         {
@@ -59,7 +58,7 @@ namespace Gameplay
                     GameResultValues values = _gameManager.GameResultValues;
                     string text =
                         $"\n\n{values.ReviewScore:0}/5.0\n\n{values.ServedCustomers}/{values.TotalCustomers}\n\n{values.CorrectlyServedPizzas}/{values.TotalCustomers}\n{values.CorrectlyServedDrinks}/{values.TotalCustomers}";
-                    photonView.RPC("ShowResultsText", RpcTarget.Others, text);
+                    photonView.RPC("ShowResultsText", RpcTarget.All, text);
                 }
             }
         }
@@ -105,13 +104,12 @@ namespace Gameplay
                 Toggle toggle = _toggleGroup.GetChild(i).GetComponent<Toggle>();
                 toggle.interactable = true;
             }
+            _gameManager.GameEnded();
         }
 
         public void OnToggleSelected(int index)
         {
             _countDownTimer = _gameManager.GameValues.GameTime;
-            // _currentGameTimeSelected = _countDownTimer;
-
             _countdownTimerText.text = CalculateTimeFromGameTime(_countDownTimer);
         }
 

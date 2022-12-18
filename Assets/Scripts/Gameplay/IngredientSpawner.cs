@@ -31,9 +31,6 @@ namespace Gameplay
                     GameObject ingredient = PhotonNetwork.Instantiate(Path.Combine("Prefabs\\Ingredients", _ingredientName), handGrabber.transform.position, Quaternion.identity);
                     ingredient.transform.SetParent(handGrabber.transform);
                     ingredient.transform.localPosition = new Vector3(-0.0021f, -0.033f, 0.049f);
-                    // ingredient.GetComponent<Rigidbody>().useGravity = false;
-                    // ingredient.GetComponent<Rigidbody>().velocity = Vector3.zero;
-                    // ingredient.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
                     ingredient.GetComponent<Rigidbody>().isKinematic = true;
                     
                     handGrabber.GrabbedObject = ingredient.transform;
