@@ -16,16 +16,19 @@ namespace Gameplay
                 return;
             
             if (photonView.Owner.Equals(PhotonNetwork.LocalPlayer))
-                photonView.RPC("AttachPizzaToPlate", RpcTarget.All, pizzaShovel.transform.parent.GetComponent<PhotonView>().ViewID);
+                photonView.RPC("AttachPizzaToPlate", RpcTarget.All, pizzaShovel.transform.parent.GetComponent<PhotonView>().ViewID, pizzaShovel.AttachedPizza.GetComponent<PhotonView>().ViewID);
         }
 
         [PunRPC]
-        private void AttachPizzaToPlate(int pizzaShovelViewId)
+        private void AttachPizzaToPlate(int pizzaShovelViewId, int pizzaViewId)
         {
             PizzaShovel[] pizzaShovels = FindObjectsOfType<PizzaShovel>();
             PizzaShovel pizzaShovel = pizzaShovels.First(x => x.transform.parent.GetComponent<PhotonView>().ViewID == pizzaShovelViewId);
             
-            AttachedPizza = pizzaShovel.AttachedPizza;
+            Pizza[] pizzas = FindObjectsOfType<Pizza>();
+            Pizza pizza = pizzas.First(x => x.GetComponent<PhotonView>().ViewID == pizzaViewId);
+            
+            AttachedPizza = pizza;
             AttachedPizza.CanBePickedUp = false;
             
             Transform pizzaTransform = AttachedPizza.transform;
