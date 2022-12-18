@@ -48,7 +48,7 @@ namespace Gameplay
                 
                 photonView.RPC("EnableIngredientForOthers", RpcTarget.All, (int)ingredient.IngredientType);
                 
-                if (PhotonNetwork.LocalPlayer.Equals(ingredient.GetComponent<PhotonView>().Owner))
+                if (!ingredient.IngredientType.Equals(PizzaIngredient.TomatoSauce) && PhotonNetwork.LocalPlayer.Equals(ingredient.GetComponent<PhotonView>().Owner))
                     PhotonNetwork.Destroy(ingredient.gameObject);
             }
         }

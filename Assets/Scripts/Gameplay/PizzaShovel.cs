@@ -1,15 +1,14 @@
-using System.Linq;
 using Photon.Pun;
 using UnityEngine;
 
 namespace Gameplay
 {
-    public class PizzaShovel : MonoBehaviourPun
+    public class PizzaShovel : MonoBehaviour
     {
         [SerializeField] private Transform _pizzaPosition;
         [SerializeField] private Oven _pizzaOven;
 
-        public Pizza AttachedPizza { get; private set; }
+        public Pizza AttachedPizza { get; set; }
 
         private void OnTriggerEnter(Collider other)
         {
@@ -24,23 +23,8 @@ namespace Gameplay
                 _pizzaOven.RemovePizzaFromPizzaSlotIfAssigned(pizza);
                 pizza.StopBakingProcess();
                 
-                photonView.RPC("AttachPizzaToPizzaShovel", RpcTarget.All, pizza.GetComponent<PhotonView>().ViewID);
+                transform.GetComponentInParent<PizzaShovelHelper>().AttachPizzaToPizzaShovel(pizza, _pizzaPosition);
             }
-        }
-
-        [PunRPC]
-        private void AttachPizzaToPizzaShovel(int pizzaViewId)
-        {
-            Pizza[] pizzas = FindObjectsOfType<Pizza>();
-            Pizza pizza = pizzas.First(x => x.photonView.ViewID == pizzaViewId);
-            
-            AttachedPizza = pizza;
-            Transform pizzaTransform = AttachedPizza.transform;
-
-            // pizza.GetComponent<Rigidbody>().isKinematic = true;
-            pizzaTransform.SetParent(_pizzaPosition);
-            pizzaTransform.localPosition = Vector3.zero;
-            pizzaTransform.localRotation = Quaternion.identity;
         }
 
         public void DetachPizza()

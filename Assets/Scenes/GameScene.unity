@@ -3511,6 +3511,11 @@ PrefabInstance:
       propertyPath: _pizzaOven
       value: 
       objectReference: {fileID: 1720373308}
+    - target: {fileID: 8715373605944772413, guid: 3bb59f11953a5c0438fd8229656cc95a,
+        type: 3}
+      propertyPath: _pizzaOven
+      value: 
+      objectReference: {fileID: 1720373308}
     - target: {fileID: 8722169071674159908, guid: 3bb59f11953a5c0438fd8229656cc95a,
         type: 3}
       propertyPath: m_RootOrder
@@ -6529,6 +6534,11 @@ PrefabInstance:
       value: 93
       objectReference: {fileID: 0}
     - target: {fileID: 8175896223050093033, guid: 3bb59f11953a5c0438fd8229656cc95a,
+        type: 3}
+      propertyPath: _pizzaOven
+      value: 
+      objectReference: {fileID: 1720373308}
+    - target: {fileID: 8715373605944772413, guid: 3bb59f11953a5c0438fd8229656cc95a,
         type: 3}
       propertyPath: _pizzaOven
       value: 
