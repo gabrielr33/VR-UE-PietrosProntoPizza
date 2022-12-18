@@ -33,6 +33,10 @@ namespace Gameplay
 
             _pizzaTrigger.gameObject.SetActive(true);
             _drinkTrigger.gameObject.SetActive(true);
+            _pizzaTrigger.GetComponent<BoxCollider>().enabled = true;
+            _pizzaTrigger.GetComponent<MeshRenderer>().enabled = true;
+            _drinkTrigger.GetComponent<BoxCollider>().enabled = true;
+            _drinkTrigger.GetComponent<MeshRenderer>().enabled = true;
 
             return _customer.GenerateOrder(_prefabsManager, orderManager, table.TableNumber, this);
         }

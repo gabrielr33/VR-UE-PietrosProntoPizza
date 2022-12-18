@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Photon.Pun;
 using UnityEngine;
 
 namespace Gameplay
 {
-    public class Oven : MonoBehaviour
+    public class Oven : MonoBehaviourPun
     {
         [SerializeField] private Transform _pizzaSlot1;
         [SerializeField] private Transform _pizzaSlot2;
@@ -102,6 +103,15 @@ namespace Gameplay
 
         public void RemovePizzaFromPizzaSlotIfAssigned(Pizza pizza)
         {
+            photonView.RPC("RemovePizzaFromPizzaSlot", RpcTarget.All, pizza.GetComponent<PhotonView>().ViewID);
+        }
+
+        [PunRPC]
+        private void RemovePizzaFromPizzaSlot(int pizzaViewId)
+        {
+            Pizza[] pizzas = FindObjectsOfType<Pizza>();
+            Pizza pizza = pizzas.First(x => x.photonView.ViewID == pizzaViewId);
+            
             Transform slot = null;
 
             foreach (KeyValuePair<Transform, Pizza> kvp in _pizzaSlotsDictionary)

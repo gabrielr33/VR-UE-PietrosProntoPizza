@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.20652753, g: 0.35346934, b: 0.46990585, a: 1}
+  m_IndirectSpecularColor: {r: 0.5747052, g: 0.61300576, b: 0.60721654, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2283,30 +2283,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1827222994}
     m_Modifications:
-    - target: {fileID: 413947873272284471, guid: 37d2dc1554749724f972e20e0c43ba23,
-        type: 3}
-      propertyPath: sceneViewId
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1830756423460694217, guid: 37d2dc1554749724f972e20e0c43ba23,
-        type: 3}
-      propertyPath: sceneViewId
-      value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 1918612595979791462, guid: 37d2dc1554749724f972e20e0c43ba23,
-        type: 3}
-      propertyPath: sceneViewId
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5293196347165754878, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
       propertyPath: m_Name
       value: Chair
-      objectReference: {fileID: 0}
-    - target: {fileID: 5954043689958485920, guid: 37d2dc1554749724f972e20e0c43ba23,
-        type: 3}
-      propertyPath: sceneViewId
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
@@ -15563,6 +15543,11 @@ PrefabInstance:
       propertyPath: sceneViewId
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1448190546717491304, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1830756423460694217, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
       propertyPath: sceneViewId
@@ -15643,6 +15628,11 @@ PrefabInstance:
       propertyPath: _prefabsManager
       value: 
       objectReference: {fileID: 869974457}
+    - target: {fileID: 7920604105000800216, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 37d2dc1554749724f972e20e0c43ba23, type: 3}
 --- !u!114 &1647339115 stripped
@@ -16572,6 +16562,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.0814877, y: 0.94856006, z: 0.9211222}
   m_Center: {x: 0.0037550903, y: 0.47155032, z: -0.03943889}
+--- !u!114 &1720373311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720373309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 8
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!224 &1731990927 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1731990927, guid: 273dcedcb1ed88649b685bdc6fae2d51,

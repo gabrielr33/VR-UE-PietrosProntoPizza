@@ -13,10 +13,8 @@ namespace Gameplay
         {
             if (_lerpPizza)
             {
-                _plateTransform.localPosition =
-                    Vector3.Lerp(_plateTransform.localPosition, Vector3.zero, Time.deltaTime * 1.5f);
-                // _plateTransform.localRotation =
-                //     Quaternion.Lerp(_plateTransform.localRotation, Quaternion.identity, Time.deltaTime * 1.5f);
+                _plateTransform.localPosition = Vector3.Lerp(_plateTransform.localPosition, transform.position, Time.deltaTime * 1.5f);
+                _plateTransform.localRotation = Quaternion.Lerp(_plateTransform.localRotation, transform.rotation, Time.deltaTime * 1.5f);
             }
         }
 
@@ -25,6 +23,13 @@ namespace Gameplay
             _lerpPizza = false;
             if (_plateTransform != null)
             {
+                Pizza pizza = _plateTransform.GetComponentInChildren<Pizza>();
+                if (pizza != null)
+                {
+                    pizza.GetComponent<PhotonView>().enabled = true;
+                    PhotonNetwork.Destroy(pizza.gameObject);
+                }
+                
                 PhotonNetwork.Destroy(_plateTransform.gameObject);
                 _plateTransform = null;
             }
@@ -38,13 +43,13 @@ namespace Gameplay
                 return;
             
             _plateTransform = plate.transform;
-            plate.transform.localRotation = Quaternion.identity;
-            plate.transform.SetParent(transform);
+            _plateTransform.SetParent(null);
 
+            _plateTransform.GetComponent<NetworkGrabbable>().enabled = false;
+            _plateTransform.GetComponent<Rigidbody>().useGravity = false;
+            _plateTransform.GetComponent<Rigidbody>().isKinematic = true;
+            _plateTransform.GetComponent<BoxCollider>().enabled = false;
             plate.GetComponentInChildren<Pizza>().CanBePickedUp = false;
-            plate.GetComponent<NetworkGrabbable>().enabled = false;
-            plate.GetComponent<BoxCollider>().enabled = false;
-            plate.GetComponent<Rigidbody>().isKinematic = true;
             GetComponentInParent<Seat>().PizzaReceived(plate.AttachedPizza);
             
             _lerpPizza = true;

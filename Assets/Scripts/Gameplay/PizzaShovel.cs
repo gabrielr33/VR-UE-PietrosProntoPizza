@@ -19,17 +19,20 @@ namespace Gameplay
                 return;
 
             // photonView.RPC("AttachPizzaToPizzaShovel", RpcTarget.All, pizza.photonView.ViewID);
-            
-            _pizzaOven.RemovePizzaFromPizzaSlotIfAssigned(pizza);
-            pizza.StopBakingProcess();
-            AttachedPizza = pizza;
-            Transform pizzaTransform = AttachedPizza.transform;
-            
-            // pizza.GetComponent<Rigidbody>().isKinematic = true;
-            pizzaTransform.SetParent(_pizzaPosition);
-            pizzaTransform.localPosition = Vector3.zero;
-            pizzaTransform.localRotation = Quaternion.identity;
-            // AttachedPizza.GetComponent<FixedJoint>().connectedBody = GetComponent<Rigidbody>();
+
+            if (pizza.GetComponent<PhotonView>().Owner.Equals(PhotonNetwork.LocalPlayer))
+            {
+                _pizzaOven.RemovePizzaFromPizzaSlotIfAssigned(pizza);
+                pizza.StopBakingProcess();
+                AttachedPizza = pizza;
+                Transform pizzaTransform = AttachedPizza.transform;
+
+                // pizza.GetComponent<Rigidbody>().isKinematic = true;
+                pizzaTransform.SetParent(_pizzaPosition);
+                pizzaTransform.localPosition = Vector3.zero;
+                pizzaTransform.localRotation = Quaternion.identity;
+                // AttachedPizza.GetComponent<FixedJoint>().connectedBody = GetComponent<Rigidbody>();
+            }
         }
 
         // [PunRPC]

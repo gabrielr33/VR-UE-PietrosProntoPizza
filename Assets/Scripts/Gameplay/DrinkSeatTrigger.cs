@@ -13,8 +13,8 @@ namespace Gameplay
         {
             if (_lerpDrink)
             {
-                _drinkTransform.localPosition = Vector3.Lerp(_drinkTransform.localPosition, Vector3.zero, Time.deltaTime * 1.5f);
-                // _drinkTransform.localRotation = Quaternion.Lerp(_drinkTransform.localRotation, Quaternion.identity, Time.deltaTime * 1.5f);
+                _drinkTransform.localPosition = Vector3.Lerp(_drinkTransform.localPosition, transform.position, Time.deltaTime * 1.5f);
+                _drinkTransform.localRotation = Quaternion.Lerp(_drinkTransform.localRotation, transform.rotation, Time.deltaTime * 1.5f);
             }
         }
         
@@ -34,14 +34,14 @@ namespace Gameplay
 
             if (drink == null)
                 return;
-            
-            _drinkTransform = drink.transform;
-            drink.transform.localRotation = Quaternion.identity;
-            drink.transform.SetParent(transform);
 
-            drink.GetComponent<NetworkGrabbable>().enabled = false;
-            drink.GetComponent<BoxCollider>().enabled = false;
-            drink.GetComponent<Rigidbody>().isKinematic = true;
+            _drinkTransform = drink.transform;
+            _drinkTransform.SetParent(null);
+
+            _drinkTransform.GetComponent<NetworkGrabbable>().enabled = false;
+            _drinkTransform.GetComponent<Rigidbody>().useGravity = false;
+            _drinkTransform.GetComponent<Rigidbody>().isKinematic = true;
+            _drinkTransform.GetComponent<BoxCollider>().enabled = false;
             GetComponentInParent<Seat>().DrinkReceived(drink);
             
             _lerpDrink = true;
