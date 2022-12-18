@@ -43,17 +43,17 @@ namespace Menu
             Application.Quit();
         }
         
+        public void OnControlsPressed()
+        {
+            Instance.OpenMenu("controlsMenu");
+        }
+        
         public void OnAboutPressed()
         {
             Instance.OpenMenu("aboutMenu");
         }
         
-        public void OnBackLobbyPressed()
-        {
-            Instance.OpenMenu("mainMenu");
-        }
-        
-        public void OnBackAboutPressed()
+        public void OnBackPressed()
         {
             Instance.OpenMenu("mainMenu");
         }
