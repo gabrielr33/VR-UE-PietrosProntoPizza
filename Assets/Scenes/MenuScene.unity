@@ -5711,7 +5711,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5f017c615df7e546a06bfd727d5823b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _vrMode: 0
+  _vrMode: 1
   _playerNameInputField: {fileID: 1269006462}
 --- !u!4 &1574159285
 Transform:

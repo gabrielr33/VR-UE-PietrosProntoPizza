@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.5747052, g: 0.61300576, b: 0.60721654, a: 1}
+  m_IndirectSpecularColor: {r: 0.20652753, g: 0.35346934, b: 0.46990585, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2177,10 +2177,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 576193951}
     m_Modifications:
+    - target: {fileID: 413947873272284471, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830756423460694217, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918612595979791462, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5293196347165754878, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
       propertyPath: m_Name
       value: Chair (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5954043689958485920, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
@@ -2195,7 +2215,7 @@ PrefabInstance:
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.388
+      value: 0.358
       objectReference: {fileID: 0}
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
@@ -2263,10 +2283,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1827222994}
     m_Modifications:
+    - target: {fileID: 413947873272284471, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830756423460694217, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918612595979791462, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5293196347165754878, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
       propertyPath: m_Name
       value: Chair
+      objectReference: {fileID: 0}
+    - target: {fileID: 5954043689958485920, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
@@ -2281,7 +2321,7 @@ PrefabInstance:
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.388
+      value: 0.358
       objectReference: {fileID: 0}
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
@@ -3638,10 +3678,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 74216208}
     m_Modifications:
+    - target: {fileID: 413947873272284471, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830756423460694217, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918612595979791462, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 5293196347165754878, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
       propertyPath: m_Name
       value: Chair (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5954043689958485920, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
@@ -3656,7 +3716,7 @@ PrefabInstance:
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.388
+      value: 0.358
       objectReference: {fileID: 0}
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
@@ -4298,10 +4358,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1827222994}
     m_Modifications:
+    - target: {fileID: 413947873272284471, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830756423460694217, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918612595979791462, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 5293196347165754878, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
       propertyPath: m_Name
       value: Chair (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5954043689958485920, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
@@ -4316,7 +4396,7 @@ PrefabInstance:
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.388
+      value: 0.358
       objectReference: {fileID: 0}
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
@@ -5216,10 +5296,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 74216208}
     m_Modifications:
+    - target: {fileID: 413947873272284471, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830756423460694217, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918612595979791462, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 5293196347165754878, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
       propertyPath: m_Name
       value: Chair (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5954043689958485920, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
@@ -5234,7 +5334,7 @@ PrefabInstance:
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.388
+      value: 0.358
       objectReference: {fileID: 0}
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
@@ -5568,10 +5668,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 479089279}
     m_Modifications:
+    - target: {fileID: 413947873272284471, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830756423460694217, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918612595979791462, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 19
+      objectReference: {fileID: 0}
     - target: {fileID: 5293196347165754878, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
       propertyPath: m_Name
       value: Chair
+      objectReference: {fileID: 0}
+    - target: {fileID: 5954043689958485920, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
@@ -5586,7 +5706,7 @@ PrefabInstance:
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.388
+      value: 0.358
       objectReference: {fileID: 0}
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
@@ -8706,10 +8826,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 479089279}
     m_Modifications:
+    - target: {fileID: 413947873272284471, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830756423460694217, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918612595979791462, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 5293196347165754878, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
       propertyPath: m_Name
       value: Chair (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5954043689958485920, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
@@ -8724,7 +8864,7 @@ PrefabInstance:
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.388
+      value: 0.358
       objectReference: {fileID: 0}
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
@@ -10182,10 +10322,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 576193951}
     m_Modifications:
+    - target: {fileID: 413947873272284471, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830756423460694217, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918612595979791462, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 5293196347165754878, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
       propertyPath: m_Name
       value: Chair (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5954043689958485920, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
@@ -10200,7 +10360,7 @@ PrefabInstance:
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.388
+      value: 0.358
       objectReference: {fileID: 0}
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
@@ -10985,10 +11145,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 576193951}
     m_Modifications:
+    - target: {fileID: 413947873272284471, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830756423460694217, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918612595979791462, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5293196347165754878, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
       propertyPath: m_Name
       value: Chair
+      objectReference: {fileID: 0}
+    - target: {fileID: 5954043689958485920, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
@@ -11003,7 +11183,7 @@ PrefabInstance:
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.388
+      value: 0.358
       objectReference: {fileID: 0}
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
@@ -14100,10 +14280,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 479089279}
     m_Modifications:
+    - target: {fileID: 413947873272284471, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830756423460694217, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918612595979791462, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 5293196347165754878, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
       propertyPath: m_Name
       value: Chair (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5954043689958485920, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
@@ -14118,7 +14318,7 @@ PrefabInstance:
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.388
+      value: 0.358
       objectReference: {fileID: 0}
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
@@ -15358,10 +15558,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1827222994}
     m_Modifications:
+    - target: {fileID: 413947873272284471, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830756423460694217, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918612595979791462, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 5293196347165754878, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
       propertyPath: m_Name
       value: Chair (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5954043689958485920, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
@@ -15376,7 +15596,7 @@ PrefabInstance:
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.388
+      value: 0.358
       objectReference: {fileID: 0}
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
@@ -16755,10 +16975,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 479089279}
     m_Modifications:
+    - target: {fileID: 413947873272284471, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830756423460694217, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918612595979791462, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5293196347165754878, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
       propertyPath: m_Name
       value: Chair (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5954043689958485920, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
@@ -16773,7 +17013,7 @@ PrefabInstance:
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.388
+      value: 0.358
       objectReference: {fileID: 0}
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
@@ -17258,10 +17498,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1827222994}
     m_Modifications:
+    - target: {fileID: 413947873272284471, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830756423460694217, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918612595979791462, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 5293196347165754878, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
       propertyPath: m_Name
       value: Chair (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5954043689958485920, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
@@ -17276,7 +17536,7 @@ PrefabInstance:
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.388
+      value: 0.358
       objectReference: {fileID: 0}
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
@@ -17491,10 +17751,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 74216208}
     m_Modifications:
+    - target: {fileID: 413947873272284471, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1830756423460694217, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918612595979791462, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5293196347165754878, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
       propertyPath: m_Name
       value: Chair
+      objectReference: {fileID: 0}
+    - target: {fileID: 5954043689958485920, guid: 37d2dc1554749724f972e20e0c43ba23,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
@@ -17509,7 +17789,7 @@ PrefabInstance:
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.388
+      value: 0.358
       objectReference: {fileID: 0}
     - target: {fileID: 7012716963523997288, guid: 37d2dc1554749724f972e20e0c43ba23,
         type: 3}
