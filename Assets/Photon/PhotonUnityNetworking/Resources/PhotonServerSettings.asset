@@ -58,6 +58,7 @@ MonoBehaviour:
   - SpawnNewOrderPostIt
   - StartGame
   - RemovePizzaFromPizzaSlot
+  - StopPizzaBakingProcess
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

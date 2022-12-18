@@ -1,3 +1,4 @@
+using System.Linq;
 using Photon.Pun;
 using UnityEngine;
 
@@ -18,39 +19,35 @@ namespace Gameplay
             if (pizza == null || AttachedPizza != null || !pizza.CanBePickedUp)
                 return;
 
-            // photonView.RPC("AttachPizzaToPizzaShovel", RpcTarget.All, pizza.photonView.ViewID);
-
             if (pizza.GetComponent<PhotonView>().Owner.Equals(PhotonNetwork.LocalPlayer))
             {
                 _pizzaOven.RemovePizzaFromPizzaSlotIfAssigned(pizza);
                 pizza.StopBakingProcess();
-                AttachedPizza = pizza;
-                Transform pizzaTransform = AttachedPizza.transform;
-
-                // pizza.GetComponent<Rigidbody>().isKinematic = true;
-                pizzaTransform.SetParent(_pizzaPosition);
-                pizzaTransform.localPosition = Vector3.zero;
-                pizzaTransform.localRotation = Quaternion.identity;
-                // AttachedPizza.GetComponent<FixedJoint>().connectedBody = GetComponent<Rigidbody>();
+                
+                photonView.RPC("AttachPizzaToPizzaShovel", RpcTarget.All, pizza.GetComponent<PhotonView>().ViewID);
             }
         }
 
-        // [PunRPC]
-        // private void AttachPizzaToPizzaShovel(int pizzaViewId)
-        // {
-        //     Pizza[] pizzas = FindObjectsOfType<Pizza>();
-        //     Pizza pizza = pizzas.First(x => x.photonView.ViewID == pizzaViewId);
-        //     
-        //     
-        // }
+        [PunRPC]
+        private void AttachPizzaToPizzaShovel(int pizzaViewId)
+        {
+            Pizza[] pizzas = FindObjectsOfType<Pizza>();
+            Pizza pizza = pizzas.First(x => x.photonView.ViewID == pizzaViewId);
+            
+            AttachedPizza = pizza;
+            Transform pizzaTransform = AttachedPizza.transform;
+
+            // pizza.GetComponent<Rigidbody>().isKinematic = true;
+            pizzaTransform.SetParent(_pizzaPosition);
+            pizzaTransform.localPosition = Vector3.zero;
+            pizzaTransform.localRotation = Quaternion.identity;
+        }
 
         public void DetachPizza()
         {
-            // pizza.GetComponent<Rigidbody>().isKinematic = false;
             if (AttachedPizza == null)
                 return;
 
-            // AttachedPizza.GetComponent<FixedJoint>().connectedBody = null;
             AttachedPizza.CanBePickedUp = false;
             AttachedPizza = null;
         }

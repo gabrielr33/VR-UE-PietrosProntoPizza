@@ -114,6 +114,12 @@ namespace Gameplay
 
         public void StopBakingProcess()
         {
+            photonView.RPC("StopPizzaBakingProcess", RpcTarget.All);
+        }
+
+        [PunRPC]
+        private void StopPizzaBakingProcess()
+        {
             StopAllCoroutines();
         }
 
