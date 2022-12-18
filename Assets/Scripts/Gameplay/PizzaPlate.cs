@@ -20,13 +20,14 @@ namespace Gameplay
             AttachedPizza.CanBePickedUp = false;
             
             Transform pizzaTransform = AttachedPizza.transform;
-            pizzaTransform.SetParent(transform);
-            pizzaTransform.localPosition = Vector3.zero;
-            pizzaTransform.localRotation = Quaternion.identity;
             AttachedPizza.GetComponent<PhotonView>().enabled = false;
             
             // PizzaShovel[] shovels = FindObjectsOfType<PizzaShovel>();
             pizzaShovel.DetachPizza();
+            
+            pizzaTransform.SetParent(transform);
+            pizzaTransform.localPosition = Vector3.zero;
+            pizzaTransform.localRotation = Quaternion.identity;
         }
         
         // [PunRPC]

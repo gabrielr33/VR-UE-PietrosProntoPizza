@@ -28,6 +28,8 @@ namespace Gameplay
         private Order _order;
         private Seat _seat;
         private Drink _receivedDrink;
+        private bool _correctlyReceivedPizza;
+        private bool _correctlyReceivedDrink;
         
         private void Awake()
         {
@@ -128,6 +130,9 @@ namespace Gameplay
             List<PizzaIngredient> missingIngredients = _order.Pizza.ingredients.Except(recPizza.Ingredients).ToList();
             List<PizzaIngredient> unwantedIngredients = recPizza.Ingredients.Except(_order.Pizza.ingredients).ToList();
 
+            _correctlyReceivedPizza = missingIngredients.Count == 0 && unwantedIngredients.Count == 0;
+            _correctlyReceivedDrink = _order.Drink.drinkName.Equals(_receivedDrink.DrinkType.drinkName);
+
             decimal review = GameplayHelper.CalculateStarsReviewForOrder(missingIngredients, unwantedIngredients, recPizza.BakingStage, _order.Drink, _receivedDrink);
 
             CustomerReceivedPizza(review);
@@ -157,14 +162,14 @@ namespace Gameplay
             Debug.Log("Order expired!");
 
             GenerateVisibleReviewInScene(0);
-            RemoveOrderAndAddReview(0, false);
+            RemoveOrderAndAddReview(0, false, false);
             StartCoroutine(DisappearAfterSeconds(0f));
         }
 
         private void CustomerReceivedPizza(decimal review)
         {
             GenerateVisibleReviewInScene(review);
-            RemoveOrderAndAddReview(review, _receivedDrink != null);
+            RemoveOrderAndAddReview(review, _correctlyReceivedDrink, _correctlyReceivedPizza);
             StartCoroutine(DisappearAfterSeconds(5f));
         }
         
@@ -180,12 +185,12 @@ namespace Gameplay
             text.SetUp(review);
         }
 
-        private void RemoveOrderAndAddReview(decimal review, bool drinkServed)
+        private void RemoveOrderAndAddReview(decimal review, bool correctDrinkServed, bool correctPizzaServed)
         {
             StopAllCoroutines();
             _orderManager.RemoveDrinkOrderSheet(_order);
             _orderManager.RemovePizzaOrderSheet(_order);
-            _gameManager.AddReviewToGameScore(review, drinkServed);
+            _gameManager.AddReviewToGameScore(review, correctDrinkServed, correctPizzaServed);
         }
 
         private IEnumerator DisappearAfterSeconds(float sec)

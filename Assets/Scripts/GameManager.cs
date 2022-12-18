@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviourPun
         _billboardButtonManager.UpdatePlayerListText(PhotonNetwork.PlayerList);
     }
 
-    public void AddReviewToGameScore(decimal review, bool drinkServed)
+    public void AddReviewToGameScore(decimal review, bool correctDrinkServed, bool correctPizzaServed)
     {
         if (!_isMasterClient || !_gameStarted)
             return;
@@ -94,12 +94,12 @@ public class GameManager : MonoBehaviourPun
         GameResultValues.ReviewScore = _gameScore;
 
         if (review > 0)
-        {
             GameResultValues.ServedCustomers++;
-            GameResultValues.CorrectlyServedPizzas++;
-        }
 
-        if (drinkServed)
+        if (correctPizzaServed)
+            GameResultValues.CorrectlyServedPizzas++;
+
+        if (correctDrinkServed)
             GameResultValues.CorrectlyServedDrinks++;
     }
 

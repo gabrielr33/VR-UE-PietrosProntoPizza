@@ -10,7 +10,7 @@ namespace Gameplay
     public class BillboardButtonManager : MonoBehaviourPun
     {
         public GameMode GameMode { get; private set; }
-        
+
         [SerializeField] private TMP_Text _connectedPlayersText;
         [SerializeField] private TMP_Text _countdownTimerText;
         [SerializeField] private Button _startGameButton;
@@ -24,6 +24,7 @@ namespace Gameplay
 
         // Countdown
         [SerializeField] private bool _countdownStarted;
+
         private float _countDownTimer;
         // private float _currentGameTimeSelected;
 
@@ -54,26 +55,33 @@ namespace Gameplay
                     _resultsBillboard.SetActive(true);
 
                     _gameManager.GameEnded();
-                    
+
                     GameResultValues values = _gameManager.GameResultValues;
-                    _resultsBillboardText.text =
-                        $"\n\n{values.ReviewScore}/5.0\n\n{values.ServedCustomers}/{values.TotalCustomers}\n\n{values.CorrectlyServedPizzas}/{values.TotalCustomers}\n{values.CorrectlyServedDrinks}/{values.TotalCustomers}";
+                    string text =
+                        $"\n\n{values.ReviewScore:0}/5.0\n\n{values.ServedCustomers}/{values.TotalCustomers}\n\n{values.CorrectlyServedPizzas}/{values.TotalCustomers}\n{values.CorrectlyServedDrinks}/{values.TotalCustomers}";
+                    photonView.RPC("ShowResultsText", RpcTarget.Others, text);
                 }
             }
+        }
+
+        [PunRPC]
+        private void ShowResultsText(string text)
+        {
+            _resultsBillboardText.text = text;
         }
 
         public void UpdatePlayerListText(Player[] players)
         {
             if (!PhotonNetwork.IsMasterClient)
                 return;
-            
+
             StringBuilder sb = new StringBuilder();
             foreach (Player player in players)
             {
                 sb.Append($"- {player.NickName}");
                 sb.Append("\n");
             }
-            
+
             photonView.RPC("SetPlayerListText", RpcTarget.All, sb.ToString());
         }
 
