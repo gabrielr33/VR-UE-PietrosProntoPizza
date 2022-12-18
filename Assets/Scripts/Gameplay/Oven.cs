@@ -12,8 +12,8 @@ namespace Gameplay
         [SerializeField] private Transform _pizzaSlot2;
 
         private Transform _pizzaTransform;
-        private bool _lerpPizza1;
-        private bool _lerpPizza2;
+        // private bool _lerpPizza1;
+        // private bool _lerpPizza2;
         private Dictionary<Transform, Pizza> _pizzaSlotsDictionary;
 
         private Coroutine _routine1;
@@ -45,21 +45,21 @@ namespace Gameplay
             CheckForFreeSlot(pizza);
         }
 
-        private void Update()
-        {
-            if (_lerpPizza1)
-                LerpPizzaToSlot(_pizzaSlot1);
-            else if (_lerpPizza2)
-                LerpPizzaToSlot(_pizzaSlot2);
-        }
-
-        private void LerpPizzaToSlot(Transform pizzaSlot)
-        {
-            _pizzaTransform.localPosition =
-                Vector3.Lerp(_pizzaTransform.localPosition, Vector3.zero, Time.deltaTime * 1.5f);
-            _pizzaTransform.localRotation =
-                Quaternion.Lerp(_pizzaTransform.localRotation, Quaternion.identity, Time.deltaTime * 1.5f);
-        }
+        // private void Update()
+        // {
+        //     if (_lerpPizza1)
+        //         LerpPizzaToSlot(_pizzaSlot1);
+        //     else if (_lerpPizza2)
+        //         LerpPizzaToSlot(_pizzaSlot2);
+        // }
+        //
+        // private void LerpPizzaToSlot(Transform pizzaSlot)
+        // {
+        //     _pizzaTransform.localPosition =
+        //         Vector3.Lerp(_pizzaTransform.localPosition, Vector3.zero, Time.deltaTime * 1.5f);
+        //     _pizzaTransform.localRotation =
+        //         Quaternion.Lerp(_pizzaTransform.localRotation, Quaternion.identity, Time.deltaTime * 1.5f);
+        // }
 
         private void CheckForFreeSlot(Pizza pizza)
         {
@@ -69,37 +69,43 @@ namespace Gameplay
             {
                 //pizza.GetComponent<Rigidbody>().isKinematic = true;
                 _pizzaSlotsDictionary[_pizzaSlot1] = pizza;
-                pizza.transform.SetParent(_pizzaSlot1);
-
-                _lerpPizza1 = true;
-                _routine1 = StartCoroutine(WaitForLerp1AndStartBaking(pizza));
+                // pizza.transform.SetParent(_pizzaSlot1);
+                pizza.transform.position = _pizzaSlot1.position;
+                pizza.transform.rotation = Quaternion.identity;
+                    
+                pizza.StartPizzaBakingProcess();
+                // _lerpPizza1 = true;
+                // _routine1 = StartCoroutine(WaitForLerp1AndStartBaking(pizza));
             }
             else if (_pizzaSlotsDictionary[_pizzaSlot2] == null)
             {
                 //pizza.GetComponent<Rigidbody>().isKinematic = true;
                 _pizzaSlotsDictionary[_pizzaSlot2] = pizza;
-                pizza.transform.SetParent(_pizzaSlot2);
+                // pizza.transform.SetParent(_pizzaSlot2);
+                pizza.transform.position = _pizzaSlot2.position;
+                pizza.transform.rotation = Quaternion.identity;
 
-                _lerpPizza2 = true;
-                _routine2 = StartCoroutine(WaitForLerp2AndStartBaking(pizza));
+                pizza.StartPizzaBakingProcess();
+                // _lerpPizza2 = true;
+                // _routine2 = StartCoroutine(WaitForLerp2AndStartBaking(pizza));
             }
             else
                 Debug.Log("No free pizza slots right now!");
         }
 
-        private IEnumerator WaitForLerp1AndStartBaking(Pizza pizza)
-        {
-            yield return new WaitForSeconds(2.5f);
-            _lerpPizza1 = false;
-            pizza.StartPizzaBakingProcess();
-        }
+        // private IEnumerator WaitForLerp1AndStartBaking(Pizza pizza)
+        // {
+        //     yield return new WaitForSeconds(2.5f);
+        //     _lerpPizza1 = false;
+        //     pizza.StartPizzaBakingProcess();
+        // }
 
-        private IEnumerator WaitForLerp2AndStartBaking(Pizza pizza)
-        {
-            yield return new WaitForSeconds(2.5f);
-            _lerpPizza2 = false;
-            pizza.StartPizzaBakingProcess();
-        }
+        // private IEnumerator WaitForLerp2AndStartBaking(Pizza pizza)
+        // {
+        //     yield return new WaitForSeconds(2.5f);
+        //     _lerpPizza2 = false;
+        //     pizza.StartPizzaBakingProcess();
+        // }
 
         public void RemovePizzaFromPizzaSlotIfAssigned(Pizza pizza)
         {
@@ -111,6 +117,7 @@ namespace Gameplay
         {
             Pizza[] pizzas = FindObjectsOfType<Pizza>();
             Pizza pizza = pizzas.First(x => x.photonView.ViewID == pizzaViewId);
+            // pizza.transform.SetParent(null);
             
             Transform slot = null;
 
@@ -120,16 +127,16 @@ namespace Gameplay
                 {
                     slot = kvp.Key;
 
-                    if (slot.Equals(_pizzaSlot1))
-                    {
-                        _lerpPizza1 = false;
-                        StopCoroutine(_routine1);
-                    }
-                    else if (slot.Equals(_pizzaSlot2))
-                    {
-                        _lerpPizza2 = false;
-                        StopCoroutine(_routine2);
-                    }
+                    // if (slot.Equals(_pizzaSlot1))
+                    // {
+                        // _lerpPizza1 = false;
+                        // StopCoroutine(_routine1);
+                    // }
+                    // else if (slot.Equals(_pizzaSlot2))
+                    // {
+                        // _lerpPizza2 = false;
+                        // StopCoroutine(_routine2);
+                    // }
 
                     break;
                 }
@@ -141,20 +148,20 @@ namespace Gameplay
 
         public void ClearOven()
         {
-            StopAllCoroutines();
+            // StopAllCoroutines();
             _pizzaSlotsDictionary.Clear();
             _pizzaTransform = null;
-            _lerpPizza1 = false;
-            _lerpPizza2 = false;
+            // _lerpPizza1 = false;
+            // _lerpPizza2 = false;
 
-            if (!PhotonNetwork.IsMasterClient)
-                return;
+            // if (!PhotonNetwork.IsMasterClient)
+            //     return;
 
-            if (_pizzaSlot1.childCount > 0)
-                PhotonNetwork.Destroy(_pizzaSlot1.GetChild(0).gameObject);
-
-            if (_pizzaSlot2.childCount > 0)
-                PhotonNetwork.Destroy(_pizzaSlot2.GetChild(0).gameObject);
+            // if (_pizzaSlot1.childCount > 0)
+            //     PhotonNetwork.Destroy(_pizzaSlot1.GetChild(0).gameObject);
+            //
+            // if (_pizzaSlot2.childCount > 0)
+            //     PhotonNetwork.Destroy(_pizzaSlot2.GetChild(0).gameObject);
         }
     }
 }

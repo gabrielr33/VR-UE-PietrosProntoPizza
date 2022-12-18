@@ -10,7 +10,7 @@ namespace Gameplay
     {
         [field: SerializeField] public List<PizzaIngredient> Ingredients { get; set; }
         public bool CanBePickedUp { get; set; }
-        public BakingStageEnum BakingStage  { get; private set; }
+        public BakingStageEnum BakingStage { get; private set; }
 
         [SerializeField] private Transform _pizzaDough;
         [SerializeField] private List<Material> _pizzaDoughMaterials;
@@ -26,7 +26,7 @@ namespace Gameplay
         }
 
         private void Start()
-        {            
+        {
             Ingredients = new List<PizzaIngredient>();
             CanBePickedUp = true;
             SetPizzaBakingStage(_bakingCounter);
@@ -42,16 +42,38 @@ namespace Gameplay
 
             if (photonView.Owner.Equals(PhotonNetwork.LocalPlayer))
             {
-                if (ingredient.IngredientType.Equals(PizzaIngredient.TomatoSauce) && other.GetComponent<TomatoSauceFillingManager>().IsSpoonFilled)
+                if (ingredient.IngredientType.Equals(PizzaIngredient.TomatoSauce))
                 {
+                    if (other.GetComponent<TomatoSauceFillingManager>().IsSpoonFilled)
+                    {
                         _tomatoSauce.gameObject.SetActive(true);
                         other.GetComponent<TomatoSauceFillingManager>().EmptySpoon();
+                        photonView.RPC("EnableTomatoSauceForOthers", RpcTarget.All);
+                        return;
+                    }
+                    return;
                 }
-                
+
                 photonView.RPC("EnableIngredientForOthers", RpcTarget.All, (int)ingredient.IngredientType);
-                
-                if (!ingredient.IngredientType.Equals(PizzaIngredient.TomatoSauce) && PhotonNetwork.LocalPlayer.Equals(ingredient.GetComponent<PhotonView>().Owner))
+
+                if (!ingredient.IngredientType.Equals(PizzaIngredient.TomatoSauce) &&
+                    PhotonNetwork.LocalPlayer.Equals(ingredient.GetComponent<PhotonView>().Owner))
                     PhotonNetwork.Destroy(ingredient.gameObject);
+            }
+        }
+
+        [PunRPC]
+        private void EnableTomatoSauceForOthers()
+        {
+            Ingredients.Add(PizzaIngredient.TomatoSauce);
+
+            foreach (Ingredient child in transform.GetComponentsInChildren<Ingredient>(true))
+            {
+                if (child.IngredientType.Equals(PizzaIngredient.TomatoSauce))
+                {
+                    child.gameObject.SetActive(true);
+                    break;
+                }
             }
         }
 
@@ -59,10 +81,10 @@ namespace Gameplay
         private void EnableIngredientForOthers(int ingredientType)
         {
             Ingredients.Add((PizzaIngredient)ingredientType);
-            
-            foreach(Ingredient child in transform.GetComponentsInChildren<Ingredient>(true))
+
+            foreach (Ingredient child in transform.GetComponentsInChildren<Ingredient>(true))
             {
-                if(child.IngredientType.Equals((PizzaIngredient)ingredientType))
+                if (child.IngredientType.Equals((PizzaIngredient)ingredientType))
                 {
                     child.gameObject.SetActive(true);
                     break;
@@ -79,7 +101,7 @@ namespace Gameplay
         {
             Debug.Log("Pizza inserted in oven! Start baking!");
             CanBePickedUp = true;
-            
+
             yield return new WaitForSeconds(_gameManager.GameValues.PizzaDoneTime);
 
             _bakingCounter++;
@@ -97,9 +119,9 @@ namespace Gameplay
         {
             if (bakingCounter > 2)
                 return;
-            
+
             BakingStage = (BakingStageEnum)bakingCounter;
-            
+
             switch (BakingStage)
             {
                 case BakingStageEnum.Raw:

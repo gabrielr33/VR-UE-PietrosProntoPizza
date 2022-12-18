@@ -32,6 +32,7 @@ namespace Gameplay
             if (AttachedPizza == null)
                 return;
 
+            AttachedPizza.transform.SetParent(null);
             AttachedPizza.CanBePickedUp = false;
             AttachedPizza = null;
         }
