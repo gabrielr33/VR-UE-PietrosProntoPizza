@@ -3999,10 +3999,13 @@ MonoBehaviour:
   - {fileID: -104194614726366390, guid: 1d02d24931ce6df48a525f512b26b765, type: 3}
   - {fileID: 1977296517489539178, guid: 43561f4519687d541a9f4fb5c10f5db6, type: 3}
   <PizzaTypes>k__BackingField:
-  - {fileID: 11400000, guid: 0f7d3643ebb828245b11f4bb7fde3b6d, type: 2}
-  - {fileID: 11400000, guid: dc94ba2db90ebef40a678064f8e194b9, type: 2}
-  - {fileID: 11400000, guid: 3d5b06a5d3d4d3a4d89e5c09c61abadd, type: 2}
+  - {fileID: 11400000, guid: 5d4687d4703f0b246bbd25bd3e95c663, type: 2}
   - {fileID: 11400000, guid: 1bd0c707b60699a428ac81d20b1254db, type: 2}
+  - {fileID: 11400000, guid: 0f7d3643ebb828245b11f4bb7fde3b6d, type: 2}
+  - {fileID: 11400000, guid: 3d5b06a5d3d4d3a4d89e5c09c61abadd, type: 2}
+  - {fileID: 11400000, guid: a176ebd72fda4504faaad6dff9cf3851, type: 2}
+  - {fileID: 11400000, guid: dc94ba2db90ebef40a678064f8e194b9, type: 2}
+  - {fileID: 11400000, guid: d5269289fff8fc14e83ee217fba4219e, type: 2}
   <PizzaIngredients>k__BackingField:
   - {fileID: 1662239005572894961, guid: 55d8848e47b090045b0ce9d2de6a9b97, type: 3}
   - {fileID: 8199108881038432764, guid: cb56351bae880be419d607506a5c4c03, type: 3}
@@ -5437,10 +5440,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1913427571}
     m_Modifications:
-    - target: {fileID: 14366233, guid: 273dcedcb1ed88649b685bdc6fae2d51, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -0.01999591
-      objectReference: {fileID: 0}
     - target: {fileID: 1185986785766803270, guid: 273dcedcb1ed88649b685bdc6fae2d51,
         type: 3}
       propertyPath: m_Name
