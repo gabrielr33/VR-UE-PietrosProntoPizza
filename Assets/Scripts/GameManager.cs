@@ -50,13 +50,13 @@ public class GameManager : MonoBehaviourPun
         // Distinguish between chef and waiter
         if (_isMasterClient && _XRRig.transform.position != _startPositionWaiter.position)
         {
-            PhotonNetwork.Instantiate(Path.Combine("Prefabs\\Photon", "Player"), Vector3.zero, Quaternion.identity);
+            PhotonNetwork.Instantiate(Path.Combine("Prefabs\\Photon", "PlayerWaiter"), Vector3.zero, Quaternion.identity);
             _XRRig.transform.position = _startPositionWaiter.position;
             _XRRig.transform.rotation = _startPositionWaiter.rotation;
         }
         else if (!_isMasterClient && _XRRig.transform.position != _startPositionChef.position)
         {
-            PhotonNetwork.Instantiate(Path.Combine("Prefabs\\Photon", "Player"), Vector3.zero, Quaternion.identity);
+            PhotonNetwork.Instantiate(Path.Combine("Prefabs\\Photon", "PlayerChef"), Vector3.zero, Quaternion.identity);
             _XRRig.transform.position = _startPositionChef.position;
             _XRRig.transform.rotation = _startPositionChef.rotation;
         }

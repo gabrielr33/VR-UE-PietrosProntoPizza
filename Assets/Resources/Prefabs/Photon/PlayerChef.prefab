@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 4716303351734388584}
   - component: {fileID: 2350562355383299013}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PlayerChef
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
