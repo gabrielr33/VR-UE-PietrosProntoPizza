@@ -15,9 +15,9 @@ namespace Gameplay
 
         [SerializeField] private TMP_Text _customerNameText;
         [SerializeField] private Transform _floatingReviewStartPos;
-
+        [SerializeField] private PrefabsManager _prefabsManager;
+        
         private GameManager _gameManager;
-        private PrefabsManager _prefabsManager;
         private OrderManager _orderManager;
         private Transform _cameraTransform;
         private Animator _customerAnimator;
@@ -54,17 +54,16 @@ namespace Gameplay
             _customerNameText.text = name;
         }
 
-        public Order GenerateOrder(PrefabsManager prefabsManager, OrderManager orderManager, int tableNumber, Seat seat)
+        public Order GenerateOrder(OrderManager orderManager, int tableNumber, Seat seat)
         {
-            _prefabsManager = prefabsManager;
             _orderManager = orderManager;
             
             _seat = seat;
 
             _gameManager.GameResultValues.TotalCustomers++;
 
-            List<PizzaType> pizzaTypes = prefabsManager.PizzaTypes;
-            List<DrinkType> drinkTypes = prefabsManager.DrinkTypes;
+            List<PizzaType> pizzaTypes = _prefabsManager.PizzaTypes;
+            List<DrinkType> drinkTypes = _prefabsManager.DrinkTypes;
             
             Random rand = new Random();
             _order = new Order

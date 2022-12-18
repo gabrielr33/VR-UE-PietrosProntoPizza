@@ -8,6 +8,7 @@ namespace Gameplay
     {
         private Transform _drinkTransform;
         private bool _lerpDrink;
+        private Rigidbody _rb;
         
         private void Update()
         {
@@ -38,6 +39,7 @@ namespace Gameplay
             _drinkTransform = drink.transform;
             _drinkTransform.SetParent(null);
 
+            _rb = _drinkTransform.GetComponent<Rigidbody>();
             _drinkTransform.GetComponent<NetworkGrabbable>().enabled = false;
             _drinkTransform.GetComponent<Rigidbody>().useGravity = false;
             _drinkTransform.GetComponent<Rigidbody>().isKinematic = true;
@@ -45,6 +47,12 @@ namespace Gameplay
             GetComponentInParent<Seat>().DrinkReceived(drink);
             
             _lerpDrink = true;
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+            if (_rb != null)
+                _rb.isKinematic = true;
         }
     }
 }

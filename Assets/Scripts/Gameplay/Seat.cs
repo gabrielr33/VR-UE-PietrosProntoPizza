@@ -38,7 +38,7 @@ namespace Gameplay
             _drinkTrigger.GetComponent<BoxCollider>().enabled = true;
             _drinkTrigger.GetComponent<MeshRenderer>().enabled = true;
 
-            return _customer.GenerateOrder(_prefabsManager, orderManager, table.TableNumber, this);
+            return _customer.GenerateOrder(orderManager, table.TableNumber, this);
         }
 
         public void PizzaReceived(Pizza pizza)

@@ -8,6 +8,7 @@ namespace Gameplay
     {
         private Transform _plateTransform;
         private bool _lerpPizza;
+        private Rigidbody _rb;
         
         private void Update()
         {
@@ -45,6 +46,7 @@ namespace Gameplay
             _plateTransform = plate.transform;
             _plateTransform.SetParent(null);
 
+            _rb = _plateTransform.GetComponent<Rigidbody>();
             _plateTransform.GetComponent<NetworkGrabbable>().enabled = false;
             _plateTransform.GetComponent<Rigidbody>().useGravity = false;
             _plateTransform.GetComponent<Rigidbody>().isKinematic = true;
@@ -53,6 +55,12 @@ namespace Gameplay
             GetComponentInParent<Seat>().PizzaReceived(plate.AttachedPizza);
             
             _lerpPizza = true;
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+            if (_rb != null)
+                _rb.isKinematic = true;
         }
     }
 }
