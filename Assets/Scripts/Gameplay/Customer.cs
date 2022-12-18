@@ -15,8 +15,8 @@ namespace Gameplay
 
         [SerializeField] private TMP_Text _customerNameText;
         [SerializeField] private Transform _floatingReviewStartPos;
-        [SerializeField] private PrefabsManager _prefabsManager;
         
+        private PrefabsManager _prefabsManager;
         private GameManager _gameManager;
         private OrderManager _orderManager;
         private Transform _cameraTransform;
@@ -30,6 +30,7 @@ namespace Gameplay
         
         private void Awake()
         {
+            _prefabsManager = GameObject.FindWithTag("PrefabsManager").GetComponent<PrefabsManager>();
             _gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
             _customerAnimator = GetComponent<Animator>();
             _cameraTransform = Camera.main.transform;
